@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -10,10 +11,12 @@ import {AuthService} from "../../../services/auth.service";
 export class LoginComponent implements OnInit {
 
   formLogin?: FormGroup;
-  errLogin: any
+  errLogin: any;
+  access_token?:any;
 
   constructor(private authService: AuthService,
               private fb: FormBuilder,
+              private route: Router
   ) {
   }
 
@@ -36,10 +39,12 @@ export class LoginComponent implements OnInit {
     const user = this.formLogin?.value;
     this.authService.login(user).subscribe(res => {
       if (res.status != 200) {
-      return this.errLogin = 'Tài khoản hoặc mật khẩu không đúng!'
+        return this.errLogin = 'Tài khoản hoặc mật khẩu không đúng!'
       }
-      return alert('Okkk')
-
+      this.access_token = res.access_token
+      window.localStorage.setItem('access_token',this.access_token)
+      return this.route.navigate(['master'])
     })
   }
+
 }
