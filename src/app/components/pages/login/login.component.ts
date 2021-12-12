@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
 import {AuthService} from "../../../services/auth.service";
 
 @Component({
@@ -13,29 +12,33 @@ export class LoginComponent implements OnInit {
   formLogin?: FormGroup;
   errLogin: any
 
-  constructor(private authService : AuthService,
-              private fb : FormBuilder,
-              private router : Router) { }
+  constructor(private authService: AuthService,
+              private fb: FormBuilder,
+  ) {
+  }
 
   ngOnInit(): void {
     this.formLogin = this.fb.group({
-      email : ['',[Validators.required, Validators.email]],
-      password : ['',[Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
     })
   }
-  login() {
-    let data = this.formLogin?.value;
 
-    if (this.authService.checkAccount(data)) {
-      // this.router.navigate(['admin/dashboard'])
-      alert('oke ')
-    } else {
-      this.errLogin = {
-        status: 'error',
-        content: 'Account not exits',
-        classElement: 'alert alert-danger'
-      }
-    }
+  get email() {
+    return this.formLogin?.get('email');
   }
 
+  get password() {
+    return this.formLogin?.get('password');
+  }
+
+  login() {
+    const user = this.formLogin?.value;
+    this.authService.login(user).subscribe(res => {
+      if (res.status != 200) {
+      return this.errLogin = 'Tài khoản hoặc mật khẩu không đúng!'
+      }
+      return alert('Okkk')
+    })
+  }
 }
