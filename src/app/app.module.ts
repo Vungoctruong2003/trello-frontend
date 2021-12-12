@@ -9,6 +9,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { NavbarComponent } from './components/core/navbar/navbar.component';
 import { SidebarComponent } from './components/core/sidebar/sidebar.component';
 import { UsersModule } from './components/users/users.module';
+import { MaterComponent } from './components/mater/mater.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { UsersModule } from './components/users/users.module';
     LoginComponent,
     NavbarComponent,
     SidebarComponent,
+    MaterComponent,
   ],
   imports: [
     BrowserModule,
