@@ -4,10 +4,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
-const routes: Routes = []
+const routes: Routes = [
+  {
+    path: 'register',
+    component: RegisterComponent
+  }
+]
 
 @NgModule({
   declarations: [
+    RegisterComponent
+  ],
+  exports: [
     RegisterComponent
   ],
   imports: [
