@@ -8,6 +8,7 @@ import { LoginComponent } from './components/pages/login/login.component';
 import {HttpClientModule} from "@angular/common/http";
 import { NavbarComponent } from './components/core/navbar/navbar.component';
 import { SidebarComponent } from './components/core/sidebar/sidebar.component';
+import { MaterComponent } from './components/mater/mater.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { SidebarComponent } from './components/core/sidebar/sidebar.component';
     LoginComponent,
     NavbarComponent,
     SidebarComponent,
+    MaterComponent,
   ],
   imports: [
     BrowserModule,
