@@ -21,6 +21,7 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.authService.logout().subscribe(res => {
       console.log(res)
+      window.localStorage.removeItem('access_token')
       return this.route.navigate(['login'])
     })
   }
