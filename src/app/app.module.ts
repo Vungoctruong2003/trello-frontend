@@ -9,6 +9,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { NavbarComponent } from './components/core/navbar/navbar.component';
 import { SidebarComponent } from './components/core/sidebar/sidebar.component';
 import { MaterComponent } from './components/mater/mater.component';
+import { HomeComponent } from './components/pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { MaterComponent } from './components/mater/mater.component';
     NavbarComponent,
     SidebarComponent,
     MaterComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
