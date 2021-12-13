@@ -9,12 +9,19 @@ const routes: Routes = [
   {
     path:'changePassword', component: ChangePasswordComponent
   },
+  {
+    path: 'register',
+    component: RegisterComponent
+  }
 ]
 
 @NgModule({
   declarations: [
     RegisterComponent,
     ChangePasswordComponent
+  ],
+  exports: [
+    RegisterComponent
   ],
   imports: [
     CommonModule,

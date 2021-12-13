@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-mater',
@@ -11,5 +12,6 @@ export class MaterComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
 }

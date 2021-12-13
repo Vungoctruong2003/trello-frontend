@@ -8,6 +8,7 @@ import { LoginComponent } from './components/pages/login/login.component';
 import {HttpClientModule} from "@angular/common/http";
 import { NavbarComponent } from './components/core/navbar/navbar.component';
 import { SidebarComponent } from './components/core/sidebar/sidebar.component';
+import { UsersModule } from './components/users/users.module';
 import { MaterComponent } from './components/mater/mater.component';
 import { HomeComponent } from './components/pages/home/home.component';
 
@@ -26,6 +27,7 @@ import { HomeComponent } from './components/pages/home/home.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    UsersModule
   ],
   providers: [],
   bootstrap: [AppComponent]
