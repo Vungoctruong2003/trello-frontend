@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
@@ -12,6 +12,7 @@ export class RegisterComponent implements OnInit {
 
   formRegister?: FormGroup;
   errRegister: any;
+  validatePasswordConfirm: any;
 
   constructor(private userService : UserService,
               private fb : FormBuilder,
@@ -25,6 +26,7 @@ export class RegisterComponent implements OnInit {
       confirmPassword: ['',[Validators.required]]
     })
   }
+  
   get email() {
     return this.formRegister?.get('email');
   }
