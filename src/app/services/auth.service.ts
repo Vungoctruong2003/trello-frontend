@@ -17,6 +17,10 @@ export class AuthService {
     return this.http.post<any>(API_URL + '/auth/login', data);
   }
 
+  loginGG(): Observable<any> {
+    return this.http.get<any>(API_URL + '/auth/redirect/google');
+  }
+
   logout():Observable<any>{
     let token = localStorage.getItem('access_token')
     let header = {

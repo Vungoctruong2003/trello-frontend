@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   formLogin?: FormGroup;
   errLogin: any;
-  access_token?:any;
+  access_token?: any;
 
   constructor(private authService: AuthService,
               private fb: FormBuilder,
@@ -42,9 +42,16 @@ export class LoginComponent implements OnInit {
         return this.errLogin = 'Tài khoản hoặc mật khẩu không đúng!'
       }
       this.access_token = res.access_token
-      window.localStorage.setItem('access_token',this.access_token)
+      window.localStorage.setItem('access_token', this.access_token)
       return this.route.navigate(['master'])
     })
   }
+
+  loginGG() {
+    this.authService.loginGG().subscribe(res => {
+      console.log(res)
+    })
+  }
+
 
 }
