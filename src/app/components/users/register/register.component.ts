@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
@@ -18,12 +18,12 @@ export class RegisterComponent implements OnInit {
               private router : Router) { }
 
   ngOnInit(): void {
-    this.formRegister = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      name: ['',[Validators.required]],
-      password: ['', [Validators.required]],
-      confirmPassword: ['',[Validators.required]]
-    })
+    this.formRegister = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      name: new FormControl('',[Validators.required]),
+      password: new FormControl('', [Validators.required]),
+      confirmPassword: new FormControl('',[Validators.required])
+    },this.comparePassword)
   }
   get email() {
     return this.formRegister?.get('email');
@@ -50,5 +50,13 @@ export class RegisterComponent implements OnInit {
       }else{}
         this.errRegister = 'Không đăng ký được'
     })
+  }
+
+  comparePassword(c: AbstractControl) {
+    const v = c.value;
+    return (v.password === v.confirmPassword) ?
+      null : {
+        passwordnotmatch: true
+      };
   }
 }
