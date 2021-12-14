@@ -22,6 +22,8 @@ const routes: Routes = [
   {
     path :'',
     component : IntroComponent
+    path :'home',
+    component : HomeComponent
   },
 ];
 
