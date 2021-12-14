@@ -19,7 +19,7 @@ const routes: Routes = [
     component : MaterComponent
   },
   {
-    path :'',
+    path :'home',
     component : HomeComponent
   },
 ];
