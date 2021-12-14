@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div class="container helo" style="">
+<div class="container side" style="">
   <div class="row">
     <div class="col-sm-2">
       <ul class="navbar-nav flex-fill w-100 mb-2">
@@ -118,54 +118,22 @@
         <div class="boards-page-board-section-header">
           <div class="boards-page-board-section-header-icon"><span class="icon-lg icon-member"></span></div>
           <h3 class="boards-page-board-section-header-name">Bảng</h3></div>
-<!--                <div>-->
-<!--                  <div class="boards-page-board-section-list" *ngFor="let group of groups">-->
-<!--                    <div>{{group.group.title}}</div>-->
-<!--                    <div class="row">-->
-<!--                      <div *ngFor="let board of boards">-->
-<!--                        <div class="col-12 col-md-3">-->
-<!--                          <div *ngIf="group.group.id == board.board.group_id">-->
-<!--                            <div class="card" style="width: 13rem;">-->
-<!--                              <img-->
-<!--                                src="https://scontent.fhan4-3.fna.fbcdn.net/v/t39.30808-6/264810784_1232206957317286_355540904718877744_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=730e14&_nc_ohc=3iUXWDLfjLIAX9E618e&_nc_ht=scontent.fhan4-3.fna&oh=00_AT9TBSono1sKFjO7AXUnEy1hQuHZ2WeUCw4Esoq8Z3HJGA&oe=61BB2943"-->
-<!--                                class="card-img-top" alt="...">-->
-<!--                              <div class="card-body">-->
-<!--                                <h5 class="card-title">{{group.group.title}}</h5>-->
-<!--                              </div>-->
-<!--                            </div>-->
-<!--                          </div>-->
-<!--                        </div>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          </div>-->
-        <ul *ngFor="let group of groups" class="boards-page-board-section-list" >
-          <div>{{group.group.title}}</div>
+        <div *ngFor="let ar of arr;let i=index" class=" mt-5">
+          <h2>{{groups[i].group.title}}</h2>
           <div class="row">
-          <li *ngFor="let board of boards" class="cak">
-            <div class="col-4 col-md-3">
-            <div *ngIf="group.group.id == board.board.group_id">
-            <div class="card " style="width: 13rem;">
-              <img
-                src="https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x320/b55d798585b76e32f2f5c9f1852791a8/photo-1632042704576-7ae3ef405c78.jpg"
-                class="card-img-top" alt="...">
-<!--              <div class="card-body">-->
-<!--                <h5 class="card-title">{{group.group.title}}</h5>-->
-<!--              </div>-->
-              <div class="card-img-overlay">
-                <h5 class="card-title  text-white " style="position: absolute;top: 5px; left: 10px">{{group.group.title}}</h5>
-            </div>
-            </div>
+            <div class="col-4 col-md-3 mt-2" *ngFor="let board of ar">
+              <div class="card">
+                <img
+                  src="https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x320/b55d798585b76e32f2f5c9f1852791a8/photo-1632042704576-7ae3ef405c78.jpg"
+                  class="card-img-top" alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title  text-white "
+                      style="position: absolute;top: 5px; left: 10px">{{board.board.title}}</h5>
+                </div>
               </div>
-              </div>
-          </li>
             </div>
-        </ul>
-
+          </div>
+        </div>
       </div>
     </div>
   </div>

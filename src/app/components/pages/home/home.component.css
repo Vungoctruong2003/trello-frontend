@@ -1,22 +1,8 @@
-.helo{
+.side{
   position: absolute;
   left: 400px;
 }
-.cak li {
-  color: #ffff;
-  float: left;
-  width: 150px;
-  height: 10px;
-  line-height: 40px;
-}
-.boards-page-board-section-list ul {
-  background: #1F568B;
-  list-style-type: none;
-  overflow: hidden;
-  width: 100%;
-}
-.card-img-top{
-  width: 208px;
-  height: 96px;
-  padding-left: -50px;
-}
+
+
+
+
