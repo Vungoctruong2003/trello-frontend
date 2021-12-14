@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   formLogin?: FormGroup;
   errLogin: any;
-  access_token?:any;
+  access_token?: any;
 
   constructor(private authService: AuthService,
               private fb: FormBuilder,
@@ -46,5 +46,12 @@ export class LoginComponent implements OnInit {
       return this.route.navigate(['/home'])
     })
   }
+
+  loginGG() {
+    this.authService.loginGG().subscribe(res => {
+      console.log(res)
+    })
+  }
+
 
 }
