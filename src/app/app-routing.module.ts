@@ -20,8 +20,10 @@ const routes: Routes = [
     component : MaterComponent
   },
   {
-    path :'',
-    component : IntroComponent
+    path: '',
+    component: IntroComponent
+  },
+  {
     path :'home',
     component : HomeComponent
   },
