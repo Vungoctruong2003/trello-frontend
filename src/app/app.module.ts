@@ -10,6 +10,8 @@ import { NavbarComponent } from './components/core/navbar/navbar.component';
 import { SidebarComponent } from './components/core/sidebar/sidebar.component';
 import { UsersModule } from './components/users/users.module';
 import { MaterComponent } from './components/mater/mater.component';
+import { HomeComponent } from './components/pages/home/home.component';
+import { IntroComponent } from './components/pages/intro/intro.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { MaterComponent } from './components/mater/mater.component';
     NavbarComponent,
     SidebarComponent,
     MaterComponent,
+    HomeComponent,
+    IntroComponent,
   ],
   imports: [
     BrowserModule,

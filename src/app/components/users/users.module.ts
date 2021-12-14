@@ -3,8 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 const routes: Routes = [
+  {
+    path:'changePassword', component: ChangePasswordComponent
+  },
   {
     path: 'register',
     component: RegisterComponent
@@ -13,7 +17,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    RegisterComponent
+    RegisterComponent,
+    ChangePasswordComponent
   ],
   exports: [
     RegisterComponent
