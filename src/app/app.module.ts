@@ -12,6 +12,8 @@ import { UsersModule } from './components/users/users.module';
 import { MaterComponent } from './components/mater/mater.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { IntroComponent } from './components/pages/intro/intro.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BoardComponent } from './components/mater/board/board.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { IntroComponent } from './components/pages/intro/intro.component';
     MaterComponent,
     HomeComponent,
     IntroComponent,
+    BoardComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,8 @@ import { IntroComponent } from './components/pages/intro/intro.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    UsersModule
+    UsersModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
