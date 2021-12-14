@@ -42,8 +42,8 @@ export class LoginComponent implements OnInit {
         return this.errLogin = 'Tài khoản hoặc mật khẩu không đúng!'
       }
       this.access_token = res.access_token
-      window.localStorage.setItem('access_token', this.access_token)
-      return this.route.navigate(['master'])
+      window.localStorage.setItem('access_token',this.access_token)
+      return this.route.navigate(['/home'])
     })
   }
 
