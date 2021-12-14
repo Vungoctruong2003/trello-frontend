@@ -10,8 +10,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ChangePasswordComponent implements OnInit {
 
-  formChangePassword? : FormGroup;
-
+  formChangePassword?: FormGroup;
+  errorChangePassword: any
   constructor(
     private userService: UserService,
     private fb: FormBuilder,
@@ -20,15 +20,19 @@ export class ChangePasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.formChangePassword = new FormGroup({
-      new_password: new FormControl('',[Validators.required]),
-      new_password_confirmation: new FormControl('',[Validators.required]),
-    },this.comparePassword)
+      old_password: new FormControl('', [Validators.required]),
+      new_password: new FormControl('', [Validators.required]),
+      new_password_confirmation: new FormControl('', [Validators.required]),
+    }, this.comparePassword)
   }
 
-  get newPassword(){
+  get oldPassword() {
+    return this.formChangePassword?.get('old_password')
+  }
+  get newPassword() {
     return this.formChangePassword?.get('new_password')
   }
-  get cfmPassword(){
+  get cfmPassword() {
     return this.formChangePassword?.get('new_password_confirmation')
   }
 
@@ -37,10 +41,9 @@ export class ChangePasswordComponent implements OnInit {
     this.userService.changePassword(data).subscribe(res => {
       if (res.status != 200) {
         alert('Doi mat khau thanh cong')
-        console.log(res)
+        console.log(res.error)
         this.router.navigate(['/master'])
-      }else{}
-        // this.errRegister = 'Không đăng ký được'
+      }
     })
   }
 
