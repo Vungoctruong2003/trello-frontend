@@ -43,6 +43,7 @@ export class RegisterComponent implements OnInit {
 
   register() {
     const user = this.formRegister?.value;
+    console.log(user);
     this.userService.register(user).subscribe(res => {
       if (res.status != 200) {
         alert('dang ky thanh cong quay ve trang login')

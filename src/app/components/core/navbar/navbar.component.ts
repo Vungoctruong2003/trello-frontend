@@ -29,6 +29,7 @@ export class NavbarComponent implements OnInit {
   getProfile() {
     this.authService.getProfile().subscribe(res => {
       this.user = res
+      console.log(res)
     })
   }
 
