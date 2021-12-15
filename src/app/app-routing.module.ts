@@ -6,6 +6,7 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { IntroComponent } from './components/pages/intro/intro.component';
 import {LoginComponent} from "./components/pages/login/login.component";
 import { UsersModule } from './components/users/users.module';
+import {BoardModule} from "./components/board/board.module";
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path :'groups',
     loadChildren: () => import('./components/group/group.module').then(module => module.GroupModule)
+  },
+  {
+    path :'boards',
+    loadChildren: () => import('./components/board/board.module').then(module => BoardModule)
   },
   {
     path :'master',
