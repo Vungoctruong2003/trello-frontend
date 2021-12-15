@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
               ) {
   }
 
+
   ngOnInit(): void {
     this.getAll();
   }
@@ -59,7 +60,6 @@ export class HomeComponent implements OnInit {
       for (let j=0;j<boards.length;j++){
         if (groups[i].group.id == boards[j].board.group_id){
           this.arr[i].push(boards[j])
-          console.log(i,j)
         }
       }
       this.arr[i].id = 1

@@ -24,6 +24,8 @@ import { ListCreateComponent } from './components/list/list-create/list-create.c
 import { BoardCreateComponent } from './components/board/board-create/board-create.component';
 import { LoadHomeComponent } from './load-home/load-home.component';
 import { LoadComponent } from './load/load.component';
+import { TrelloComponent } from './components/trello/trello.component';
+import { ChangeAvatarComponent } from './components/pages/change-avatar/change-avatar.component';
 
 // @ts-ignore
 @NgModule({
@@ -37,6 +39,8 @@ import { LoadComponent } from './load/load.component';
     IntroComponent,
     LoadHomeComponent,
     LoadComponent,
+    TrelloComponent,
+    ChangeAvatarComponent,
   ],
   entryComponents: [
     GroupCreateComponent,

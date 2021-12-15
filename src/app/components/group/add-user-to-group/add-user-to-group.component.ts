@@ -6,6 +6,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {GroupCreateComponent} from "../group-create/group-create.component";
 import {BoardService} from "../../../services/board.service";
 import {UserService} from "../../../services/user.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-add-user-to-group',
@@ -16,25 +17,27 @@ export class AddUserToGroupComponent implements OnInit {
   formAddUserToGroup?: FormGroup;
   idGroup?: any;
   idUser?: any;
+  notice?: any
 
   constructor(private groupService: GroupService,
               private fb: FormBuilder,
               private boardService: BoardService,
               private userService: UserService,
               private router: Router,
+              private toastr: ToastrService,
               private dialogRef: MatDialogRef<GroupCreateComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,) {
   }
 
   ngOnInit(): void {
     this.formAddUserToGroup = this.fb.group({
-      email_user: ['', [Validators.required]],
+      key: ['', [Validators.required]],
     })
     this.idGroup = this.boardService.getGroupId()
   }
 
   get email() {
-    return this.formAddUserToGroup?.get('email_user');
+    return this.formAddUserToGroup?.get('key');
   }
 
   searchByEmail() {
@@ -46,20 +49,22 @@ export class AddUserToGroupComponent implements OnInit {
   }
 
   addUserToGroup() {
-    // const data = this.formAddUserToGroup?.value;
     let data = {
-      "user_id": 2,
+      "user_id": this.idUser,
       "group_id": this.idGroup,
       "role": 3
     }
-    console.log(data);
+
     this.groupService.addUserToGroup(data).subscribe(res => {
       if (res.status == 'success') {
+        this.toastr.success('Thêm mới người dùng thành công ');
         this.onClose();
       } else {
+        this.toastr.warning('Người dùng này đã có trong nhóm');
       }
     })
   }
+
   onClose() {
     this.formAddUserToGroup?.reset();
     this.dialogRef.close();

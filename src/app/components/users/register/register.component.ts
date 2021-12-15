@@ -24,7 +24,8 @@ export class RegisterComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       name: new FormControl('',[Validators.required]),
       password: new FormControl('', [Validators.required]),
-      confirmPassword: new FormControl('',[Validators.required])
+      confirmPassword: new FormControl('',[Validators.required]),
+      avatar: new FormControl('https://firebasestorage.googleapis.com/v0/b/trello-eb91c.appspot.com/o/RoomsImages%2F1639542019135?alt=media&token=6a53a8a9-a60c-43a2-89b6-60b323c0678a',[Validators.required])
     },this.comparePassword)
   }
   get email() {
