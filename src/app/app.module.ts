@@ -20,6 +20,7 @@ import { GroupCreateComponent } from './components/group/group-create/group-crea
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../environments/environment";
+import { LoadComponent } from './load/load.component';
 
 // @ts-ignore
 @NgModule({
@@ -31,6 +32,7 @@ import {environment} from "../environments/environment";
     MaterComponent,
     HomeComponent,
     IntroComponent,
+    LoadComponent,
   ],
   entryComponents: [
     GroupCreateComponent

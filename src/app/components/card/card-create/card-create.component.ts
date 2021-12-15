@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {BoardService} from "../../../services/board.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {CardService} from "../../../services/card.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-card-create',
@@ -14,8 +15,10 @@ export class CardCreateComponent implements OnInit {
   formCreateCard?: FormGroup ;
   constructor(
     private cardService: CardService,
+    private boardService: BoardService,
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<CardCreateComponent>,
+    private router: Router,
     @Inject(MAT_DIALOG_DATA) public data:any,
   ) { }
 
@@ -56,7 +59,7 @@ export class CardCreateComponent implements OnInit {
   onClose(){
     this.formCreateCard?.reset();
     this.dialogRef.close();
-    location.reload();
+    this.router.navigate(['/load'])
   }
 
 

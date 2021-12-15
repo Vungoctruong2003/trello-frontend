@@ -25,6 +25,7 @@ export class IndexComponent implements OnInit {
     this.activeRouter.paramMap.subscribe((paramMap: ParamMap) => {
       // @ts-ignore
       this.id = paramMap.get('id')
+      this.boardService.setBoardId(this.id)
     })
   }
 

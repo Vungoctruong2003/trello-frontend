@@ -8,6 +8,7 @@ import {LoginComponent} from "./components/pages/login/login.component";
 import { UsersModule } from './components/users/users.module';
 import {BoardModule} from "./components/board/board.module";
 import {CardModule} from "./components/card/card.module";
+import {LoadComponent} from "./load/load.component";
 
 const routes: Routes = [
   {
@@ -40,6 +41,10 @@ const routes: Routes = [
   {
     path :'home',
     component : HomeComponent
+  },
+  {
+    path :'load',
+    component : LoadComponent
   },
 ];
 
