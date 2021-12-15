@@ -12,12 +12,11 @@ export class IndexComponent implements OnInit {
   lists: any;
   cards: any;
   listCards: any;
-  id?: number ;
+  id?: any ;
 
   constructor(private boardService: BoardService,
               private activeRouter: ActivatedRoute) {
     this.activeRouter.paramMap.subscribe((paramMap: ParamMap) => {
-      // @ts-ignore
       this.id = paramMap.get('id')
     })
   }
@@ -27,7 +26,7 @@ export class IndexComponent implements OnInit {
   }
 
   uploadData(id: number | undefined) {
-    this.boardService.listCard(3).subscribe(res => {
+    this.boardService.listCard(id).subscribe(res => {
       if (res.status == 'success') {
         this.lists = res.lists
         this.listCards = res.cards
