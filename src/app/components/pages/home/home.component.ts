@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { interval, Subscription } from 'rxjs';
 import {HomeService} from 'src/app/services/home.service';
+import { GroupCreateComponent } from '../../group/group-create/group-create.component';
 
 @Component({
   selector: 'app-home',
@@ -12,8 +15,11 @@ export class HomeComponent implements OnInit {
   boards: any;
   arr: any = [[]];
 
+
   constructor(private homeService: HomeService,
-              private router: Router) {
+              private router: Router,
+              private matDialog: MatDialog
+              ) {
   }
 
   ngOnInit(): void {
@@ -51,6 +57,14 @@ export class HomeComponent implements OnInit {
     }
     console.log(this.arr)
 
+  }
+
+  openDialog(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "20%";
+    this.matDialog.open(GroupCreateComponent,dialogConfig);
   }
 
 }

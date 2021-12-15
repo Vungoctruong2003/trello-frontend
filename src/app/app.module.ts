@@ -12,6 +12,10 @@ import { UsersModule } from './components/users/users.module';
 import { MaterComponent } from './components/mater/mater.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { IntroComponent } from './components/pages/intro/intro.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule} from "@angular/material/dialog";
+import { GroupCreateComponent } from './components/group/group-create/group-create.component';
+
 
 @NgModule({
   declarations: [
@@ -23,13 +27,18 @@ import { IntroComponent } from './components/pages/intro/intro.component';
     HomeComponent,
     IntroComponent,
   ],
+  entryComponents: [
+    GroupCreateComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    UsersModule
+    UsersModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
