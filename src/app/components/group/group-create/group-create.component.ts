@@ -41,6 +41,7 @@ export class GroupCreateComponent implements OnInit {
       if (res.status == 'success') {
         alert('Tao group thanh cong')
         this.onClose();
+        
         // this.router.navigate(['/login'])
       }else{}
     })

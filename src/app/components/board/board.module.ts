@@ -6,6 +6,7 @@ import {ChangePasswordComponent} from "../users/change-password/change-password.
 import {RegisterComponent} from "../users/register/register.component";
 import {IndexComponent} from "./index/index.component";
 import {DragDropModule} from "@angular/cdk/drag-drop";
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -24,7 +25,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    DragDropModule
+    DragDropModule,
+    ReactiveFormsModule
   ]
 })
 export class BoardModule { }
