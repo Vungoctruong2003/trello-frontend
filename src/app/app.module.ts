@@ -12,6 +12,7 @@ import { UsersModule } from './components/users/users.module';
 import { MaterComponent } from './components/mater/mater.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { IntroComponent } from './components/pages/intro/intro.component';
+import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -31,6 +32,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     FormsModule,
     UsersModule,
+    ToastrModule.forRoot(),
     BrowserAnimationsModule
   ],
   providers: [],
