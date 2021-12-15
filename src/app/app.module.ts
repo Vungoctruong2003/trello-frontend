@@ -14,9 +14,16 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { IntroComponent } from './components/pages/intro/intro.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule} from "@angular/material/dialog";
+import { GroupCreateComponent } from './components/group/group-create/group-create.component';
+
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../environments/environment";
+import { ListCreateComponent } from './components/list/list-create/list-create.component';
+import { BoardCreateComponent } from './components/board/board-create/board-create.component';
+import { LoadHomeComponent } from './load-home/load-home.component';
+import { LoadComponent } from './load/load.component';
 
 // @ts-ignore
 @NgModule({
@@ -28,6 +35,13 @@ import {environment} from "../environments/environment";
     MaterComponent,
     HomeComponent,
     IntroComponent,
+    LoadHomeComponent,
+    LoadComponent,
+  ],
+  entryComponents: [
+    GroupCreateComponent,
+    ListCreateComponent,
+    BoardCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -37,10 +51,10 @@ import {environment} from "../environments/environment";
     FormsModule,
     UsersModule,
     BrowserAnimationsModule,
+    MatDialogModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
