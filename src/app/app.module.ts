@@ -12,10 +12,8 @@ import { UsersModule } from './components/users/users.module';
 import { MaterComponent } from './components/mater/mater.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { IntroComponent } from './components/pages/intro/intro.component';
+import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatTableModule} from "@angular/material/table";
-import {MatSelectModule} from "@angular/material/select";
-import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -34,10 +32,8 @@ import {MatInputModule} from "@angular/material/input";
     ReactiveFormsModule,
     FormsModule,
     UsersModule,
-    BrowserAnimationsModule,
-    MatTableModule,
-    MatSelectModule,
-    MatInputModule
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

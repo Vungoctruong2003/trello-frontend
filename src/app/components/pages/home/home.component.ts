@@ -13,8 +13,8 @@ export class HomeComponent implements OnInit {
   boards: any;
   arr: any = [[]];
 
-  constructor(private homeService: HomeService, private boardService: BoardService,
-              private router: Router) {
+  constructor(private homeService: HomeService
+              ) {
   }
 
   ngOnInit(): void {

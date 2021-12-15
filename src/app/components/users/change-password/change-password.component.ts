@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class ChangePasswordComponent implements OnInit {
   constructor(
     private userService: UserService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -40,9 +42,10 @@ export class ChangePasswordComponent implements OnInit {
     const data = this.formChangePassword?.value;
     this.userService.changePassword(data).subscribe(res => {
       if (res.status != 200) {
-        alert('Doi mat khau thanh cong')
+        // alert('Doi mat khau thanh cong')
+        this.toastr.success('Đổi mật khẩu thành công ');
         console.log(res.error)
-        this.router.navigate(['/master'])
+        this.router.navigate(['/home'])
       }
     })
   }
