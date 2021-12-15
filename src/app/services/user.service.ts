@@ -23,4 +23,5 @@ export class UserService {
     }
     return this.http.post<any>(API_URL + '/auth/change-pass',data,header);
   }
+
 }

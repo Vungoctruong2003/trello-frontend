@@ -9,6 +9,7 @@ import {Router} from "@angular/router";
 })
 export class NavbarComponent implements OnInit {
   user?: any;
+  userArr?: any;
 
   constructor(private authService: AuthService,
               private route: Router) {
@@ -20,7 +21,6 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.authService.logout().subscribe(res => {
-      console.log(res)
       window.localStorage.removeItem('access_token')
       return this.route.navigate(['login'])
     })
@@ -29,8 +29,6 @@ export class NavbarComponent implements OnInit {
   getProfile() {
     this.authService.getProfile().subscribe(res => {
       this.user = res
-      console.log(res)
     })
   }
-
 }

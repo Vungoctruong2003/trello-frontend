@@ -49,7 +49,6 @@ export class LoginComponent implements OnInit {
 
   loginGG() {
     this.authService.loginGG().subscribe(res => {
-      console.log(res)
     })
   }
 
