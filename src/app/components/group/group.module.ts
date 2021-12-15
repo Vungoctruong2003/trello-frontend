@@ -15,7 +15,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     GroupCreateComponent,
-    AddUserToGroupComponent
+    AddUserToGroupComponent,
+    GroupCreateComponent
   ],
   imports: [
     CommonModule,
