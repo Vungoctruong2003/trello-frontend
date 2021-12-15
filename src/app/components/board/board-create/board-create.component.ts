@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { BoardService } from 'src/app/services/board.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class BoardCreateComponent implements OnInit {
   constructor(
     private boardService: BoardService,
     private fb: FormBuilder,
+    private router: Router,
     private dialogRef: MatDialogRef<BoardCreateComponent>,
     @Inject(MAT_DIALOG_DATA) public data:any,
   ) { }
@@ -52,6 +54,7 @@ export class BoardCreateComponent implements OnInit {
 
     this.formCreateBoard?.reset();
     this.dialogRef.close();
+    this.router.navigate(['/load-home']);
   }
 
 }
