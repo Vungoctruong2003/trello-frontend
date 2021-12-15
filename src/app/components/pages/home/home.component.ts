@@ -25,11 +25,11 @@ export class HomeComponent implements OnInit {
               ) {
   }
 
-  
+
   ngOnInit(): void {
     this.getAll();
   }
-  
+
   getAll(){
     let i = 0;
     let j = 0;
@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
        for (let i=0;i<groups.length;i++){
          console.log(i)
       this.arr[i]=[]
-      for (let j=0;j<boards.length;j++){      
+      for (let j=0;j<boards.length;j++){
         if (groups[i].group.id == boards[j].board.group_id){
           this.arr[i].push(boards[j])
         }
@@ -78,5 +78,7 @@ export class HomeComponent implements OnInit {
     dialogConfig.width = "20%";
     this.matDialog.open(BoardCreateComponent,dialogConfig);
   }
+
+
 
 }

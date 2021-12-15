@@ -21,6 +21,7 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../environments/environment";
 import { LoadComponent } from './load/load.component';
+import { ChangeAvatarComponent } from './components/pages/change-avatar/change-avatar.component';
 
 // @ts-ignore
 @NgModule({
@@ -33,6 +34,7 @@ import { LoadComponent } from './load/load.component';
     HomeComponent,
     IntroComponent,
     LoadComponent,
+    ChangeAvatarComponent,
   ],
   entryComponents: [
     GroupCreateComponent
