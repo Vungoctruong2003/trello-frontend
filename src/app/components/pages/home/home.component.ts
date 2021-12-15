@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit {
               ) {
   }
 
-
   ngOnInit(): void {
     this.getAll();
   }
@@ -48,7 +47,6 @@ export class HomeComponent implements OnInit {
         this.merge(this.groups,this.boards)
       }
     })
-
   }
 
   merge(groups:any,boards:any){
