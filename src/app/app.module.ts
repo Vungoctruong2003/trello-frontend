@@ -13,7 +13,11 @@ import { MaterComponent } from './components/mater/mater.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { IntroComponent } from './components/pages/intro/intro.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import {AngularFireModule} from "@angular/fire/compat";
+import {environment} from "../environments/environment";
 
+// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +35,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     FormsModule,
     UsersModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
   ],
   providers: [],
   bootstrap: [AppComponent]

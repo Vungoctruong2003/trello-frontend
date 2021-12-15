@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {BoardService} from "../../../services/board.service";
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
+import {ActivatedRoute, ParamMap} from "@angular/router";
 
 @Component({
   selector: 'app-index',
@@ -11,15 +12,21 @@ export class IndexComponent implements OnInit {
   lists: any;
   cards: any;
   listCards: any;
+  id?: number ;
 
-  constructor(private boardService: BoardService) {
+  constructor(private boardService: BoardService,
+              private activeRouter: ActivatedRoute) {
+    this.activeRouter.paramMap.subscribe((paramMap: ParamMap) => {
+      // @ts-ignore
+      this.id = paramMap.get('id')
+    })
   }
 
   ngOnInit(): void {
-    this.uploadData(3)
+    this.uploadData(this.id)
   }
 
-  uploadData(id: number) {
+  uploadData(id: number | undefined) {
     this.boardService.listCard(3).subscribe(res => {
       if (res.status == 'success') {
         this.lists = res.lists
