@@ -127,6 +127,7 @@
             <div class="card-body">
               <h1 class="" style="font-weight: bold;">{{ groups[i].group.title }}</h1>
               <hr>
+              <p (click)="openDialogAddUserToGroup(groups[i].group.id)"> Thêm người dùng</p>
             </div>
 
             <div class="row mb-4 pl-4 pr-4">

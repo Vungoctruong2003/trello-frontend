@@ -6,6 +6,7 @@ import { BoardService } from 'src/app/services/board.service';
 import {HomeService} from 'src/app/services/home.service';
 import { BoardCreateComponent } from '../../board/board-create/board-create.component';
 import { GroupCreateComponent } from '../../group/group-create/group-create.component';
+import {AddUserToGroupComponent} from "../../group/add-user-to-group/add-user-to-group.component";
 
 @Component({
   selector: 'app-home',
@@ -78,6 +79,14 @@ export class HomeComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "20%";
     this.matDialog.open(BoardCreateComponent,dialogConfig);
+  }
+
+  openDialogAddUserToGroup(id:any){
+    this.boardService.setGroupId(id)
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "20%";
+    this.matDialog.open(AddUserToGroupComponent,dialogConfig);
   }
 
 }
