@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
       this.access_token = res.access_token
       window.localStorage.setItem('access_token',this.access_token)
       this.toastr.success('Đăng nhập thành công');
-      return this.route.navigate(['/home'])
+      return this.route.navigate(['trello/home'])
     })
   }
 
