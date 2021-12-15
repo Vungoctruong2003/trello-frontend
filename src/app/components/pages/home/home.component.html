@@ -24,7 +24,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link pl-3" href="./ui-notification.html"><span
-                class="ml-1 item-text">Notifications</span></a>
+                  class="ml-1 item-text">Notifications</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link pl-3" href="./ui-modals.html"><span class="ml-1 item-text">Modals</span></a>
@@ -119,33 +119,31 @@
       <div class="boards-page-board-section mod-no-sidebar">
         <div class="boards-page-board-section-header">
           <div class="boards-page-board-section-header-icon"><span class="icon-lg icon-member"></span></div>
-          <h2 class="boards-page-board-section-header-name" style="font-weight: bold ;color: black">Các không gian làm
-            việc của bạn</h2></div>
-        <h3 class="boards-page-board-section-header-name">Bảng</h3>
-      </div>
-      <div *ngFor="let ar of arr;let i=index" class=" mt-5">
+          <h3 class="boards-page-board-section-header-name">Bảng</h3>
+        </div>
+        <div *ngFor="let ar of arr;let i=index" class=" mt-5">
 
-        <div class="card text-center">
-          <div class="card-body">
-            <h1 class="" style="font-weight: bold;">{{ groups[i].group.title }}</h1>
-            <hr>
-          </div>
+          <div class="card text-center">
+            <div class="card-body">
+              <h1 class="" style="font-weight: bold;">{{ groups[i].group.title }}</h1>
+              <hr>
+            </div>
 
-          <div class="row mb-4 pl-4 pr-4">
-            <div class="col-4 col-md-3 mt-2" *ngFor="let board of ar">
-              <div class="card" [routerLink]="['/boards/index',board.board.id]">
-                <img
-                  src="https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x320/b55d798585b76e32f2f5c9f1852791a8/photo-1632042704576-7ae3ef405c78.jpg"
-                  class="card-img-top" alt="...">
-                <div class="card-img-overlay">
-                  <h3 class="card-title  text-white "
-                      style="position: absolute;top: 5px; left: 10px;font-weight: bold;">
-                    {{ board.board.title }}</h3>
+            <div class="row mb-4 pl-4 pr-4">
+              <div class="col-4 col-md-3 mt-2" *ngFor="let board of ar">
+                <div class="card" [routerLink]="['/trello/master/boards/index',board.board.id]">
+                  <img
+                    src="https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x320/b55d798585b76e32f2f5c9f1852791a8/photo-1632042704576-7ae3ef405c78.jpg"
+                    class="card-img-top" alt="...">
+                  <div class="card-img-overlay">
+                    <h3 class="card-title  text-white " style="position: absolute;top: 5px; left: 10px;font-weight: bold;">
+                      {{ board.board.title }}</h3>
+                  </div>
                 </div>
               </div>
             </div>
+            <a class="btn btn-primary mb-3" (click)="openDialogCreateBoard( groups[i].group.id )">Them bang moi</a>
           </div>
-          <a class="btn btn-primary mb-3" (click)="openDialogCreateBoard( groups[i].group.id )">Them bang moi</a>
         </div>
       </div>
     </div>

@@ -11,7 +11,7 @@ export class LoadHomeComponent implements OnInit {
   constructor(
     private router: Router,
   ) { 
-    this.router.navigate(['/home']);
+    this.router.navigate(['trello/home']);
   }
 
   ngOnInit(): void {

@@ -11,6 +11,8 @@ import { ListModule } from './components/list/list.module';
 import { LoadHomeComponent } from './load-home/load-home.component';
 import {CardModule} from "./components/card/card.module";
 import {LoadComponent} from "./load/load.component";
+import { TrelloComponent } from './components/trello/trello.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {
@@ -22,32 +24,43 @@ const routes: Routes = [
     loadChildren: () => import('./components/users/users.module').then(module => module.UsersModule)
   },
   {
-    path :'groups',
-    loadChildren: () => import('./components/group/group.module').then(module => module.GroupModule)
-  },
-  {
-    path :'boards',
-    loadChildren: () => import('./components/board/board.module').then(module => BoardModule)
-  },  {
-    path :'cards',
-    loadChildren: () => import('./components/card/card.module').then(module => CardModule)
-  },
-  {
-    path :'lists',
-    loadChildren: () => import('./components/list/list.module').then(module => ListModule)
-  },
-  {
-    path :'master',
-    component : MaterComponent
-  },
-  {
     path: '',
-    component: IntroComponent
+    component: IntroComponent,
   },
   {
-    path :'home',
-    component : HomeComponent
+    path: 'trello',
+    component: TrelloComponent,
+    children: [
+      {
+        path :'groups',
+        loadChildren: () => import('./components/group/group.module').then(module => module.GroupModule)
+      },
+      {
+        path :'cards',
+        loadChildren: () => import('./components/card/card.module').then(module => CardModule)
+      },
+      {
+        path :'lists',
+        loadChildren: () => import('./components/list/list.module').then(module => ListModule)
+      },
+      {
+        path :'master',
+        component : MaterComponent,
+        children: [
+          {
+            path :'boards',
+            loadChildren: () => import('./components/board/board.module').then(module => BoardModule)
+          }, 
+        ]
+      },
+      {
+        path :'home',
+        component : HomeComponent
+      },
+    ],
+    canActivate: [AuthGuard]
   },
+  
   {
     path :'load-home',
     component : LoadHomeComponent
