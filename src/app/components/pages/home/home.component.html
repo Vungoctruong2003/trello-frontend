@@ -122,7 +122,7 @@
           <h2>{{groups[i].group.title}}</h2>
           <div class="row">
             <div class="col-4 col-md-3 mt-2" *ngFor="let board of ar">
-              <div class="card">
+              <div class="card" [routerLink]="['/boards/index',board.board.id]">
                 <img
                   src="https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x320/b55d798585b76e32f2f5c9f1852791a8/photo-1632042704576-7ae3ef405c78.jpg"
                   class="card-img-top" alt="...">
