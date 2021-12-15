@@ -12,11 +12,16 @@ import { UsersModule } from './components/users/users.module';
 import { MaterComponent } from './components/mater/mater.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { IntroComponent } from './components/pages/intro/intro.component';
+import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from "@angular/material/dialog";
 import { GroupCreateComponent } from './components/group/group-create/group-create.component';
 
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import {AngularFireModule} from "@angular/fire/compat";
+import {environment} from "../environments/environment";
 
+// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +43,10 @@ import { GroupCreateComponent } from './components/group/group-create/group-crea
     FormsModule,
     UsersModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

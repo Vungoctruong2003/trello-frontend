@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(private userService : UserService,
               private fb : FormBuilder,
-              private router : Router) { }
+              private router : Router,
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.formRegister = new FormGroup({
@@ -46,7 +48,7 @@ export class RegisterComponent implements OnInit {
     console.log(user);
     this.userService.register(user).subscribe(res => {
       if (res.status != 200) {
-        alert('dang ky thanh cong quay ve trang login')
+        this.toastr.success('về trang đăng nhập','Đăng ký thành công ');
         this.router.navigate(['/login'])
       }else{}
         this.errRegister = 'Không đăng ký được'
