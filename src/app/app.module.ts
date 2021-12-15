@@ -12,6 +12,8 @@ import { UsersModule } from './components/users/users.module';
 import { MaterComponent } from './components/mater/mater.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { IntroComponent } from './components/pages/intro/intro.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { IntroComponent } from './components/pages/intro/intro.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    UsersModule
+    UsersModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
