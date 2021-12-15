@@ -27,7 +27,7 @@ export class IndexComponent implements OnInit {
   }
 
   uploadData(id: number | undefined) {
-    this.boardService.listCard(3).subscribe(res => {
+    this.boardService.listCard(id).subscribe(res => {
       if (res.status == 'success') {
         this.lists = res.lists
         this.listCards = res.cards

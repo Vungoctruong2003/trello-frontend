@@ -26,7 +26,7 @@ export class BoardService {
     return this.http.post<any>(API_URL + '/card/changeSeq',data,header);
   }
 
-  listCard(id: number) {
+  listCard(id: any) {
     let token = localStorage.getItem('access_token')
     let header = {
       headers: new HttpHeaders().set("Authorization", `Bearer ${token}`)
