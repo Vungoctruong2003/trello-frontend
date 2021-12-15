@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../environments/environment";
+import { Observable } from 'rxjs';
 const API_URL = `${environment.apiUrl}`;
 
 @Injectable({
   providedIn: 'root'
 })
 export class BoardService {
+
+  groupId?:number
 
   constructor(private http: HttpClient) { }
 
@@ -26,7 +29,7 @@ export class BoardService {
     return this.http.post<any>(API_URL + '/card/changeSeq',data,header);
   }
 
-  listCard(id: any) {
+  listCard(id: number) {
     let token = localStorage.getItem('access_token')
     let header = {
       headers: new HttpHeaders().set("Authorization", `Bearer ${token}`)
@@ -40,5 +43,21 @@ export class BoardService {
       headers: new HttpHeaders().set("Authorization", `Bearer ${token}`)
     }
     return this.http.post<any>(API_URL + '/list/changeSeq',data,header);
+  }
+
+  createBoard(data: any): Observable<any>{
+    let token = localStorage.getItem('access_token')
+    let header = {
+      headers: new HttpHeaders().set("Authorization",`Bearer ${token}`)
+    }
+    return this.http.post<any>(API_URL + '/board/store', data,header);
+  }
+
+  getGroupId():number | undefined {
+      return this.groupId
+  }
+
+  setGroupId(id:number){
+    return this.groupId = id
   }
 }

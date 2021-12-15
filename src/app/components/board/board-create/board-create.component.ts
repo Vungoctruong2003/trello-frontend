@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { BoardService } from 'src/app/services/board.service';
 
 @Component({
   selector: 'app-board-create',
@@ -7,9 +10,48 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardCreateComponent implements OnInit {
 
-  constructor() { }
+  formCreateBoard?: FormGroup;
+  constructor(
+    private boardService: BoardService,
+    private fb: FormBuilder,
+    private dialogRef: MatDialogRef<BoardCreateComponent>,
+    @Inject(MAT_DIALOG_DATA) public data:any,
+  ) { }
 
   ngOnInit(): void {
+    let id = this.boardService.getGroupId()
+    this.formCreateBoard = this.fb.group({
+      title: ['',[Validators.required]],
+      policy: ['',[Validators.required]],
+      group_id: [id,[Validators.required]],
+    })
+  }
+
+  createBoard(){
+    const data = this.formCreateBoard?.value;
+    console.log(data);
+    this.boardService.createBoard(data).subscribe(res => {
+      if (res.status == 'success') {
+        alert('Tao board thanh cong')
+        this.onClose();
+        
+        // this.router.navigate(['/login'])
+      }else{}
+    })
+  }
+
+  get title() {
+    return this.formCreateBoard?.get('title');
+  }
+
+  get policy() {
+    return this.formCreateBoard?.get('policy');
+  }
+
+  onClose(){
+
+    this.formCreateBoard?.reset();
+    this.dialogRef.close();
   }
 
 }
