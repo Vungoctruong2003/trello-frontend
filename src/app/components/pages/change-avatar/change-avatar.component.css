@@ -1,0 +1,17 @@
+.image {
+  border-radius: 50%;
+  width: 40%;
+  height: 40%;
+  margin-left: 30%;
+  margin-top: 5%;
+}
+.image-out {
+  border: #1a0f0c 1px;
+  border-collapse: collapse;
+  border-style: solid;
+}
+.mid{
+  width: 34%;
+  margin-left: 33%;
+  margin-top: 10%;
+}

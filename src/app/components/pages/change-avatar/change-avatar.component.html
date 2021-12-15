@@ -1,0 +1,15 @@
+<h1>Update Avatar</h1>
+<div class="image-out input-group mb-3">
+  <form *ngIf="formUpdateImage" [formGroup]="formUpdateImage" (ngSubmit)="update()">
+    <img src="{{avatar}}" class="image" alt="">
+    <input type="file"
+           id="file"
+           class="form-control mid"
+           #userPhoto
+           (change)="onFileSelected($event)"
+           name="image"
+           autocomplete="off"
+    />
+    <button type="submit" class="btn btn-outline-primary mid" >Update</button>
+  </form>
+</div>
