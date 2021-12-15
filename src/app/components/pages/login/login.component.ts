@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../../services/auth.service";
 import {Router} from "@angular/router";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private authService: AuthService,
               private fb: FormBuilder,
-              private route: Router
+              private route: Router,
+              private toastr: ToastrService
   ) {
   }
 
@@ -43,6 +45,7 @@ export class LoginComponent implements OnInit {
       }
       this.access_token = res.access_token
       window.localStorage.setItem('access_token',this.access_token)
+      this.toastr.success('Đăng nhập thành công');
       return this.route.navigate(['/home'])
     })
   }
