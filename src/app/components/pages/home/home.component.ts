@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll();
+    console.log(this.groups)
   }
 
   getAll(){
@@ -71,12 +72,16 @@ export class HomeComponent implements OnInit {
     this.matDialog.open(GroupCreateComponent,dialogConfig);
   }
 
-  openDialogCreateBoard(id:any){
-    this.boardService.setGroupId(id)
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = "20%";
-    this.matDialog.open(BoardCreateComponent,dialogConfig);
+  openDialogCreateBoard(id:any,role:number){
+    if (role == 1 || role ==2 )
+    {
+      this.boardService.setGroupId(id)
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.autoFocus = true;
+      dialogConfig.width = "20%";
+      this.matDialog.open(BoardCreateComponent,dialogConfig);
+    }
+
   }
 
 

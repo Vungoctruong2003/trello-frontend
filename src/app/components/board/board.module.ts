@@ -7,6 +7,7 @@ import {RegisterComponent} from "../users/register/register.component";
 import {IndexComponent} from "./index/index.component";
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {ReactiveFormsModule} from '@angular/forms';
+import { AddUserComponent } from './add-user/add-user.component';
 
 const routes: Routes = [
   {
@@ -20,7 +21,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     BoardCreateComponent,
-    IndexComponent
+    IndexComponent,
+    AddUserComponent
   ],
 
   imports: [
