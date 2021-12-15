@@ -10,6 +10,7 @@ const API_URL = `${environment.apiUrl}`;
 export class BoardService {
 
   groupId?:number
+  boardId?:number
 
   constructor(private http: HttpClient) { }
 
@@ -60,4 +61,13 @@ export class BoardService {
   setGroupId(id:number){
     return this.groupId = id
   }
+
+  getBoardId():number | undefined {
+      return this.boardId
+  }
+
+  setBoardId(id: number | undefined){
+    return this.boardId = id
+  }
+
 }

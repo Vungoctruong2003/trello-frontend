@@ -3,38 +3,40 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { BoardService } from 'src/app/services/board.service';
+import { ListService } from 'src/app/services/list.service';
 
 @Component({
-  selector: 'app-board-create',
-  templateUrl: './board-create.component.html',
-  styleUrls: ['./board-create.component.css']
+  selector: 'app-list-create',
+  templateUrl: './list-create.component.html',
+  styleUrls: ['./list-create.component.css']
 })
-export class BoardCreateComponent implements OnInit {
+export class ListCreateComponent implements OnInit {
 
-  formCreateBoard?: FormGroup;
+  formCreateList?: FormGroup
+
   constructor(
     private boardService: BoardService,
+    private listService: ListService,
     private fb: FormBuilder,
     private router: Router,
-    private dialogRef: MatDialogRef<BoardCreateComponent>,
+    private dialogRef: MatDialogRef<ListCreateComponent>,
     @Inject(MAT_DIALOG_DATA) public data:any,
   ) { }
 
   ngOnInit(): void {
-    let id = this.boardService.getGroupId()
-    this.formCreateBoard = this.fb.group({
+    let id = this.boardService.getBoardId();
+    this.formCreateList = this.fb.group({
       title: ['',[Validators.required]],
-      policy: ['',[Validators.required]],
-      group_id: [id,[Validators.required]],
+      board_id: [id,[Validators.required]],
     })
   }
 
-  createBoard(){
-    const data = this.formCreateBoard?.value;
+  createList(){
+    const data = this.formCreateList?.value;
     console.log(data);
-    this.boardService.createBoard(data).subscribe(res => {
+    this.listService.createList(data).subscribe(res => {
       if (res.status == 'success') {
-        alert('Tao board thanh cong')
+        alert('Tao list thanh cong')
         this.onClose();
         
         // this.router.navigate(['/login'])
@@ -43,18 +45,14 @@ export class BoardCreateComponent implements OnInit {
   }
 
   get title() {
-    return this.formCreateBoard?.get('title');
-  }
-
-  get policy() {
-    return this.formCreateBoard?.get('policy');
+    return this.formCreateList?.get('title');
   }
 
   onClose(){
 
-    this.formCreateBoard?.reset();
+    this.formCreateList?.reset();
     this.dialogRef.close();
-    this.router.navigate(['/load-home']);
+    this.router.navigate(['/load']);
   }
 
 }

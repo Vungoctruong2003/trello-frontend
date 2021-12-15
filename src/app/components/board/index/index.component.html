@@ -12,15 +12,20 @@
           <div class="example-box" *ngFor="let item of ar" cdkDrag>
             <button class=" btn btn-outline-danger" style="width: 100%;height: 100%">{{item.title}}</button>
           </div>
-          <div class="text-center mt-3 mb-3">
-            <a><span class="glyphicon">&#x2b;</span>
-            </a>
-          </div>
+
+             <button class=" btn btn-outline-success " style="width: 100%;height: 100%" (click)="openDialogCreateCard(lists[i].id)"><span class="glyphicon">&#x2b;</span></button>
+
         </div>
       </div>
     </div>
-    <div>
-    <a class="btn btn-primary mt-5">Thêm danh sách mới</a>
+    <div class="example-container mt-5">
+      <div
+        class="example-list ">
+        <div class="text-center mt-3 mb-3">
+          <a (click)="openDialogCreateList()"><span class="glyphicon">&#x2b;</span> Thêm danh sách
+          </a>
+        </div>
+      </div>
 
     </div>
   </div>
