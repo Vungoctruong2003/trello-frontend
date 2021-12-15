@@ -21,4 +21,13 @@ export class GroupService {
     }
     return this.http.post<any>(API_URL + '/group/store', data,header);
   }
+
+  addUserToGroup(data: any): Observable<any>{
+    let token = localStorage.getItem('access_token')
+    let header = {
+      headers: new HttpHeaders().set("Authorization",`Bearer ${token}`)
+    }
+    return this.http.post<any>(API_URL + '/group/addUser', data,header);
+  }
+
 }

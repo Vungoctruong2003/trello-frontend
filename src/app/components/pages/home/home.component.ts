@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { Router } from '@angular/router';
-import { interval, Subscription } from 'rxjs';
-import { BoardService } from 'src/app/services/board.service';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {Router} from '@angular/router';
+import {interval, Subscription} from 'rxjs';
+import {BoardService} from 'src/app/services/board.service';
 import {HomeService} from 'src/app/services/home.service';
-import { BoardCreateComponent } from '../../board/board-create/board-create.component';
-import { GroupCreateComponent } from '../../group/group-create/group-create.component';
+import {BoardCreateComponent} from '../../board/board-create/board-create.component';
+import {GroupCreateComponent} from '../../group/group-create/group-create.component';
+import {AddUserToGroupComponent} from "../../group/add-user-to-group/add-user-to-group.component";
 
 @Component({
   selector: 'app-home',
@@ -22,7 +23,7 @@ export class HomeComponent implements OnInit {
               private router: Router,
               private matDialog: MatDialog,
               private boardService: BoardService
-              ) {
+  ) {
   }
 
 
@@ -31,33 +32,33 @@ export class HomeComponent implements OnInit {
     console.log(this.groups)
   }
 
-  getAll(){
+  getAll() {
     let i = 0;
     let j = 0;
     this.homeService.listGroup().subscribe(res => {
       this.groups = res.data
-      i=1
-      if (i==1 && j==1){
-        this.merge(this.groups,this.boards)
+      i = 1
+      if (i == 1 && j == 1) {
+        this.merge(this.groups, this.boards)
       }
     })
     this.homeService.listBoard().subscribe(res => {
       this.boards = res.data
-      j=1
-      if (i==1 && j==1){
-        this.merge(this.groups,this.boards)
+      j = 1
+      if (i == 1 && j == 1) {
+        this.merge(this.groups, this.boards)
       }
     })
   }
 
-  merge(groups:any,boards:any){
+  merge(groups: any, boards: any) {
     console.log(this.groups)
     console.log(this.boards)
-       for (let i=0;i<groups.length;i++){
-         console.log(i)
-      this.arr[i]=[]
-      for (let j=0;j<boards.length;j++){
-        if (groups[i].group.id == boards[j].board.group_id){
+    for (let i = 0; i < groups.length; i++) {
+      console.log(i)
+      this.arr[i] = []
+      for (let j = 0; j < boards.length; j++) {
+        if (groups[i].group.id == boards[j].board.group_id) {
           this.arr[i].push(boards[j])
         }
       }
@@ -65,25 +66,31 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  openDialogCreateGroup(){
+  openDialogCreateGroup() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.width = "20%";
-    this.matDialog.open(GroupCreateComponent,dialogConfig);
+    this.matDialog.open(GroupCreateComponent, dialogConfig);
   }
 
-  openDialogCreateBoard(id:any,role:number){
-    if (role == 1 || role ==2 )
-    {
+  openDialogCreateBoard(id: any, role: number) {
+    if (role == 1 || role == 2) {
       this.boardService.setGroupId(id)
       const dialogConfig = new MatDialogConfig();
       dialogConfig.autoFocus = true;
       dialogConfig.width = "20%";
-      this.matDialog.open(BoardCreateComponent,dialogConfig);
+      this.matDialog.open(BoardCreateComponent, dialogConfig);
     }
-
   }
 
 
-
+  openDialogAddUserToGroup(id: any, role: number) {
+    if (role == 1 || role == 2) {
+      this.boardService.setGroupId(id)
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.autoFocus = true;
+      dialogConfig.width = "20%";
+      this.matDialog.open(AddUserToGroupComponent, dialogConfig);
+    }
+  }
 }
