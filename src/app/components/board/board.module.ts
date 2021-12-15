@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path:'create-board', component: BoardCreateComponent
   },{
-    path:'index', component: IndexComponent
+    path:'index/:id', component: IndexComponent
   },
 
 ]

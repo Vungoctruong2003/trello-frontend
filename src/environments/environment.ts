@@ -4,7 +4,17 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://127.0.0.1:8000/api'
+  apiUrl: 'http://127.0.0.1:8000/api',
+  firebaseConfig : {
+    apiKey: "AIzaSyD0VoMkDyjMIEjvA1TsfJWp36qaW7U1-IY",
+    authDomain: "trello-eb91c.firebaseapp.com",
+    databaseURL: 'https://trello-eb91c-default-rtdb.firebaseio.com/',
+    projectId: "trello-eb91c",
+    storageBucket: "trello-eb91c.appspot.com",
+    messagingSenderId: "549172270964",
+    appId: "1:549172270964:web:2dbebb71a06c6df7c3be21",
+    measurementId: "G-V2SKGSWVKB"
+  },
 };
 
 /*
