@@ -44,14 +44,16 @@ export class ChangeAvatarComponent implements OnInit {
 
   update(){
     var data = this.formUpdateImage?.value;
-    data.avatar = this.fb
-    this.userService.updateAvatar(data).subscribe(res => {
-      if (res.status == 'success') {
-        console.log(data)
-        this.onClose();
-        // this.router.navigate(['/login'])
-      }else{}
-    })
+    if (this.fb != null){
+      data.avatar = this.fb
+      this.userService.updateAvatar(data).subscribe(res => {
+        if (res.status == 'success') {
+          console.log(data)
+          this.onClose();
+          this.router.navigate(['/load-home'])
+        }else{}
+      })
+    }
   }
 
   onClose(){

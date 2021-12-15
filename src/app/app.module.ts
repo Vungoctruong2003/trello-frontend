@@ -20,6 +20,9 @@ import { GroupCreateComponent } from './components/group/group-create/group-crea
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../environments/environment";
+import { ListCreateComponent } from './components/list/list-create/list-create.component';
+import { BoardCreateComponent } from './components/board/board-create/board-create.component';
+import { LoadHomeComponent } from './load-home/load-home.component';
 import { LoadComponent } from './load/load.component';
 import { ChangeAvatarComponent } from './components/pages/change-avatar/change-avatar.component';
 
@@ -33,11 +36,14 @@ import { ChangeAvatarComponent } from './components/pages/change-avatar/change-a
     MaterComponent,
     HomeComponent,
     IntroComponent,
+    LoadHomeComponent,
     LoadComponent,
     ChangeAvatarComponent,
   ],
   entryComponents: [
-    GroupCreateComponent
+    GroupCreateComponent,
+    ListCreateComponent,
+    BoardCreateComponent
   ],
   imports: [
     BrowserModule,

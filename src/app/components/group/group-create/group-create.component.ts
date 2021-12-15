@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GroupService } from 'src/app/services/group.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class GroupCreateComponent implements OnInit {
   constructor(
     private groupService: GroupService,
     private fb: FormBuilder,
+    private router: Router,
     private dialogRef: MatDialogRef<GroupCreateComponent>,
     @Inject(MAT_DIALOG_DATA) public data:any,
   ) { }
@@ -39,7 +41,6 @@ export class GroupCreateComponent implements OnInit {
     console.log(data);
     this.groupService.createGroup(data).subscribe(res => {
       if (res.status == 'success') {
-        alert('Tao group thanh cong')
         this.onClose();
         
         // this.router.navigate(['/login'])
@@ -50,6 +51,7 @@ export class GroupCreateComponent implements OnInit {
 
     this.formCreateGroup?.reset();
     this.dialogRef.close();
+    this.router.navigate(['/load-home'])
   }
 
 }

@@ -6,7 +6,12 @@
   margin-top: 5%;
 }
 .image-out {
-  border: #6c757d 1px;
+  border: #1a0f0c 1px;
   border-collapse: collapse;
   border-style: solid;
+}
+.mid{
+  width: 34%;
+  margin-left: 33%;
+  margin-top: 10%;
 }
