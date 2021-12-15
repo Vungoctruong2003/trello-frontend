@@ -2,6 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {BoardService} from "../../../services/board.service";
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
 import {ActivatedRoute, ParamMap} from "@angular/router";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {BoardCreateComponent} from "../board-create/board-create.component";
+import {CardCreateComponent} from "../../card/card-create/card-create.component";
+import {CardService} from "../../../services/card.service";
 
 @Component({
   selector: 'app-index',
@@ -15,7 +19,9 @@ export class IndexComponent implements OnInit {
   id?: number ;
 
   constructor(private boardService: BoardService,
-              private activeRouter: ActivatedRoute) {
+              private activeRouter: ActivatedRoute,
+              private cardService: CardService,
+              private matDialog: MatDialog) {
     this.activeRouter.paramMap.subscribe((paramMap: ParamMap) => {
       // @ts-ignore
       this.id = paramMap.get('id')
@@ -83,6 +89,14 @@ export class IndexComponent implements OnInit {
     let data = {lists: this.lists}
     this.boardService.updateLists(data).subscribe(res => {
     })
+  }
+
+  openDialogCreateCard(id:any){
+    this.cardService.setListId(id)
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "20%";
+    this.matDialog.open(CardCreateComponent,dialogConfig);
   }
 
 }

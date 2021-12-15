@@ -7,6 +7,7 @@ import { IntroComponent } from './components/pages/intro/intro.component';
 import {LoginComponent} from "./components/pages/login/login.component";
 import { UsersModule } from './components/users/users.module';
 import {BoardModule} from "./components/board/board.module";
+import {CardModule} from "./components/card/card.module";
 
 const routes: Routes = [
   {
@@ -24,6 +25,9 @@ const routes: Routes = [
   {
     path :'boards',
     loadChildren: () => import('./components/board/board.module').then(module => BoardModule)
+  },  {
+    path :'cards',
+    loadChildren: () => import('./components/card/card.module').then(module => CardModule)
   },
   {
     path :'master',
