@@ -5,6 +5,9 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ListCreateComponent } from '../../list/list-create/list-create.component';
 import { ListService } from 'src/app/services/list.service';
+import {BoardCreateComponent} from "../board-create/board-create.component";
+import {CardCreateComponent} from "../../card/card-create/card-create.component";
+import {CardService} from "../../../services/card.service";
 
 @Component({
   selector: 'app-index',
@@ -20,10 +23,12 @@ export class IndexComponent implements OnInit {
   constructor(private boardService: BoardService,
               private listService: ListService,
               private matDialog: MatDialog,
-              private activeRouter: ActivatedRoute) {
+              private cardService: CardService,
+              private activeRouter: ActivatedRoute) {          
     this.activeRouter.paramMap.subscribe((paramMap: ParamMap) => {
       // @ts-ignore
       this.id = paramMap.get('id')
+      this.boardService.setBoardId(this.id)
     })
   }
 
@@ -89,12 +94,19 @@ export class IndexComponent implements OnInit {
     this.boardService.updateLists(data).subscribe(res => {
     })
   }
-  openDialogCreateList(id: any){
-    this.listService.setBoardId(id)
+  openDialogCreateList(){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.width = "20%";
     this.matDialog.open(ListCreateComponent,dialogConfig);
+  }
+
+  openDialogCreateCard(id:any){
+    this.cardService.setListId(id)
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "20%";
+    this.matDialog.open(CardCreateComponent,dialogConfig);
   }
 
 }

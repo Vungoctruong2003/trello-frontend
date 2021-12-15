@@ -23,6 +23,7 @@ import {environment} from "../environments/environment";
 import { ListCreateComponent } from './components/list/list-create/list-create.component';
 import { BoardCreateComponent } from './components/board/board-create/board-create.component';
 import { LoadHomeComponent } from './load-home/load-home.component';
+import { LoadComponent } from './load/load.component';
 
 // @ts-ignore
 @NgModule({
@@ -35,6 +36,7 @@ import { LoadHomeComponent } from './load-home/load-home.component';
     HomeComponent,
     IntroComponent,
     LoadHomeComponent,
+    LoadComponent,
   ],
   entryComponents: [
     GroupCreateComponent,

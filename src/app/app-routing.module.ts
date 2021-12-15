@@ -9,6 +9,8 @@ import { UsersModule } from './components/users/users.module';
 import {BoardModule} from "./components/board/board.module";
 import { ListModule } from './components/list/list.module';
 import { LoadHomeComponent } from './load-home/load-home.component';
+import {CardModule} from "./components/card/card.module";
+import {LoadComponent} from "./load/load.component";
 
 const routes: Routes = [
   {
@@ -26,6 +28,9 @@ const routes: Routes = [
   {
     path :'boards',
     loadChildren: () => import('./components/board/board.module').then(module => BoardModule)
+  },  {
+    path :'cards',
+    loadChildren: () => import('./components/card/card.module').then(module => CardModule)
   },
   {
     path :'lists',
@@ -46,6 +51,10 @@ const routes: Routes = [
   {
     path :'load-home',
     component : LoadHomeComponent
+  },
+  {
+    path :'load',
+    component : LoadComponent
   },
 ];
 
