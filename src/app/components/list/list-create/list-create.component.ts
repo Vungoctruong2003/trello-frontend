@@ -40,8 +40,6 @@ export class ListCreateComponent implements OnInit {
       if (res.status == 'success') {
         this.toastr.success('Tạo mới líst thành công ');
         this.onClose();
-
-        // this.router.navigate(['/login'])
       }else{}
     })
   }
