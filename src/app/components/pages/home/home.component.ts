@@ -16,7 +16,7 @@ import {AddUserToGroupComponent} from "../../group/add-user-to-group/add-user-to
 export class HomeComponent implements OnInit {
   groups: any;
   boards: any;
-  arr: any = [[]];
+  arr: any = [];
 
 
   constructor(private homeService: HomeService,
