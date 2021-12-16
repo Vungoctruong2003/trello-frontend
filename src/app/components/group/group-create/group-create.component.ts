@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GroupService } from 'src/app/services/group.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import {ToastrModule, ToastrService} from "ngx-toastr";
 
 
 @Component({
@@ -18,6 +19,7 @@ export class GroupCreateComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private dialogRef: MatDialogRef<GroupCreateComponent>,
+    private toastr :ToastrService,
     @Inject(MAT_DIALOG_DATA) public data:any,
   ) { }
 
@@ -41,8 +43,10 @@ export class GroupCreateComponent implements OnInit {
     console.log(data);
     this.groupService.createGroup(data).subscribe(res => {
       if (res.status == 'success') {
+        this.toastr.success('Thêm mới không gian làm việc thành công ');
         this.onClose();
-        
+
+
         // this.router.navigate(['/login'])
       }else{}
     })

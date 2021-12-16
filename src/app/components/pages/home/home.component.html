@@ -38,13 +38,7 @@
             </li>
           </ul>
         </li>
-        <li class="nav-item w-100">
-          <a class="nav-link" href="widgets.html">
-            <i class="fe fe-layers fe-16"></i>
-            <span class="ml-3 item-text">Widgets</span>
-            <span class="badge badge-pill badge-primary">New</span>
-          </a>
-        </li>
+
         <li class="nav-item dropdown">
           <a href="#forms" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
             <i class="fe fe-credit-card fe-16"></i>
@@ -95,21 +89,21 @@
         <li class="nav-item dropdown">
           <a href="#charts" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
             <i class="fe fe-pie-chart fe-16"></i>
-            <span class="ml-3 item-text">Charts</span>
+            <span class="ml-3 item-text">My Card</span>
           </a>
           <ul class="collapse list-unstyled pl-4 w-100" id="charts">
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./chart-inline.html"><span class="ml-1 item-text">Inline Chart</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./chart-chartjs.html"><span class="ml-1 item-text">Chartjs</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./chart-apexcharts.html"><span class="ml-1 item-text">ApexCharts</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./datamaps.html"><span class="ml-1 item-text">Datamaps</span></a>
-            </li>
+            <div *ngFor="let ar of arr;let i=index" class=" mt-5">
+              <li>
+                  <h4 class="" style="font-weight: bold;">{{ groups[i].group.title }}</h4>
+                  <hr>
+                  <div  *ngFor="let board of ar">
+                    <div class="" [routerLink]="['/trello/master/boards/index',board.board.id]">
+                        <h3 class="card-title  " >
+                          {{ board.board.title }}</h3>
+                    </div>
+                  </div>
+              </li>
+            </div>
           </ul>
         </li>
       </ul>
