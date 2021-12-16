@@ -11,6 +11,7 @@ export class BoardService {
 
   groupId?:number
   boardId?:number
+  listId?:number
 
   constructor(private http: HttpClient) { }
 

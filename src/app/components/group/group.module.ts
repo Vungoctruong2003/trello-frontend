@@ -16,7 +16,6 @@ const routes: Routes = [
   declarations: [
     GroupCreateComponent,
     AddUserToGroupComponent,
-    GroupCreateComponent
   ],
   imports: [
     CommonModule,
