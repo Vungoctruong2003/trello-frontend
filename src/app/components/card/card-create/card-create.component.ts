@@ -41,7 +41,6 @@ export class CardCreateComponent implements OnInit {
       if (res.status == 'success') {
         this.toastr.success('Tạo mới card thành công ');
         this.onClose();
-        // this.router.navigate(['/login'])
       }else{}
     })
   }
