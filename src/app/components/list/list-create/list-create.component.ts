@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { BoardService } from 'src/app/services/board.service';
 import { ListService } from 'src/app/services/list.service';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-list-create',
@@ -20,6 +21,7 @@ export class ListCreateComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private dialogRef: MatDialogRef<ListCreateComponent>,
+    private toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) public data:any,
   ) { }
 
@@ -36,9 +38,9 @@ export class ListCreateComponent implements OnInit {
     console.log(data);
     this.listService.createList(data).subscribe(res => {
       if (res.status == 'success') {
-        alert('Tao list thanh cong')
+        this.toastr.success('Tạo mới líst thành công ');
         this.onClose();
-        
+
         // this.router.navigate(['/login'])
       }else{}
     })
