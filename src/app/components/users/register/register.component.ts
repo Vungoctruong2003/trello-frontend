@@ -13,6 +13,8 @@ export class RegisterComponent implements OnInit {
 
   formRegister?: FormGroup;
   errRegister: any;
+  show: boolean = false
+  show1: boolean = false
 
   constructor(private userService : UserService,
               private fb : FormBuilder,
@@ -62,5 +64,12 @@ export class RegisterComponent implements OnInit {
       null : {
         passwordnotmatch: true
       };
+  }
+
+  pwd(){
+    this.show = !this.show
+  }
+  pwd1(){
+    this.show1 = !this.show1
   }
 }

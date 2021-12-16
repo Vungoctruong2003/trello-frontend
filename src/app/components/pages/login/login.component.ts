@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   formLogin?: FormGroup;
   errLogin: any;
   access_token?: any;
+  show: boolean = false;
 
   constructor(private authService: AuthService,
               private fb: FormBuilder,
@@ -56,5 +57,8 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  pwd(){
+    this.show = !this.show
+  }
 
 }
