@@ -54,6 +54,22 @@ export class BoardService {
     return this.http.post<any>(API_URL + '/board/store', data,header);
   }
 
+  addUser(data: any): Observable<any>{
+    let token = localStorage.getItem('access_token')
+    let header = {
+      headers: new HttpHeaders().set("Authorization",`Bearer ${token}`)
+    }
+    return this.http.post<any>(API_URL + '/board/addUser', data,header);
+  }
+
+  getRole(id: any): Observable<any>{
+    let token = localStorage.getItem('access_token')
+    let header = {
+      headers: new HttpHeaders().set("Authorization",`Bearer ${token}`)
+    }
+    return this.http.get<any>(API_URL + '/board/getRole/'+ id,header);
+  }
+
   getGroupId():number | undefined {
       return this.groupId
   }

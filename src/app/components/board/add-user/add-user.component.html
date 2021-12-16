@@ -1,0 +1,13 @@
+<h1>Thêm thành viên mới</h1>
+<form *ngIf="addUserOnBoard" [formGroup]="addUserOnBoard" (ngSubmit)="addUserToBoard()">
+  <div class="row">
+    <input formControlName="email" class="form-control me-2" style="margin-left: 15%;width: 85%"  type="search" placeholder="Search" aria-label="Search">
+  </div>
+  <br>
+  <p>Quyền của thành viên</p>
+  <select formControlName="role" class="form-select" aria-label="Default select example">
+    <option value="1">Quản trị viên</option>
+    <option value="2">Chỉnh sửa</option>
+    <option value="3">Người xem</option>
+  </select>
+</form>

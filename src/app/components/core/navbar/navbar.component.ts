@@ -47,4 +47,7 @@ export class NavbarComponent implements OnInit {
     this.matDialog.open(ChangeAvatarComponent,dialogConfig);
   }
 
+
+
+
 }
