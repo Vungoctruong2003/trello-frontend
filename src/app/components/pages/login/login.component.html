@@ -16,12 +16,12 @@
                   <div class="hide-when-two-factor"><input type="text" formControlName="email" id="user"
                       class="form-field" autocorrect="off" spellcheck="false" autocapitalize="off" autofocus="autofocus"
                       placeholder="Nhập email" value="" autocomplete="username" inputmode="email">
-                    <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="alert">
+                    <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" style="margin-top: -10px">
                       <div *ngIf="email?.errors?.['required']" class="text-danger">
-                        Email không được để trống
+                        * Email không được để trống
                       </div>
-                      <div *ngIf="email?.errors?.['email']" class="alert alert-danger ">
-                        Email không đúng định dạng
+                      <div *ngIf="email?.errors?.['email']" class="text-danger ">
+                        * Email không đúng định dạng
                       </div>
                     </div>
                     <div id="password-entry" class="show-when-password">
@@ -31,9 +31,9 @@
                       <a style="position: absolute;top:37%;right:50px;color: #333" (click)="pwd()"><i
                           class="fa fa-eye"></i></a>
 
-                      <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="alert">
+                      <div *ngIf="password?.invalid && (password?.dirty || password?.touched)"  style="margin-top: -10px">
                         <div *ngIf="password?.errors?.['required']" class="text-danger">
-                          Mật khẩu không được để trống
+                          * Mật khẩu không được để trống
                         </div>
                       </div>
                     </div>

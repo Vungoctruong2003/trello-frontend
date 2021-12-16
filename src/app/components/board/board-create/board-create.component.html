@@ -1,15 +1,12 @@
-<div class="card text-center">
-    <div class="card-body">
-      <h1>Thêm bảng mới</h1>
-    </div>
+<h1>Thêm bảng mới</h1>
     <form *ngIf="formCreateBoard" [formGroup]="formCreateBoard" (ngSubmit)="createBoard()">
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Tiêu đề</label>
         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="title">
       </div>
-      <div *ngIf="title?.invalid && (title?.dirty || title?.touched)" class="alert">
+      <div *ngIf="title?.invalid && (title?.dirty || title?.touched)"  style="margin-top: -10px">
         <div *ngIf="title?.errors?.['required']" class="text-danger">
-          Không được để trống
+          * Không được để trống
         </div>
       </div>
       <div class="mb-3">
@@ -19,13 +16,13 @@
           <option value="2" selected >Riêng tư</option>
         </select>
       </div>
-      <div *ngIf="policy?.invalid && (policy?.dirty || policy?.touched)" class="alert">
+      <div *ngIf="policy?.invalid && (policy?.dirty || policy?.touched)"  style="margin-top: -10px">
         <div *ngIf="policy?.errors?.['required']" class="text-danger">
-          Không được để trống
+          * Không được để trống
         </div>
       </div>
 
-      <button type="submit" class="btn btn-primary" [disabled]="!formCreateBoard.valid">Thêm</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!formCreateBoard.valid">Thêm mới</button>
     </form>
 
-  </div>
+
