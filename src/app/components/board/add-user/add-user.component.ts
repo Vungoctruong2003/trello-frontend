@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {BoardService} from "../../../services/board.service";
 import {Router} from "@angular/router";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-add-user',
@@ -15,6 +16,7 @@ export class AddUserComponent implements OnInit {
   addUserOnBoard?: FormGroup;
   constructor(
     private boardService: BoardService,
+    private toastr: ToastrService ,
     private fb: FormBuilder,
     private router: Router,
     private dialogRef: MatDialogRef<AddUserComponent>,
@@ -32,14 +34,16 @@ export class AddUserComponent implements OnInit {
 
   addUserToBoard(){
     const data = this.addUserOnBoard?.value;
-    console.log(data);
     this.boardService.addUser(data).subscribe(res => {
-      // if (res.status == 'success') {
-      //   alert()
-      console.log(res)
-        // this.onClose();
-        // this.router.navigate(['/login'])
-      // }else{}
+      if (res.status == 'success') {
+        this.toastr.success('Thêm người dùng thành công')
+        this.onClose();
+        this.router.navigate(['/load'])
+      }else{
+        this.toastr.error(res.message);
+        this.onClose();
+        this.router.navigate(['/load'])
+      }
     })
   }
 
