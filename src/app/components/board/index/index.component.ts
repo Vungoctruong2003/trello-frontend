@@ -45,7 +45,6 @@ export class IndexComponent implements OnInit {
       if (res.status == 'success') {
         this.lists = res.lists
         this.listCards = res.cards
-        console.log('asd')
       }
     })
   }

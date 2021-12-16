@@ -39,7 +39,7 @@ export class CardCreateComponent implements OnInit {
     console.log(data);
     this.cardService.createCard(data).subscribe(res => {
       if (res.status == 'success') {
-        this.toastr.success('Tạo mới card thành công ');
+        this.toastr.success('Tạo mới thẻ thành công ');
         this.onClose();
       }else{}
     })

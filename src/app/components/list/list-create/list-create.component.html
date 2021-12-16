@@ -1,7 +1,4 @@
-<div class="card text-center">
-  <div class="card-body">
-    <h1>Thêm mới danh sách</h1>
-  </div>
+<h1>Thêm mới danh sách</h1>
   <form *ngIf="formCreateList" [formGroup]="formCreateList" (ngSubmit)="createList()">
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Tên danh sách</label>
@@ -9,9 +6,9 @@
     </div>
     <div *ngIf="title?.invalid && (title?.dirty || title?.touched)" class="alert">
       <div *ngIf="title?.errors?.['required']" class="text-danger">
-        Không được để trống
+       * Không được để trống
       </div>
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="!formCreateList.valid">Thêm mới</button>
   </form>
-</div>
+
