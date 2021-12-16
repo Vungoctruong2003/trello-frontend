@@ -121,14 +121,14 @@
           <div class="boards-page-board-section-header-icon"><span class="icon-lg icon-member"></span></div>
           <h3 class="boards-page-board-section-header-name">Bảng</h3>
         </div>
-        <div *ngIf="arr.length != 1 && arr[0].length != 0 ">
-          <div *ngFor="let ar of arr;let i=index" class=" mt-5">
-
-            <div class="card text-center">
-              <div class="card-body">
-                <h1 class="" style="font-weight: bold;">{{ groups[i].group.title }}</h1>
-                <hr>
-              </div>
+        <div *ngIf="arr.length != 0 ">
+        <div *ngFor="let ar of arr;let i=index" class=" mt-5">
+          <div class="card text-center">
+            <div class="card-body">
+              <h1 class="" style="font-weight: bold;">{{ groups[i].group.title }}</h1>
+              <hr>
+              <p (click)="openDialogAddUserToGroup(groups[i].group.id,groups[i].role)"> Thêm người dùng</p>
+            </div>
 
               <div class="row mb-4 pl-4 pr-4">
                 <div class="col-4 col-md-3 mt-2" *ngFor="let board of ar">
