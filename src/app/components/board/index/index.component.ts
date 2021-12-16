@@ -40,7 +40,7 @@ export class IndexComponent implements OnInit {
     this.uploadData(this.id)
   }
 
-  uploadData(id: number | undefined) {
+  uploadData(id: any | undefined) {
     this.boardService.listCard(id).subscribe(res => {
       if (res.status == 'success') {
         this.lists = res.lists
