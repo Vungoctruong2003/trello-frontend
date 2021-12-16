@@ -1,0 +1,12 @@
+<div class="card text-center">
+  <div class="card-body">
+    <h1>Thay đổi tiêu đề</h1>
+  </div>
+  <form *ngIf="formEditTitle" [formGroup]="formEditTitle" (ngSubmit)="editTitle()">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Title</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="title">
+    </div>
+    <button type="submit" class="btn btn-primary" >Thay đổi</button>
+  </form>
+</div>

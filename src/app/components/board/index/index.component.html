@@ -2,7 +2,7 @@
   <div cdkDropListGroup class="collect">
     <div *ngFor="let ar of listCards,let i = index" cdkDrag>
       <div class="example-container">
-        <h2>{{lists[i].title}}</h2>
+        <h2 (click)="openDialogEditTitleList(lists[i].id)">{{lists[i].title}}</h2>
         <div
           cdkDropList
           [cdkDropListData]="ar"

@@ -24,7 +24,13 @@ export class ListService {
     }
     return this.http.post<any>(API_URL + '/list/store', data, header);
   }
-
+  editTitle(data: any,id:any): Observable<any> {
+    let token = localStorage.getItem('access_token')
+    let header = {
+      headers: new HttpHeaders().set("Authorization", `Bearer ${token}`)
+    }
+    return this.http.put<any>(API_URL + '/list/update/'+id, data, header);
+  }
   getBoardId(): number | undefined {
     return this.boardId
   }
