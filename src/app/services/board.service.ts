@@ -11,6 +11,7 @@ export class BoardService {
 
   groupId?:number
   boardId?:number
+  listId?:number
 
   constructor(private http: HttpClient) { }
 
@@ -30,7 +31,7 @@ export class BoardService {
     return this.http.post<any>(API_URL + '/card/changeSeq',data,header);
   }
 
-  listCard(id: number | undefined) {
+  listCard(id: number) {
     let token = localStorage.getItem('access_token')
     let header = {
       headers: new HttpHeaders().set("Authorization", `Bearer ${token}`)

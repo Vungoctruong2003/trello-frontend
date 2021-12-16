@@ -5,9 +5,9 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {ListCreateComponent} from '../../list/list-create/list-create.component';
 import {ListService} from 'src/app/services/list.service';
-import {BoardCreateComponent} from "../board-create/board-create.component";
 import {CardCreateComponent} from "../../card/card-create/card-create.component";
 import {CardService} from "../../../services/card.service";
+import {ListEditTitleComponent} from "../../list/list-edit-title/list-edit-title.component";
 
 @Component({
   selector: 'app-index',
@@ -40,7 +40,7 @@ export class IndexComponent implements OnInit {
     this.uploadData(this.id)
   }
 
-  uploadData(id: number | undefined) {
+  uploadData(id: any | undefined) {
     this.boardService.listCard(id).subscribe(res => {
       if (res.status == 'success') {
         this.lists = res.lists
@@ -109,6 +109,15 @@ export class IndexComponent implements OnInit {
       dialogConfig.autoFocus = true;
       dialogConfig.width = "20%";
       this.matDialog.open(ListCreateComponent, dialogConfig);
+    }
+  }
+  openDialogEditTitleList(id:any) {
+    if (this.role == 1 || this.role == 2) {
+      this.cardService.setListId(id)
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.autoFocus = true;
+      dialogConfig.width = "20%";
+      this.matDialog.open(ListEditTitleComponent, dialogConfig);
     }
   }
 

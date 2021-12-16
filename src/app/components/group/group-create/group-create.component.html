@@ -1,10 +1,10 @@
 <div class="card text-center">
   <div class="card-body">
-    <h1>Add new group.</h1>
+    <h1>Thêm nhóm mới</h1>
   </div>
   <form *ngIf="formCreateGroup" [formGroup]="formCreateGroup" (ngSubmit)="createGroup()">
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Title</label>
+      <label for="exampleInputEmail1" class="form-label">Tiêu đề</label>
       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="title">
     </div>
     <div *ngIf="title?.invalid && (title?.dirty || title?.touched)" class="alert">
@@ -13,16 +13,17 @@
       </div>
     </div>
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Policy</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" formControlName="policy">
+      <label for="exampleInputPassword1" class="form-label">Chế độ</label>
+      <select formControlName="policy" class="form-select" id="exampleInputPassword1" aria-label="Default select example">
+        <option value="1">Công khai</option>
+        <option value="2" selected >Riêng tư</option>
+      </select>
     </div>
     <div *ngIf="policy?.invalid && (policy?.dirty || policy?.touched)" class="alert">
       <div *ngIf="policy?.errors?.['required']" class="text-danger">
         Không được để trống
       </div>
     </div>
-
-    <button type="submit" class="btn btn-primary" [disabled]="!formCreateGroup.valid">Submit</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!formCreateGroup.valid">Thêm mới</button>
   </form>
-
 </div>

@@ -1,10 +1,10 @@
 <div class="card text-center">
   <div class="card-body">
-    <h1>Add new list.</h1>
+    <h1>Thêm mới danh sách</h1>
   </div>
   <form *ngIf="formCreateList" [formGroup]="formCreateList" (ngSubmit)="createList()">
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Title</label>
+      <label for="exampleInputEmail1" class="form-label">Tên danh sách</label>
       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="title">
     </div>
     <div *ngIf="title?.invalid && (title?.dirty || title?.touched)" class="alert">
@@ -12,7 +12,6 @@
         Không được để trống
       </div>
     </div>
-    <button type="submit" class="btn btn-primary" [disabled]="!formCreateList.valid">Submit</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!formCreateList.valid">Thêm mới</button>
   </form>
-
 </div>

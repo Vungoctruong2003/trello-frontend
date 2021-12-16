@@ -1,10 +1,10 @@
 <div class="card text-center">
   <div class="card-body">
-    <h1>Add new board.</h1>
+    <h1>Thêm mới thẻ</h1>
   </div>
   <form *ngIf="formCreateCard" [formGroup]="formCreateCard" (ngSubmit)="createCard()">
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Title</label>
+      <label for="exampleInputEmail1" class="form-label">Tên thẻ</label>
       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="title">
     </div>
     <div *ngIf="title?.invalid && (title?.dirty || title?.touched)" class="alert">
@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Content</label>
+      <label for="exampleInputPassword1" class="form-label">Nội dung</label>
       <input type="text" class="form-control" id="exampleInputPassword1" formControlName="contents">
     </div>
     <div *ngIf="content?.invalid && (content?.dirty || content?.touched)" class="alert">
@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="mb-3">
-      <label for="exampleInputPassword2" class="form-label">Description</label>
+      <label for="exampleInputPassword2" class="form-label">Mô tả</label>
       <input type="text" class="form-control" id="exampleInputPassword2" formControlName="description">
     </div>
     <div *ngIf="description?.invalid && (description?.dirty || description?.touched)" class="alert">
@@ -31,7 +31,7 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary" [disabled]="!formCreateCard.valid">Submit</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!formCreateCard.valid">Thêm mới</button>
   </form>
 
 </div>

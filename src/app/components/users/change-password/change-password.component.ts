@@ -42,10 +42,9 @@ export class ChangePasswordComponent implements OnInit {
     const data = this.formChangePassword?.value;
     this.userService.changePassword(data).subscribe(res => {
       if (res.status != 200) {
-        // alert('Doi mat khau thanh cong')
         this.toastr.success('Đổi mật khẩu thành công ');
-        console.log(res.error)
-        this.router.navigate(['/home'])
+        window.localStorage.removeItem('access_token')
+        this.router.navigate(['/login'])
       }
     })
   }
