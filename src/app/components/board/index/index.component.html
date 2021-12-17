@@ -12,7 +12,7 @@
         </div>
         <div cdkDropList [cdkDropListData]="ar" class="example-list" (cdkDropListDropped)="drop($event)">
           <div cdkDrag class="example-box" *ngFor="let item of ar">
-            <mat-card class=" card" style="width: 100%;height: 100%">{{item.title}}</mat-card>
+            <mat-card class=" card" style="width: 100%;height: 100%" (click)="openDialogDetailCard(item.id)">{{item.title}}</mat-card>
           </div>
           <div class="example-box">
             <button class="card btn btn-outline-primary" style="padding-top: 15px;width: 100%;height: 100%"
