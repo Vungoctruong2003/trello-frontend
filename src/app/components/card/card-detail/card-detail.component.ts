@@ -19,6 +19,7 @@ export class CardDetailComponent implements OnInit {
   content: boolean = false;
   title: boolean = false;
   user: any;
+  users: any;
 
   constructor(
     private cardService: CardService,

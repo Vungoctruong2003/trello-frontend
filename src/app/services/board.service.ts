@@ -71,6 +71,14 @@ export class BoardService {
     return this.http.get<any>(API_URL + '/board/getRole/'+ id,header);
   }
 
+  getUser(id: any): Observable<any>{
+    let token = localStorage.getItem('access_token')
+    let header = {
+      headers: new HttpHeaders().set("Authorization",`Bearer ${token}`)
+    }
+    return this.http.get<any>(API_URL + '/board/getUsers/'+ id,header);
+  }
+
   getGroupId():number | undefined {
       return this.groupId
   }
