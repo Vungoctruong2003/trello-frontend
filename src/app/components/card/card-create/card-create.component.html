@@ -1,32 +1,23 @@
 <h1>Thêm mới thẻ</h1>
-  <form *ngIf="formCreateCard" [formGroup]="formCreateCard" (ngSubmit)="createCard()">
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Tên thẻ</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="title">
+<form *ngIf="formCreateCard" [formGroup]="formCreateCard" (ngSubmit)="createCard()">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Tên thẻ</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+           formControlName="title">
+  </div>
+  <div *ngIf="title?.invalid && (title?.dirty || title?.touched)" style="margin-top: -10px">
+    <div *ngIf="title?.errors?.['required']" class="text-danger">
+      * Không được để trống
     </div>
-    <div *ngIf="title?.invalid && (title?.dirty || title?.touched)"  style="margin-top: -10px">
-      <div *ngIf="title?.errors?.['required']" class="text-danger">
-       * Không được để trống
-      </div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Nội dung</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" formControlName="contents">
+  </div>
+  <div *ngIf="content?.invalid && (content?.dirty || content?.touched)" style="margin-top: -10px">
+    <div *ngIf="content?.errors?.['required']" class="text-danger">
+      * Không được để trống
     </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Nội dung</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" formControlName="contents">
-    </div>
-    <div *ngIf="content?.invalid && (content?.dirty || content?.touched)"  style="margin-top: -10px">
-      <div *ngIf="content?.errors?.['required']" class="text-danger">
-       * Không được để trống
-      </div>
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword2" class="form-label">Mô tả</label>
-      <input type="text" class="form-control" id="exampleInputPassword2" formControlName="description">
-    </div>
-    <div *ngIf="description?.invalid && (description?.dirty || description?.touched)"  style="margin-top: -10px">
-      <div *ngIf="description?.errors?.['required']" class="text-danger">
-       * Không được để trống
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary"  [disabled]="!formCreateCard.valid">Thêm mới</button>
-  </form>
-
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!formCreateCard.valid">Submit</button>
+</form>

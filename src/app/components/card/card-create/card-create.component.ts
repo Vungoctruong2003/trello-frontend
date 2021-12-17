@@ -29,7 +29,6 @@ export class CardCreateComponent implements OnInit {
     this.formCreateCard = this.fb.group({
       title: ['',[Validators.required]],
       contents: ['',[Validators.required]],
-      description: ['',[Validators.required]],
       list_id: [id,[Validators.required]],
     })
   }
@@ -51,10 +50,6 @@ export class CardCreateComponent implements OnInit {
 
   get content() {
     return this.formCreateCard?.get('content');
-  }
-
-  get description() {
-    return this.formCreateCard?.get('description');
   }
 
   onClose(){

@@ -12,6 +12,7 @@ const API_URL = `${environment.apiUrl}`;
 export class CardService {
 
   listId?: number
+  cardId?: number
 
   constructor(private http: HttpClient) {
   }
@@ -23,6 +24,13 @@ export class CardService {
   setListId(id: number) {
     return this.listId = id
   }
+  getCardId(): number | undefined {
+    return this.cardId
+  }
+
+  setCardId(id: number) {
+    return this.cardId = id
+  }
 
   createCard(data: any): Observable<any>{
     let token = localStorage.getItem('access_token')
@@ -30,5 +38,21 @@ export class CardService {
       headers: new HttpHeaders().set("Authorization",`Bearer ${token}`)
     }
     return this.http.post<any>(API_URL + '/card/store', data,header);
+  }
+
+  index(id: any): Observable<any>{
+    let token = localStorage.getItem('access_token')
+    let header = {
+      headers: new HttpHeaders().set("Authorization",`Bearer ${token}`)
+    }
+    return this.http.get<any>(API_URL + '/card/index/'+ id,header);
+  }
+
+  updateCard(data:any): Observable<any>{
+    let token = localStorage.getItem('access_token')
+    let header = {
+      headers: new HttpHeaders().set("Authorization",`Bearer ${token}`)
+    }
+    return this.http.post<any>(API_URL + '/card/update/' ,data,header);
   }
 }
