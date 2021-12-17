@@ -20,6 +20,7 @@ export class CardDetailComponent implements OnInit {
   content: boolean = false;
   title: boolean = false;
   user: any;
+  listComment?: any;
 
   constructor(
     private cardService: CardService,
@@ -65,6 +66,8 @@ export class CardDetailComponent implements OnInit {
     })
 
     this.cardService.index(id).subscribe(res => {
+      this.listComment = res.comments
+      console.log(this.listComment)
       this.formDetailCard = this.fb.group({
         id: [res.card.id, [Validators.required]],
         title: [res.card.title, [Validators.required]],
@@ -75,7 +78,7 @@ export class CardDetailComponent implements OnInit {
       }
     })
     this.formComment = this.fb1.group({
-      contentsCmt:['',[Validators.required]]
+      contentsCmt: ['', [Validators.required]]
     })
   }
 
@@ -85,14 +88,20 @@ export class CardDetailComponent implements OnInit {
     this.router.navigate(['/load'])
   }
 
-  comment(){
+  comment() {
     let contentCmt = this.formComment?.value
     let data = {
       "card_id": this.cardService.getListId(),
-      "contentsCmt":contentCmt.contentsCmt
+      "contentsCmt": contentCmt.contentsCmt
     }
-    this.cardService.comment(data).subscribe(res=>{
+    this.cardService.comment(data).subscribe(res => {
+      this.formComment?.reset();
+      this.toastr.success('Thêm mới bình luận thành công');
+      let comment = {
+        content:contentCmt.contentsCmt,
+        user:this.user
+      }
+      this.listComment.push(comment)
     })
   }
-
 }

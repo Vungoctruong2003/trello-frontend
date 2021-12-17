@@ -75,10 +75,17 @@
     <span class="col-10">
         <input type="text" class="form-control display-6 ml-2"
                style="width: 50%"
-               aria-label="Sizing example input" placeholder="Viết bình luận" aria-describedby="inputGroup-sizing-lg"
-               formControlName="contentsCmt">
-<button type="button" class="btn btn-info" (click)="comment()" [disabled]="!formComment.valid">Save</button>
+               aria-label="Sizing example input" placeholder="Viết bình luận..." aria-describedby="inputGroup-sizing-lg"
+               formControlName="contentsCmt" (keyup.enter)="comment()">
       </span>
   </div>
 </form>
 
+
+<div *ngFor="let comment of listComment">
+  <div class="fs-2 mb-3 row">
+    <img class="img-profile rounded-circle col-1" style="width: 2%;height: 2%"
+         src="{{comment.user.avatar}}">{{comment.user.name}}
+    <p style="font-size: medium;margin-left: 6%">{{comment.content}}</p>
+  </div>
+</div>
