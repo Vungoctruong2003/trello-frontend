@@ -32,6 +32,7 @@ export class IndexComponent implements OnInit {
       this.id = paramMap.get('id')
       this.boardService.setBoardId(this.id)
       this.boardService.getRole(this.id).subscribe(res => {
+        console.log(res)
         this.role = res.data
       })
     })

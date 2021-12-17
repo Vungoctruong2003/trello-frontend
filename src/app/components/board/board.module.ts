@@ -10,6 +10,7 @@ import {ScrollingModule} from "@angular/cdk/scrolling";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatCardModule} from "@angular/material/card";
+import {MatTableModule} from "@angular/material/table";
 
 const routes: Routes = [
   {
@@ -35,7 +36,8 @@ const routes: Routes = [
     ScrollingModule,
     MatButtonModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule
   ]
 })
 export class BoardModule {
