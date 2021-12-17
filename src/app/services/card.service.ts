@@ -55,4 +55,6 @@ export class CardService {
     }
     return this.http.post<any>(API_URL + '/card/update/' ,data,header);
   }
+
+
 }
