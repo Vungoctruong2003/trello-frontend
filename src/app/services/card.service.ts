@@ -56,5 +56,12 @@ export class CardService {
     return this.http.post<any>(API_URL + '/card/update/' ,data,header);
   }
 
+  comment(data:any): Observable<any>{
+    let token = localStorage.getItem('access_token')
+    let header = {
+      headers: new HttpHeaders().set("Authorization",`Bearer ${token}`)
+    }
+    return this.http.post<any>(API_URL + '/card/comment/' ,data,header);
+  }
 
 }

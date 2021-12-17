@@ -16,6 +16,7 @@ export class CardDetailComponent implements OnInit {
 
 
   formDetailCard?: FormGroup;
+  formComment?: FormGroup;
   content: boolean = false;
   title: boolean = false;
   user: any;
@@ -25,6 +26,7 @@ export class CardDetailComponent implements OnInit {
     private boardService: BoardService,
     private authService: AuthService,
     private fb: FormBuilder,
+    private fb1: FormBuilder,
     private dialogRef: MatDialogRef<CardDetailComponent>,
     private router: Router,
     private toastr: ToastrService,
@@ -56,10 +58,12 @@ export class CardDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     let id = this.cardService.getListId()
     this.authService.getProfile().subscribe(res => {
       this.user = res
     })
+
     this.cardService.index(id).subscribe(res => {
       this.formDetailCard = this.fb.group({
         id: [res.card.id, [Validators.required]],
@@ -70,12 +74,25 @@ export class CardDetailComponent implements OnInit {
         this.content2()
       }
     })
+    this.formComment = this.fb1.group({
+      contentsCmt:['',[Validators.required]]
+    })
   }
 
   onClose() {
     this.formDetailCard?.reset();
     this.dialogRef.close();
     this.router.navigate(['/load'])
+  }
+
+  comment(){
+    let contentCmt = this.formComment?.value
+    let data = {
+      "card_id": this.cardService.getListId(),
+      "contentsCmt":contentCmt.contentsCmt
+    }
+    this.cardService.comment(data).subscribe(res=>{
+    })
   }
 
 }
