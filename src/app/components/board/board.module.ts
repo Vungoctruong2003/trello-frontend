@@ -6,6 +6,10 @@ import {IndexComponent} from "./index/index.component";
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {ReactiveFormsModule} from '@angular/forms';
 import { AddUserComponent } from './add-user/add-user.component';
+import {ScrollingModule} from "@angular/cdk/scrolling";
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
+import {MatCardModule} from "@angular/material/card";
 
 const routes: Routes = [
   {
@@ -27,7 +31,11 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     DragDropModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ScrollingModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule
   ]
 })
 export class BoardModule {
