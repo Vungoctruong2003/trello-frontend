@@ -8,6 +8,7 @@ import {ListService} from 'src/app/services/list.service';
 import {BoardCreateComponent} from "../board-create/board-create.component";
 import {CardCreateComponent} from "../../card/card-create/card-create.component";
 import {CardService} from "../../../services/card.service";
+import {CardDetailComponent} from "../../card/card-detail/card-detail.component";
 
 @Component({
   selector: 'app-index',
@@ -121,4 +122,15 @@ export class IndexComponent implements OnInit {
       this.matDialog.open(CardCreateComponent, dialogConfig);
     }
   }
+
+  openDialogDetailCard(id: any) {
+    this.cardService.setListId(id)
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "50%";
+    dialogConfig.minHeight = "50%";
+    dialogConfig.height = "50%";
+    this.matDialog.open(CardDetailComponent, dialogConfig);
+  }
+
 }

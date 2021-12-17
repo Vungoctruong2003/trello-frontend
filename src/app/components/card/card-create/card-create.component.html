@@ -21,15 +21,7 @@
         Không được để trống
       </div>
     </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword2" class="form-label">Description</label>
-      <input type="text" class="form-control" id="exampleInputPassword2" formControlName="description">
-    </div>
-    <div *ngIf="description?.invalid && (description?.dirty || description?.touched)" class="alert">
-      <div *ngIf="description?.errors?.['required']" class="text-danger">
-        Không được để trống
-      </div>
-    </div>
+
 
     <button type="submit" class="btn btn-primary" [disabled]="!formCreateCard.valid">Submit</button>
   </form>

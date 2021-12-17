@@ -36,7 +36,6 @@ export class NavbarComponent implements OnInit {
   getProfile() {
     this.authService.getProfile().subscribe(res => {
       this.user = res
-      console.log(res)
     })
   }
 
@@ -46,8 +45,5 @@ export class NavbarComponent implements OnInit {
     dialogConfig.width = "20%";
     this.matDialog.open(ChangeAvatarComponent,dialogConfig);
   }
-
-
-
 
 }
