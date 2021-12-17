@@ -1,85 +1,80 @@
 <body class="atlassian-brand bidi-highlight" data-analytics-screen="loginChoiceScreen"
-      data-analytics-attributes="{ &quot;isMarketingEvent&quot;: true }">
-<div><img alt="Trello" class="trello-main-logo"
-          src="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/trello-header-logos/167dc7b9900a5b241b15ba21f8037cf8/trello-logo-blue.svg">
-  <section class="inner-section">
-    <div class="section-wrapper quick-switch">
-      <div class="layout-twothirds-center account-form">
-        <h1>Đăng ký tài khoản Trello</h1>
-        <div class="text-danger">
-          {{errRegister}}
-        </div>
-        <div class="login-password-container">
-          <form id="login-form" *ngIf="formRegister" [formGroup]="formRegister" class="user" (ngSubmit)="register()">
-            <div class="login-password-container-email">
-              <div class="email-password">
-                <div class="hide-when-two-factor"><input type="text" formControlName="email" id="user"
-                                                         class="form-field" autocorrect="off"
-                                                         spellcheck="false" autocapitalize="off"
-                                                         autofocus="autofocus" placeholder="Nhập email"
-                                                         value="" autocomplete="username"
-                                                         inputmode="email">
-                  <div *ngIf="email?.invalid && (email?.dirty || email?.touched)"
-                       class="alert">
-                    <div *ngIf="email?.errors?.['required']" class="text-danger">
-                      Email không được để trống
-                    </div>
-                    <div *ngIf="email?.errors?.['email']" class="text-danger">
-                      Email không đúng định dạng
-                    </div>
-                  </div>
-
-                  <input type="text" formControlName="name" id="name"
-                         class="form-field" autocorrect="off"
-                         spellcheck="false" autocapitalize="off"
-                         autofocus="autofocus" placeholder="Nhập tên "
-                         value="" autocomplete="username"
-                         inputmode="email">
-                  <div *ngIf="name?.invalid && (name?.dirty || name?.touched)"
-                       class="alert">
-                    <div *ngIf="name?.errors?.['required']" class="text-danger">
-                      Tên không được để trống
-                    </div>
-                  </div>
-
-                  <div id="password-entry" class="show-when-password"><input type="password" formControlName="password"
-                                                                             id="password" class="form-field"
-                                                                             placeholder="Nhập mật khẩu"
-                                                                             autocomplete="current-password">
-                    <div *ngIf="password?.invalid && (password?.dirty || password?.touched)"
-                         class="alert">
-                      <div *ngIf="password?.errors?.['required']" class="text-danger">
-                        Mật khẩu không được để trống
+  data-analytics-attributes="{ &quot;isMarketingEvent&quot;: true }">
+  <div><img alt="Trello" class="trello-main-logo"
+      src="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/trello-header-logos/167dc7b9900a5b241b15ba21f8037cf8/trello-logo-blue.svg">
+    <section class="inner-section">
+      <div class="section-wrapper quick-switch">
+        <div class="layout-twothirds-center account-form">
+          <h1>Đăng ký tài khoản Trello</h1>
+          <div class="text-danger">
+            {{ errRegister }}
+          </div>
+          <div class="login-password-container">
+            <form id="login-form" *ngIf="formRegister" [formGroup]="formRegister" class="user" (ngSubmit)="register()">
+              <div class="login-password-container-email">
+                <div class="email-password">
+                  <div class="hide-when-two-factor"><input type="text" formControlName="email" id="user"
+                      class="form-field" autocorrect="off" spellcheck="false" autocapitalize="off" autofocus="autofocus"
+                      placeholder="Nhập email" value="" autocomplete="username" inputmode="email">
+                    <div *ngIf="email?.invalid && (email?.dirty || email?.touched)"  style="margin-top: -10px">
+                      <div *ngIf="email?.errors?.['required']" class="text-danger">
+                        * Email không được để trống
+                      </div>
+                      <div *ngIf="email?.errors?.['email']" class="text-danger">
+                        * Email không đúng định dạng
                       </div>
                     </div>
-                    <input type="password" formControlName="confirmPassword"
-                           id="confirmPassword" class="form-field"
-                           placeholder="Nhập lại mật khẩu"
-                           autocomplete="current-password">
-                    <div *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)"
-                         class="alert">
-                      <div *ngIf="confirmPassword?.errors?.['required']" class="text-danger">
-                        Mật khẩu không được để trống
+
+                    <input type="text" formControlName="name" id="name" class="form-field" autocorrect="off"
+                      spellcheck="false" autocapitalize="off" autofocus="autofocus" placeholder="Nhập tên " value=""
+                      autocomplete="username" inputmode="email">
+                    <div *ngIf="name?.invalid && (name?.dirty || name?.touched)"  style="margin-top: -10px">
+                      <div *ngIf="name?.errors?.['required']" class="text-danger">
+                        * Tên không được để trống
+                      </div>
+                    </div>
+
+                    <div id="password-entry" class="show-when-password">
+                      <div style="position: relative">
+                        <input [type]="show ? 'text' : 'password'" formControlName="password" id="password" class="form-field"
+                          placeholder="Nhập mật khẩu" autocomplete="current-password">
+                          <a style="position: absolute;top:27%;right:10px;color: #333" (click)="pwd()"><i
+                            class="fa fa-eye"></i></a>
+                        <div *ngIf="password?.invalid && (password?.dirty || password?.touched)"  style="margin-top: -10px">
+                          <div *ngIf="password?.errors?.['required']" class="text-danger">
+                            * Mật khẩu không được để trống
+                          </div>
+                        </div>
+                      </div>
+                      <div style="position: relative">
+                        <input [type]="show1 ? 'text' : 'password'" formControlName="confirmPassword" id="confirmPassword" class="form-field"
+                          placeholder="Nhập lại mật khẩu" autocomplete="current-password">
+                          <a style="position: absolute;top:27%;right:10px;color: #333" (click)="pwd1()"><i
+                            class="fa fa-eye"></i></a>
+                        <div *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)"
+                             style="margin-top: -10px">
+                          <div *ngIf="confirmPassword?.errors?.['required']" class="text-danger">
+                            * Mật khẩu không được để trống
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
+                  <button type="submit" id="register" class="button account-button button-green btn btn-success"
+                    [disabled]="!formRegister.valid">
+                    Đăng ký
+                  </button>
                 </div>
-                <button type="submit" id="register" class="button account-button button-green btn btn-success"
-                        [disabled]="!formRegister.valid">
-                  Đăng ký
-                </button>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
+          <hr class="bottom-form-separator">
+          <ul class="bottom-form-link">
+            <li><a class="signupLink" routerLink="/login" data-analytics-link="signUpLoginLink">Đăng nhập tài khoản</a>
+            </li>
+          </ul>
         </div>
-        <hr class="bottom-form-separator">
-        <ul class="bottom-form-link">
-          <li><a class="signupLink" routerLink="/login" data-analytics-link="signUpLoginLink">Đăng nhập tài khoản</a>
-          </li>
-        </ul>
       </div>
-    </div>
-  </section>
-</div>
+    </section>
+  </div>
 </body>
-
