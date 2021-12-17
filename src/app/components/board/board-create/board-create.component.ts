@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { BoardService } from 'src/app/services/board.service';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-board-create',
@@ -17,6 +18,7 @@ export class BoardCreateComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private dialogRef: MatDialogRef<BoardCreateComponent>,
+    private toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) public data:any,
   ) { }
 
@@ -34,10 +36,8 @@ export class BoardCreateComponent implements OnInit {
     console.log(data);
     this.boardService.createBoard(data).subscribe(res => {
       if (res.status == 'success') {
-        alert('Tao board thanh cong')
+        this.toastr.success('Tạo mới bảng thành công')
         this.onClose();
-        
-        // this.router.navigate(['/login'])
       }else{}
     })
   }
