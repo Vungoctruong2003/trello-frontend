@@ -10,7 +10,7 @@
             <div class="d-flex justify-content-between align-items-center p-2 shadow-sm column-header pb-3 mt-2">
               <h2 class="m-0">{{lists[i].title}}</h2>
               <button mat-icon-button class="icon-delete">
-                <mat-icon style="font-size: 20px;">delete</mat-icon>
+                <mat-icon style="font-size: 20px;" (click)="deleteList(lists[i].id)">delete</mat-icon>
               </button>
             </div>
             <div cdkDropList [cdkDropListData]="ar" class="example-list" (cdkDropListDropped)="drop($event)">
