@@ -97,10 +97,17 @@ export class CardDetailComponent implements OnInit {
       this.formComment?.reset();
       this.toastr.success('Thêm mới bình luận thành công');
       let comment = {
-        content:contentCmt.contentsCmt,
-        user:this.user
+        content: contentCmt.contentsCmt,
+        user: this.user
       }
       this.listComment.push(comment)
+    })
+  }
+
+  deleteCmt(id: any,index:number) {
+    this.cardService.deleteCmt(id).subscribe(res => {
+      this.toastr.success('Xoá bình luận thành công');
+      this.listComment.splice(index,1);
     })
   }
 }

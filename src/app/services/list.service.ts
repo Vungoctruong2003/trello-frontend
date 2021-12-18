@@ -31,7 +31,7 @@ export class ListService {
     let header = {
       headers: new HttpHeaders().set("Authorization", `Bearer ${token}`)
     }
-    return this.http.get<any>(API_URL + '/list/delete/' + id, header);
+    return this.http.delete<any>(API_URL + '/list/delete/' + id, header);
   }
 
   editTitle(data: any, id: any): Observable<any> {
