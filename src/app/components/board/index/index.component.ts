@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {BoardService} from "../../../services/board.service";
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {ListCreateComponent} from '../../list/list-create/list-create.component';
 import {ListService} from 'src/app/services/list.service';
@@ -9,6 +9,7 @@ import {CardCreateComponent} from "../../card/card-create/card-create.component"
 import {CardService} from "../../../services/card.service";
 import {ListEditTitleComponent} from "../../list/list-edit-title/list-edit-title.component";
 import {CardDetailComponent} from "../../card/card-detail/card-detail.component";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-index',
@@ -25,6 +26,8 @@ export class IndexComponent implements OnInit {
   constructor(private boardService: BoardService,
               private listService: ListService,
               private matDialog: MatDialog,
+              private router: Router,
+              private toastr: ToastrService,
               private cardService: CardService,
               private activeRouter: ActivatedRoute) {
     this.activeRouter.paramMap.subscribe((paramMap: ParamMap) => {
@@ -136,10 +139,20 @@ export class IndexComponent implements OnInit {
     this.cardService.setListId(id)
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "50%";
+    dialogConfig.width = "65%";
     dialogConfig.minHeight = "50%";
-    dialogConfig.height = "50%";
+    dialogConfig.height = "80%";
     this.matDialog.open(CardDetailComponent, dialogConfig);
   }
 
+  deleteList(id:any) {
+    if (this.role == 1 || this.role == 2) {
+      this.listService.deleteList(id).subscribe(res => {
+        console.log(res)
+        console.log(this.lists[0].id)
+        this.router.navigate(['/load'])
+        this.toastr.success('Xoá danh sách các thẻ thành công');
+      })
+    }
+  }
 }

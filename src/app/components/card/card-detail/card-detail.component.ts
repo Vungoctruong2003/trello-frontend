@@ -16,15 +16,19 @@ export class CardDetailComponent implements OnInit {
 
 
   formDetailCard?: FormGroup;
+  formComment?: FormGroup;
   content: boolean = false;
   title: boolean = false;
   user: any;
+  users: any;
+  listComment?: any;
 
   constructor(
     private cardService: CardService,
     private boardService: BoardService,
     private authService: AuthService,
     private fb: FormBuilder,
+    private fb1: FormBuilder,
     private dialogRef: MatDialogRef<CardDetailComponent>,
     private router: Router,
     private toastr: ToastrService,
@@ -60,7 +64,9 @@ export class CardDetailComponent implements OnInit {
     this.authService.getProfile().subscribe(res => {
       this.user = res
     })
+
     this.cardService.index(id).subscribe(res => {
+      this.listComment = res.comments
       this.formDetailCard = this.fb.group({
         id: [res.card.id, [Validators.required]],
         title: [res.card.title, [Validators.required]],
@@ -70,6 +76,9 @@ export class CardDetailComponent implements OnInit {
         this.content2()
       }
     })
+    this.formComment = this.fb1.group({
+      contentsCmt: ['', [Validators.required]]
+    })
   }
 
   onClose() {
@@ -78,4 +87,20 @@ export class CardDetailComponent implements OnInit {
     this.router.navigate(['/load'])
   }
 
+  comment() {
+    let contentCmt = this.formComment?.value
+    let data = {
+      "card_id": this.cardService.getListId(),
+      "contentsCmt": contentCmt.contentsCmt
+    }
+    this.cardService.comment(data).subscribe(res => {
+      this.formComment?.reset();
+      this.toastr.success('Thêm mới bình luận thành công');
+      let comment = {
+        content:contentCmt.contentsCmt,
+        user:this.user
+      }
+      this.listComment.push(comment)
+    })
+  }
 }

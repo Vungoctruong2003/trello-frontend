@@ -1,4 +1,4 @@
-<div>
+<div class="col-7">
   <form *ngIf="formDetailCard" [formGroup]="formDetailCard" style=" margin-left: 50px">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
          style="margin-left: 97%" viewBox="0 0 16 16" (click)="onClose()">
@@ -35,8 +35,7 @@
       </svg>
       {{formDetailCard.value.title}}
     </div>
-
-    <br>
+    <hr>
     <br>
     <div class="row">
       <div class="fs-2 mb-3">
@@ -47,7 +46,7 @@
         </svg>
         Mô tả
       </div>
-      <p class="lead" *ngIf="!content" (click)="content1()">{{formDetailCard.value.contents}}</p>
+      <p class="lead ml-4" *ngIf="!content" (click)="content1()">{{formDetailCard.value.contents}}</p>
       <p class="lead" *ngIf="formDetailCard.value.contents == '' && !content" (click)="content1()">Thêm mô tả</p>
     </div>
 
@@ -55,16 +54,18 @@
       <textarea class="form-control" (focusout)="edit2()" formControlName="contents" placeholder="Thêm mô tả"
                 id="floatingTextarea2" style="height: 100px"></textarea>
     </div>
+    <hr>
     <br>
-    <br>
-
+  </form>
+  <form *ngIf="formComment" [formGroup]="formComment" style=" margin-left: 50px">
     <div class="fs-2 mb-3">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-ul"
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-vector-pen"
            viewBox="0 0 16 16">
         <path fill-rule="evenodd"
-              d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"></path>
+              d="M10.646.646a.5.5 0 0 1 .708 0l4 4a.5.5 0 0 1 0 .708l-1.902 1.902-.829 3.313a1.5 1.5 0 0 1-1.024 1.073L1.254 14.746 4.358 4.4A1.5 1.5 0 0 1 5.43 3.377l3.313-.828L10.646.646zm-1.8 2.908-3.173.793a.5.5 0 0 0-.358.342l-2.57 8.565 8.567-2.57a.5.5 0 0 0 .34-.357l.794-3.174-3.6-3.6z"/>
+        <path fill-rule="evenodd" d="M2.832 13.228 8 9a1 1 0 1 0-1-1l-4.228 5.168-.026.086.086-.026z"/>
       </svg>
-      Hoạt động
+      Bình luận
     </div>
 
     <div class="fs-2 mb-3 row">
@@ -73,11 +74,19 @@
       <span class="col-10">
         <input type="text" class="form-control display-6 ml-2"
                style="width: 50%"
-               aria-label="Sizing example input" placeholder="Viết bình luận" aria-describedby="inputGroup-sizing-lg">
+               aria-label="Sizing example input" placeholder="Viết bình luận..." aria-describedby="inputGroup-sizing-lg"
+               formControlName="contentsCmt" (keyup.enter)="comment()">
       </span>
-
     </div>
-
   </form>
-</div>
 
+
+  <div *ngFor="let comment of listComment" class="ml-5">
+    <div class="fs-2 row">
+      <img class="img-profile rounded-circle col-1 mt-2" style="width: 2%;height: 2%"
+           src="{{comment.user.avatar}}">{{comment.user.name}}
+      <p style="font-size: medium;margin-left: 7%">{{comment.content}}</p>
+      <hr>
+    </div>
+  </div>
+</div>
