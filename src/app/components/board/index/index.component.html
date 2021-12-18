@@ -4,7 +4,7 @@
     <div cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drip($event)" style="width: max-content">
       <div class="container-fluid">
         <div cdkDropListGroup style="overflow: auto">
-          <div class="mat-card " *cdkVirtualFor="let ar of listCards,let i =index " cdkDrag
+          <div class="mat-card " *ngFor="let ar of listCards,let i =index " cdkDrag
                style="min-width: 300px; float: left">
             <!-- Column Title -->
             <div class="d-flex justify-content-between align-items-center p-2 shadow-sm column-header pb-3 mt-2">
