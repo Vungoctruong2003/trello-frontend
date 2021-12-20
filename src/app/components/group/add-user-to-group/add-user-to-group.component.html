@@ -1,14 +1,18 @@
-    <h1>Thêm mới người dùng vào nhóm.</h1>
-    <form *ngIf="formAddUserToGroup" [formGroup]="formAddUserToGroup" (ngSubmit)="searchByEmail()">
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-          formControlName="key">
+<h3>Thêm mới người dùng vào nhóm.</h3>
+  <form *ngIf="formAddUserToGroup" [formGroup]="formAddUserToGroup" (ngSubmit)="searchByEmail()">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="key" placeholder="example@gmail.com">
+    </div>
+    <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" style="margin-top: -10px">
+      <div *ngIf="email?.errors?.['required']" class="text-danger">
+        * Email không được để trống
       </div>
-      <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="alert">
-        <div *ngIf="email?.errors?.['required']" class="text-danger">
-          Không được để trống
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary">Thêm</button>
-    </form>
+    </div>
+    <button type="submit" mat-raised-button   color="primary">Thêm mới</button>
+    <button mat-button (click)="onCancel()">Cancel</button>
+  </form>
+
+
+
+

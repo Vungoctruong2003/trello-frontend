@@ -51,11 +51,15 @@ export class GroupCreateComponent implements OnInit {
       }else{}
     })
   }
-  onClose(){
 
+  onClose(){
     this.formCreateGroup?.reset();
     this.dialogRef.close();
     this.router.navigate(['/load-home'])
   }
 
+  onCancel(){
+    this.formCreateGroup?.reset();
+    this.dialogRef.close();
+  }
 }
