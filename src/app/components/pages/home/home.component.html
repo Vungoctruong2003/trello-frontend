@@ -1,54 +1,26 @@
 <app-navbar></app-navbar>
-<div class="container side" style="">
+<div class="container side mt-3" style="">
   <div class="row">
     <div class="col-sm-2">
       <ul class="navbar-nav flex-fill w-100 mb-2">
         <li class="nav-item dropdown">
           <a href="#ui-elements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-            <i class="fe fe-box fe-16"></i>
-            <span class="ml-3 item-text">Group</span>
+            <i class="fa fa-table"></i>
+            <span class="ml-3 item-text">Không gian làm việc</span>
           </a>
           <ul class="collapse list-unstyled pl-4 w-100" id="ui-elements">
             <li class="nav-item">
-              <a class="nav-link pl-3" (click)="openDialogCreateGroup()"><span class="ml-1 item-text">Add</span>
+              <a class="nav-link pl-3 small" (click)="openDialogCreateGroup()">
+                <i class="fa fa-plus-square"></i>
+                <span class="ml-1 item-text">Thêm không gian làm việc mới</span>
               </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./ui-typograpy.html"><span class="ml-1 item-text">Typograpy</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./ui-icons.html"><span class="ml-1 item-text">Icons</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./ui-buttons.html"><span class="ml-1 item-text">Buttons</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./ui-notification.html"><span
-                class="ml-1 item-text">Notifications</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./ui-modals.html"><span class="ml-1 item-text">Modals</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./ui-tabs-accordion.html"><span class="ml-1 item-text">Tabs &
-                  Accordion</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./ui-progress.html"><span class="ml-1 item-text">Progress</span></a>
             </li>
           </ul>
         </li>
-        <li class="nav-item w-100">
-          <a class="nav-link" href="widgets.html">
-            <i class="fe fe-layers fe-16"></i>
-            <span class="ml-3 item-text">Widgets</span>
-            <span class="badge badge-pill badge-primary">New</span>
-          </a>
-        </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" *ngFor="let ar of arr;let i=index">
           <a href="#forms" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
             <i class="fe fe-credit-card fe-16"></i>
-            <span class="ml-3 item-text">Forms</span>
+            <span class="ml-3 item-text">{{ groups[i].group.title }}</span>
           </a>
           <ul class="collapse list-unstyled pl-4 w-100" id="forms">
             <li class="nav-item">
@@ -73,79 +45,42 @@
             </li>
           </ul>
         </li>
-        <li class="nav-item dropdown">
-          <a href="#tables" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-            <i class="fe fe-grid fe-16"></i>
-            <span class="ml-3 item-text">Tables</span>
-          </a>
-          <ul class="collapse list-unstyled pl-4 w-100" id="tables">
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./table_basic.html"><span class="ml-1 item-text">Basic Tables</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./table_advanced.html"><span class="ml-1 item-text">Advanced
-                  Tables</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./table_datatables.html"><span class="ml-1 item-text">Data
-                  Tables</span></a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a href="#charts" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-            <i class="fe fe-pie-chart fe-16"></i>
-            <span class="ml-3 item-text">Charts</span>
-          </a>
-          <ul class="collapse list-unstyled pl-4 w-100" id="charts">
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./chart-inline.html"><span class="ml-1 item-text">Inline Chart</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./chart-chartjs.html"><span class="ml-1 item-text">Chartjs</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./chart-apexcharts.html"><span class="ml-1 item-text">ApexCharts</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link pl-3" href="./datamaps.html"><span class="ml-1 item-text">Datamaps</span></a>
-            </li>
-          </ul>
-        </li>
       </ul>
 
     </div>
-    <div class="col-sm-10">
+    <div class="col-sm-10 pl-5 mt-5">
       <div class="boards-page-board-section mod-no-sidebar">
-        <div class="boards-page-board-section-header">
-          <div class="boards-page-board-section-header-icon"><span class="icon-lg icon-member"></span></div>
-          <h3 class="boards-page-board-section-header-name">Bảng</h3>
-        </div>
+        <h4 class="boards-page-board-section-header-name" style="font-weight: bold;">CÁC KHÔNG GIAN LÀM VIỆC CỦA BẠN
+        </h4>
         <div *ngIf="arr.length != 0 ">
-        <div *ngFor="let ar of arr;let i=index" class=" mt-5">
-
-          <div class="card text-center">
-            <div class="card-body">
-              <h1 class="" style="font-weight: bold;">{{ groups[i].group.title }}</h1>
-              <hr>
-              <p (click)="openDialogAddUserToGroup(groups[i].group.id,groups[i].role)"> Thêm người dùng</p>
-            </div>
-
-              <div class="row mb-4 pl-4 pr-4">
-                <div class="col-4 col-md-3 mt-2" *ngFor="let board of ar">
-                  <div class="card" [routerLink]="['/trello/master/boards/index',board.board.id]">
-                    <img
-                      src="https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x320/b55d798585b76e32f2f5c9f1852791a8/photo-1632042704576-7ae3ef405c78.jpg"
-                      class="card-img-top" alt="...">
-                    <div class="card-img-overlay">
-                      <h3 class="card-title  text-white "
-                          style="position: absolute;top: 5px; left: 10px;font-weight: bold;">
-                        {{ board.board.title }}</h3>
-                    </div>
+          <div *ngFor="let ar of arr;let i=index" class=" mt-5">
+            <span class=""
+              style="font-weight: bold;font-size:xx-large;color: black;">{{ groups[i].group.title }}</span>
+            <span style="float: right;">
+              <a class="a" (click)="openDialogGetUser(groups[i].group.id)"><i class="fa fa-users"></i> Thành viên </a> |
+              <a *ngIf="groups[i].role == 1" class="a"
+                (click)="openDialogAddUserToGroup(groups[i].group.id,groups[i].role)"><i class="fa fa-user-plus"></i>
+                Thêm người dùng</a>
+            </span>
+            <div class="row mb-4 pl-4 pr-4">
+              <div class="col-4 col-md-3 mt-2" *ngFor="let board of ar">
+                <div class="card" [routerLink]="['/trello/master/boards/index',board.board.id]">
+                  <img
+                    src="https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x320/b55d798585b76e32f2f5c9f1852791a8/photo-1632042704576-7ae3ef405c78.jpg"
+                    class="card-img-top" alt="...">
+                  <div class="card-img-overlay">
+                    <h3 class="card-title  text-white "
+                      style="position: absolute;top: 5px; left: 10px;font-weight: bold;">
+                      {{ board.board.title }}</h3>
                   </div>
                 </div>
               </div>
-              <a class="btn btn-primary mb-3" (click)="openDialogCreateBoard( groups[i].group.id,groups[i].role )">Them bang moi</a>
+              <div class="card ml-2 mt-2 a" style="width: 12rem;height: 7.8rem;"
+                (click)="openDialogCreateBoard(groups[i].group.id,groups[i].role)">
+                <div class="card-body">
+                  <h5 class="card-title " style="position: absolute;top: 47px;left: 25px;">Thêm bảng mới</h5>
+                </div>
+              </div>
             </div>
           </div>
         </div>

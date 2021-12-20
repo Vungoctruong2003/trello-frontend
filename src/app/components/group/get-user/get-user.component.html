@@ -1,0 +1,21 @@
+<h1>Các thành viên trong nhóm ({{ users.length }})</h1>
+<table class="table">
+    <tr *ngFor="let u of users;index as i">
+      <td><img src="{{ u.user.avatar }}" width="50px">   {{ u.user.name }}</td>
+      <td>
+          <form *ngIf="formChangeRole" [formGroup]="formChangeRole">
+            <select *ngIf="role == 1" (change)="changeRole(u.id,u.role)" formControlName="role">
+              <option *ngIf="u.role == 1" value="1" selected value="2">Quản trị viên</option>
+              <option *ngIf="u.role == 2" value="2" selected value="2">Bình thường</option>
+              <option *ngIf="u.role != 1" value="1">Quản trị viên</option>
+              <option *ngIf="u.role != 2" value="2">Bình thường</option>
+            </select>
+          </form>
+        <div *ngIf="role == 2">
+            <div *ngIf="u.role ==1" style="margin-top: -4%"><strong>Quản trị viên</strong></div>
+            <div *ngIf="u.role ==2" style="margin-top: -4%"><strong>Bình thường</strong></div>
+        </div>
+        </td>
+        <td><a (click)="delete(u.id,u.role,i)"><i class="fas fa-trash-alt"></i></a></td>
+      </tr>
+</table>

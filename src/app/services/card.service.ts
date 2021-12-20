@@ -24,6 +24,7 @@ export class CardService {
   setListId(id: number) {
     return this.listId = id
   }
+
   getCardId(): number | undefined {
     return this.cardId
   }
@@ -32,36 +33,51 @@ export class CardService {
     return this.cardId = id
   }
 
-  createCard(data: any): Observable<any>{
+  createCard(data: any): Observable<any> {
     let token = localStorage.getItem('access_token')
     let header = {
-      headers: new HttpHeaders().set("Authorization",`Bearer ${token}`)
+      headers: new HttpHeaders().set("Authorization", `Bearer ${token}`)
     }
-    return this.http.post<any>(API_URL + '/card/store', data,header);
+    return this.http.post<any>(API_URL + '/card/store', data, header);
   }
 
-  index(id: any): Observable<any>{
+  index(id: any): Observable<any> {
     let token = localStorage.getItem('access_token')
     let header = {
-      headers: new HttpHeaders().set("Authorization",`Bearer ${token}`)
+      headers: new HttpHeaders().set("Authorization", `Bearer ${token}`)
     }
-    return this.http.get<any>(API_URL + '/card/index/'+ id,header);
+    return this.http.get<any>(API_URL + '/card/index/' + id, header);
   }
 
-  updateCard(data:any): Observable<any>{
+  updateCard(data: any): Observable<any> {
     let token = localStorage.getItem('access_token')
     let header = {
-      headers: new HttpHeaders().set("Authorization",`Bearer ${token}`)
+      headers: new HttpHeaders().set("Authorization", `Bearer ${token}`)
     }
-    return this.http.post<any>(API_URL + '/card/update/' ,data,header);
+    return this.http.post<any>(API_URL + '/card/update/', data, header);
   }
 
-  comment(data:any): Observable<any>{
+  comment(data: any): Observable<any> {
     let token = localStorage.getItem('access_token')
     let header = {
-      headers: new HttpHeaders().set("Authorization",`Bearer ${token}`)
+      headers: new HttpHeaders().set("Authorization", `Bearer ${token}`)
     }
-    return this.http.post<any>(API_URL + '/card/comment/' ,data,header);
+    return this.http.post<any>(API_URL + '/card/comment/', data, header);
   }
 
+  deleteCmt(id: any): Observable<any> {
+    let token = localStorage.getItem('access_token')
+    let header = {
+      headers: new HttpHeaders().set("Authorization", `Bearer ${token}`)
+    }
+    return this.http.delete<any>(API_URL + '/card/deleteComment/' + id, header);
+  }
+
+  updateCmt(id: any, data: any): Observable<any> {
+    let token = localStorage.getItem('access_token')
+    let header = {
+      headers: new HttpHeaders().set("Authorization", `Bearer ${token}`)
+    }
+    return this.http.put<any>(API_URL + '/card/editCmt/' + id, data, header);
+  }
 }

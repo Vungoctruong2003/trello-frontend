@@ -1,8 +1,8 @@
-<div class="cdk-virtual-scroll-data-source-example">
+<div class="cdk-virtual-scroll-data-source-example " style="background-image:url('https://hinhgaixinh.com/wp-content/uploads/2021/03/hinh-gai-xinh-835x436.jpg') ">
   <cdk-virtual-scroll-viewport orientation="horizontal" itemSize="50"  class="example-viewport" >
     <div cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drip($event)" style="min-width: max-content">
-      <div class="container-fluid" style="background-color: #998dd9">
-        <div cdkDropListGroup style="overflow: auto">
+      <div class="container-fluid" >
+        <div cdkDropListGroup style="overflow: auto" class="mt-3">
           <div class="mat-card " *ngFor="let ar of listCards,let i =index "  cdkDrag
                style="min-width: 300px; float: left; margin-left: 15px">
             <!-- Column Title -->

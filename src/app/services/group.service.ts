@@ -10,6 +10,7 @@ const API_URL = `${environment.apiUrl}`;
 })
 export class GroupService {
 
+  userGroupId: any
   constructor(
     private http: HttpClient,
   ) { }
@@ -30,4 +31,43 @@ export class GroupService {
     return this.http.post<any>(API_URL + '/group/addUser', data,header);
   }
 
+  getUser(id: number): Observable<any>{
+    let token = localStorage.getItem('access_token')
+    let header = {
+      headers: new HttpHeaders().set("Authorization",`Bearer ${token}`)
+    }
+    return this.http.get<any>(API_URL + '/group/getUser/'+ id,header);
+  }
+
+  changeRole(data:any, id:any):Observable<any>{
+    let token = localStorage.getItem('access_token')
+    let header = {
+      headers: new HttpHeaders().set("Authorization",`Bearer ${token}`)
+    }
+    return this.http.put<any>(API_URL + '/group/changeRole/'+ id,data,header);
+  }
+
+  getRole(id: any): Observable<any>{
+    let token = localStorage.getItem('access_token')
+    let header = {
+      headers: new HttpHeaders().set("Authorization",`Bearer ${token}`)
+    }
+    return this.http.get<any>(API_URL + '/group/getRole/'+ id,header);
+  }
+
+  delete(id:any):Observable<any>{
+    let token = localStorage.getItem('access_token')
+    let header = {
+      headers: new HttpHeaders().set("Authorization",`Bearer ${token}`)
+    }
+    return this.http.delete<any>(API_URL + '/group/delete/'+ id,header);
+  }
+
+  setUserGroupId(id:number){
+    return this.userGroupId = id
+  }
+
+  getUserGroupId():any{
+    return this.userGroupId
+  }
 }
