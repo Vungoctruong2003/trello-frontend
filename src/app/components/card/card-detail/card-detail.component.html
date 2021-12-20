@@ -72,11 +72,16 @@
     </form>
 
 
-    <div *ngFor="let comment of listComment" class="ml-5">
+    <div *ngFor="let comment of listComment,let i=index" class="ml-5">
       <div class="fs-2 row">
         <img class="img-profile rounded-circle col-1 mt-2" style="width: 2%;height: 2%"
              src="{{comment.user.avatar}}">{{comment.user.name}}
         <p style="font-size: medium;margin-left: 7%">{{comment.content}}</p>
+        <span class="row">
+        <p class="col-1" style=" text-decoration: underline;
+  text-decoration-color: gray;margin-right:3px;font-size: small" (click)="deleteCmt(comment.id,i)">Xoá</p>
+      </span>
+
         <hr>
       </div>
     </div>
@@ -106,6 +111,5 @@
         Tham gia
       </button>
     </div>
-
   </div>
 </div>

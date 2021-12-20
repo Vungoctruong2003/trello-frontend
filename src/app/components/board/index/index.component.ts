@@ -35,7 +35,6 @@ export class IndexComponent implements OnInit {
       this.id = paramMap.get('id')
       this.boardService.setBoardId(this.id)
       this.boardService.getRole(this.id).subscribe(res => {
-        console.log(res)
         this.role = res.data
       })
     })
@@ -148,8 +147,6 @@ export class IndexComponent implements OnInit {
   deleteList(id:any) {
     if (this.role == 1 || this.role == 2) {
       this.listService.deleteList(id).subscribe(res => {
-        console.log(res)
-        console.log(this.lists[0].id)
         this.router.navigate(['/load'])
         this.toastr.success('Xoá danh sách các thẻ thành công');
       })

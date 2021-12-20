@@ -1,12 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
-import {Router} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {interval, Subscription} from 'rxjs';
 import {BoardService} from 'src/app/services/board.service';
 import {HomeService} from 'src/app/services/home.service';
 import {BoardCreateComponent} from '../../board/board-create/board-create.component';
 import {GroupCreateComponent} from '../../group/group-create/group-create.component';
 import {AddUserToGroupComponent} from "../../group/add-user-to-group/add-user-to-group.component";
+import { GetUserComponent } from '../../group/get-user/get-user.component';
+import { GroupService } from 'src/app/services/group.service';
+import { DIR_DOCUMENT_FACTORY } from '@angular/cdk/bidi/dir-document-token';
 
 @Component({
   selector: 'app-home',
@@ -17,13 +20,23 @@ export class HomeComponent implements OnInit {
   groups: any;
   boards: any;
   arr: any = [];
-
+  id?: number
+  role: any = 3;
 
   constructor(private homeService: HomeService,
               private router: Router,
               private matDialog: MatDialog,
-              private boardService: BoardService
+              private boardService: BoardService,
+              private activatedRouter: ActivatedRoute,
+              private groupService: GroupService
   ) {
+    this.activatedRouter.paramMap.subscribe((paramMap: ParamMap) => {
+      // @ts-ignore
+      this.id = paramMap.get('id')
+      this.groupService.getRole(this.id).subscribe(res => {
+        this.role = res.data
+      })
+    })
   }
 
 
@@ -84,12 +97,20 @@ export class HomeComponent implements OnInit {
 
 
   openDialogAddUserToGroup(id: any, role: number) {
-    if (role == 1 || role == 2) {
+    if (role == 1) {
       this.boardService.setGroupId(id)
       const dialogConfig = new MatDialogConfig();
       dialogConfig.autoFocus = true;
       dialogConfig.width = "20%";
       this.matDialog.open(AddUserToGroupComponent, dialogConfig);
     }
+  }
+
+  openDialogGetUser(id: any) {
+      this.boardService.setGroupId(id)
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.autoFocus = true;
+      dialogConfig.width = "50%";
+      this.matDialog.open(GetUserComponent, dialogConfig);
   }
 }

@@ -127,4 +127,11 @@ export class CardDetailComponent implements OnInit {
     dialogConfig.height = "50%";
     this.matDialog.open(AddUserIntoCardComponent, dialogConfig);
   }
+
+  deleteCmt(id: any,index:number) {
+    this.cardService.deleteCmt(id).subscribe(res => {
+      this.toastr.success('Xoá bình luận thành công');
+      this.listComment.splice(index,1);
+    })
+  }
 }

@@ -1,18 +1,14 @@
-<div class="card text-center">
-  <div class="card-body">
     <h1>Thêm mới người dùng vào nhóm.</h1>
-  </div>
-  <form *ngIf="formAddUserToGroup" [formGroup]="formAddUserToGroup" (ngSubmit)="searchByEmail()">
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="key">
-    </div>
-    <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="alert">
-      <div *ngIf="email?.errors?.['required']" class="text-danger">
-        Không được để trống
+    <form *ngIf="formAddUserToGroup" [formGroup]="formAddUserToGroup" (ngSubmit)="searchByEmail()">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+          formControlName="key">
       </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Thêm</button>
-  </form>
-
-</div>
+      <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="alert">
+        <div *ngIf="email?.errors?.['required']" class="text-danger">
+          Không được để trống
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Thêm</button>
+    </form>
