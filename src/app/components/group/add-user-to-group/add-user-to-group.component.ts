@@ -14,10 +14,13 @@ import {ToastrService} from "ngx-toastr";
   styleUrls: ['./add-user-to-group.component.css']
 })
 export class AddUserToGroupComponent implements OnInit {
+
   formAddUserToGroup?: FormGroup;
   idGroup?: any;
   idUser?: any;
   notice?: any
+
+
 
   constructor(private groupService: GroupService,
               private fb: FormBuilder,
@@ -28,6 +31,7 @@ export class AddUserToGroupComponent implements OnInit {
               private dialogRef: MatDialogRef<GroupCreateComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,) {
   }
+
 
   ngOnInit(): void {
     this.formAddUserToGroup = this.fb.group({
@@ -59,8 +63,10 @@ export class AddUserToGroupComponent implements OnInit {
       if (res.status == 'success') {
         this.toastr.success('Thêm mới người dùng thành công ');
         this.onClose();
+      } else if (res.status =='error'){
+        this.toastr.warning('Người dùng đã có trong nhóm');
       } else {
-        this.toastr.warning('Người dùng này đã có trong nhóm');
+        this.toastr.error('Người dùng không tồn tại')
       }
     })
   }
@@ -71,4 +77,10 @@ export class AddUserToGroupComponent implements OnInit {
     this.router.navigate(['/load-home'])
   }
 
+  onCancel(){
+    this.formAddUserToGroup?.reset();
+    this.dialogRef.close();
+  }
+
 }
+

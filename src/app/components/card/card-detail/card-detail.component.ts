@@ -2,10 +2,12 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CardService} from "../../../services/card.service";
 import {BoardService} from "../../../services/board.service";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef} from "@angular/material/dialog";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
 import {AuthService} from "../../../services/auth.service";
+import {AddUserIntoCardComponent} from "../add-user-into-card/add-user-into-card.component";
+import {TagService} from "../../../services/tag.service";
 
 @Component({
   selector: 'app-card-detail',
@@ -17,24 +19,25 @@ export class CardDetailComponent implements OnInit {
 
   formDetailCard?: FormGroup;
   formComment?: FormGroup;
-  formEdit?: FormGroup;
   content: boolean = false;
   title: boolean = false;
   user: any;
   users: any;
   listComment?: any;
-  userCmtId?: any;
+  role: any;
+  id:any
 
   constructor(
     private cardService: CardService,
     private boardService: BoardService,
     private authService: AuthService,
+    private tagService: TagService,
     private fb: FormBuilder,
     private fb1: FormBuilder,
-    private fb2: FormBuilder,
     private dialogRef: MatDialogRef<CardDetailComponent>,
     private router: Router,
     private toastr: ToastrService,
+    private matDialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
   }
@@ -51,7 +54,7 @@ export class CardDetailComponent implements OnInit {
     this.title = true
   }
 
-  edit2() {
+  update() {
     this.title = false
     this.content = false
     let data = this.formDetailCard?.value
@@ -63,18 +66,19 @@ export class CardDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let id = this.cardService.getListId()
+    this.id = this.cardService.getListId()
     this.authService.getProfile().subscribe(res => {
       this.user = res
     })
 
-    this.cardService.index(id).subscribe(res => {
+    this.cardService.index(this.id).subscribe(res => {
       this.listComment = res.comments
       this.formDetailCard = this.fb.group({
         id: [res.card.id, [Validators.required]],
         title: [res.card.title, [Validators.required]],
         contents: [res.card.content, [Validators.required]],
       })
+      this.tagService.setId(res.card.id)
       if (this.formDetailCard.value.contents == '') {
         this.content2()
       }
@@ -82,9 +86,14 @@ export class CardDetailComponent implements OnInit {
     this.formComment = this.fb1.group({
       contentsCmt: ['', [Validators.required]]
     })
-    this.formEdit = this.fb2.group({
-      contentsCmt: ['', [Validators.required]]
+
+    let idBoard = this.boardService.getBoardId()
+    console.log(idBoard)
+    this.boardService.getRole(idBoard).subscribe(res => {
+      this.role = res.data
     })
+    console.log(this.role)
+
   }
 
   onClose() {
@@ -112,7 +121,16 @@ export class CardDetailComponent implements OnInit {
     })
   }
 
-  deleteCmt(id: any, index: number) {
+  openDialogAddUsersIntoCard() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "20%";
+    dialogConfig.minHeight = "40%";
+    dialogConfig.height = "50%";
+    this.matDialog.open(AddUserIntoCardComponent, dialogConfig);
+  }
+
+  deleteCmt(id: any,index:number) {
     this.cardService.deleteCmt(id).subscribe(res => {
       if (res.status == 'success') {
         this.toastr.success(res.message);
@@ -124,12 +142,9 @@ export class CardDetailComponent implements OnInit {
   }
 
   deleteCard() {
-    this.cardService.deleteCard(93).subscribe(res => {
-      if (res.status == 'success') {
-        this.toastr.success(res.message);
-      } else {
-        this.toastr.warning(res.message);
-      }
+    this.id = this.cardService.getListId()
+    this.cardService.deleteCard(this.id).subscribe(res => {
+      this.onClose()
     })
   }
 

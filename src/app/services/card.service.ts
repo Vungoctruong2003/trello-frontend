@@ -45,7 +45,7 @@ export class CardService {
     let header = {
       headers: new HttpHeaders().set("Authorization", `Bearer ${token}`)
     }
-    return this.http.delete<any>(API_URL + '/card/store'+id ,header);
+    return this.http.delete<any>(API_URL + '/card/delete/'+id ,header);
   }
 
   index(id: any): Observable<any> {

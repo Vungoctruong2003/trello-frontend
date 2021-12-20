@@ -58,5 +58,10 @@ export class CardCreateComponent implements OnInit {
     this.router.navigate(['/load'])
   }
 
+  onCancel(){
+    this.formCreateCard?.reset();
+    this.dialogRef.close()
+  }
+
 
 }

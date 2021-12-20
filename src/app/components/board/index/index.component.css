@@ -43,29 +43,10 @@
   border: 1px solid rgb(207, 207, 207);
 }
 
-
-
-/*.helo{*/
-/*  margin-right: 20px;*/
-/*}*/
-
-/*.container-fluid{*/
-
-/*}*/
-
-/*table {*/
-/*  width: 100%;*/
-/*}*/
-/*.hic*/
-/*{ background-color: #d52a1a;*/
-/*  width: 100%;*/
-/*  overflow-x: auto;*/
-/*}*/
-
 .cdk-virtual-scroll-data-source-example .example-viewport {
   height: 800px;
   width: 100%;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
 }
 
 .cdk-virtual-scroll-data-source-example .example-viewport .cdk-virtual-scroll-content-wrapper {
@@ -79,4 +60,16 @@
 
 .cdk-virtual-scroll-content-wrapper {
   width: 100%;
+}
+
+
+
+.example-viewport {
+  height: 200px;
+  width: 200px;
+  /*border: 1px solid black;*/
+}
+
+.example-item {
+  height: 50px;
 }

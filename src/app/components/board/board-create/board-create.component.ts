@@ -57,4 +57,9 @@ export class BoardCreateComponent implements OnInit {
     this.router.navigate(['/load-home']);
   }
 
+  onCancel(){
+    this.formCreateBoard?.reset();
+    this.dialogRef.close();
+  }
+
 }
