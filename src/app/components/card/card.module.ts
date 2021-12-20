@@ -3,7 +3,10 @@ import { CommonModule } from '@angular/common';
 import { CardCreateComponent } from './card-create/card-create.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { CardDetailComponent } from './card-detail/card-detail.component';
-import { TagComponent } from './tag/tag.component';
+import {MatButtonModule} from "@angular/material/button";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatInputModule} from "@angular/material/input";
+import { AddUserIntoCardComponent } from './add-user-into-card/add-user-into-card.component';
 
 
 
@@ -11,12 +14,15 @@ import { TagComponent } from './tag/tag.component';
   declarations: [
     CardCreateComponent,
     CardDetailComponent,
-    TagComponent
+    AddUserIntoCardComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatInputModule
   ]
 })
 export class CardModule { }

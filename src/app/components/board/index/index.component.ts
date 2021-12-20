@@ -139,7 +139,7 @@ export class IndexComponent implements OnInit {
     this.cardService.setListId(id)
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "65%";
+    dialogConfig.width = "50%";
     dialogConfig.minHeight = "50%";
     dialogConfig.height = "80%";
     this.matDialog.open(CardDetailComponent, dialogConfig);
