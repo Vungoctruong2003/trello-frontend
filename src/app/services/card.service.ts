@@ -40,6 +40,13 @@ export class CardService {
     }
     return this.http.post<any>(API_URL + '/card/store', data, header);
   }
+  deleteCard(id:any): Observable<any> {
+    let token = localStorage.getItem('access_token')
+    let header = {
+      headers: new HttpHeaders().set("Authorization", `Bearer ${token}`)
+    }
+    return this.http.delete<any>(API_URL + '/card/delete/'+id ,header);
+  }
 
   index(id: any): Observable<any> {
     let token = localStorage.getItem('access_token')
