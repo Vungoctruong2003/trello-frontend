@@ -1,10 +1,11 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { BoardService } from 'src/app/services/board.service';
-import { GroupService } from 'src/app/services/group.service';
+import {Component, Inject, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
+import {BoardService} from 'src/app/services/board.service';
+import {GroupService} from 'src/app/services/group.service';
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
   selector: 'app-get-user',
@@ -16,6 +17,8 @@ export class GetUserComponent implements OnInit {
   users: any[] = []
   formChangeRole?: FormGroup
   id?: number
+  role?: number
+
   constructor(
     private boardService: BoardService,
     private groupService: GroupService,
@@ -34,6 +37,10 @@ export class GetUserComponent implements OnInit {
     this.formChangeRole = this.fb.group({
       'role': ['']
     })
+    let id = this.boardService.getGroupId()
+    this.groupService.getRole(id).subscribe(res => {
+      this.role = res.data
+    })
   }
 
   getUser() {
@@ -43,23 +50,20 @@ export class GetUserComponent implements OnInit {
   }
 
   changeRole(id: any, role: any) {
-    if (role == 1) {
-      let data = this.formChangeRole?.value
-      console.log(data)
-      this.groupService.changeRole(data, id).subscribe(res => {
-
-      })
-    }
+    let data = this.formChangeRole?.value
+    console.log(data)
+    this.groupService.changeRole(data, id).subscribe(res => {
+    })
   }
 
-  delete(id: any, role: any,index: any) {
-    if(confirm('Ban chac chan muon xoa chu ?')){
+  delete(id: any, role: any, index: any) {
+    if (confirm('Ban chac chan muon xoa chu ?')) {
       this.groupService.delete(id).subscribe(res => {
-      this.users.splice(index,1)
+        this.users.splice(index, 1)
       })
 
     }
-    
+
   }
 
   onClose() {

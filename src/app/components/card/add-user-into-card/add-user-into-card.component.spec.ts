@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TagComponent } from './tag.component';
+import { AddUserIntoCardComponent } from './add-user-into-card.component';
 
-describe('TagComponent', () => {
-  let component: TagComponent;
-  let fixture: ComponentFixture<TagComponent>;
+describe('AddUserIntoCardComponent', () => {
+  let component: AddUserIntoCardComponent;
+  let fixture: ComponentFixture<AddUserIntoCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TagComponent ]
+      declarations: [ AddUserIntoCardComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TagComponent);
+    fixture = TestBed.createComponent(AddUserIntoCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
