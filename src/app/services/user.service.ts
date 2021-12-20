@@ -48,4 +48,5 @@ export class UserService {
     }
     return this.http.post<any>(API_URL + '/auth/searchEmail',data,header);
   }
+
 }

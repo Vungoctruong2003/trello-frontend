@@ -1,17 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardCreateComponent } from './card-create/card-create.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { CardDetailComponent } from './card-detail/card-detail.component';
+import { TagComponent } from './tag/tag.component';
 
 
 
 @NgModule({
   declarations: [
-    CardCreateComponent
+    CardCreateComponent,
+    CardDetailComponent,
+    TagComponent
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class CardModule { }
