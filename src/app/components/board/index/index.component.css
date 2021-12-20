@@ -46,7 +46,7 @@
 .cdk-virtual-scroll-data-source-example .example-viewport {
   height: 800px;
   width: 100%;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
 }
 
 .cdk-virtual-scroll-data-source-example .example-viewport .cdk-virtual-scroll-content-wrapper {
@@ -60,4 +60,16 @@
 
 .cdk-virtual-scroll-content-wrapper {
   width: 100%;
+}
+
+
+
+.example-viewport {
+  height: 200px;
+  width: 200px;
+  /*border: 1px solid black;*/
+}
+
+.example-item {
+  height: 50px;
 }

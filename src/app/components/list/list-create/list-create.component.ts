@@ -55,4 +55,9 @@ export class ListCreateComponent implements OnInit {
     this.router.navigate(['/load']);
   }
 
+  onCancel(){
+    this.formCreateList?.reset();
+    this.dialogRef.close();
+  }
+
 }

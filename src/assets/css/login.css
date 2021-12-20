@@ -1716,7 +1716,7 @@ footer p {
 }
 
 .atlassian-brand .global-footer {
-  margin-bottom: 24px;
+  margin-bottom: 0px;
   font-size: 14px;
   line-height: 20px;
   margin-top: 10px

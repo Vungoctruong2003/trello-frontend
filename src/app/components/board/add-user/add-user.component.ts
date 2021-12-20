@@ -59,7 +59,7 @@ export class AddUserComponent implements OnInit {
 
     this.addUserOnBoard?.reset();
     this.dialogRef.close();
-    this.router.navigate(['/load-home']);
+    // this.router.navigate(['/load-home']);
   }
 
 }

@@ -4,6 +4,7 @@ import { CardCreateComponent } from './card-create/card-create.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { CardDetailComponent } from './card-detail/card-detail.component';
 import { TagComponent } from './tag/tag.component';
+import {MatButtonModule} from "@angular/material/button";
 
 
 
@@ -13,10 +14,11 @@ import { TagComponent } from './tag/tag.component';
     CardDetailComponent,
     TagComponent
   ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    FormsModule
-  ]
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatButtonModule
+    ]
 })
 export class CardModule { }
