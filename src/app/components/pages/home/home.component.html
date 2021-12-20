@@ -128,7 +128,8 @@
             <div class="card-body">
               <h1 class="" style="font-weight: bold;">{{ groups[i].group.title }}</h1>
               <hr>
-              <p (click)="openDialogAddUserToGroup(groups[i].group.id,groups[i].role)"> Thêm người dùng</p>
+              <a class="a" (click)="openDialogGetUser(groups[i].group.id)"> Thành viên </a> |
+              <a *ngIf="groups[i].role == 1" class="a" (click)="openDialogAddUserToGroup(groups[i].group.id,groups[i].role)"> Thêm người dùng</a>
             </div>
 
               <div class="row mb-4 pl-4 pr-4">

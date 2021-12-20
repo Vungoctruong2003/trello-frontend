@@ -9,7 +9,7 @@ const API_URL = `${environment.apiUrl}`;
 })
 export class BoardService {
 
-  groupId?:number
+  groupId:any
   boardId?:number
   listId?:number
 
@@ -71,7 +71,7 @@ export class BoardService {
     return this.http.get<any>(API_URL + '/board/getRole/'+ id,header);
   }
 
-  getGroupId():number | undefined {
+  getGroupId():any  {
       return this.groupId
   }
 
@@ -79,7 +79,7 @@ export class BoardService {
     return this.groupId = id
   }
 
-  getBoardId():number | undefined {
+  getBoardId():any {
       return this.boardId
   }
 
