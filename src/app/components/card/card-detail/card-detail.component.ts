@@ -17,11 +17,13 @@ export class CardDetailComponent implements OnInit {
 
   formDetailCard?: FormGroup;
   formComment?: FormGroup;
+  formEdit?: FormGroup;
   content: boolean = false;
   title: boolean = false;
   user: any;
   users: any;
   listComment?: any;
+  userCmtId?: any;
 
   constructor(
     private cardService: CardService,
@@ -29,6 +31,7 @@ export class CardDetailComponent implements OnInit {
     private authService: AuthService,
     private fb: FormBuilder,
     private fb1: FormBuilder,
+    private fb2: FormBuilder,
     private dialogRef: MatDialogRef<CardDetailComponent>,
     private router: Router,
     private toastr: ToastrService,
@@ -79,6 +82,9 @@ export class CardDetailComponent implements OnInit {
     this.formComment = this.fb1.group({
       contentsCmt: ['', [Validators.required]]
     })
+    this.formEdit = this.fb2.group({
+      contentsCmt: ['', [Validators.required]]
+    })
   }
 
   onClose() {
@@ -100,14 +106,20 @@ export class CardDetailComponent implements OnInit {
         content: contentCmt.contentsCmt,
         user: this.user
       }
-      this.listComment.push(comment)
+      if (res.status == "success") {
+        this.listComment.push(comment)
+      }
     })
   }
 
-  deleteCmt(id: any,index:number) {
+  deleteCmt(id: any, index: number) {
     this.cardService.deleteCmt(id).subscribe(res => {
-      this.toastr.success('Xoá bình luận thành công');
-      this.listComment.splice(index,1);
+      if (res.status == 'success') {
+        this.toastr.success(res.message);
+        this.listComment.splice(index, 1);
+      } else {
+        this.toastr.warning(res.message);
+      }
     })
   }
 }

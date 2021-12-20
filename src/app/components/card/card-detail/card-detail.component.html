@@ -85,12 +85,10 @@
     <div class="fs-2 row">
       <img class="img-profile rounded-circle col-1 mt-2" style="width: 2%;height: 2%"
            src="{{comment.user.avatar}}">{{comment.user.name}}
-      <p style="font-size: medium;margin-left: 3%">{{comment.content}}</p>
+      <p style="font-size: medium;margin-left: 3%" >{{comment.content}}</p>
       <span class="row">
         <p class="col-1" style=" text-decoration: underline;
-  text-decoration-color: gray;margin-right:3px;font-size: small" (click)="deleteCmt(comment.id,i)">xoá</p>
-        <p class="col-1" style=" text-decoration: underline;
-  text-decoration-color: gray;margin-right:3px;font-size: small">sửa</p>
+  text-decoration-color: gray;margin-right:3px;font-size: small" (click)="deleteCmt(comment.id,i)">Xoá</p>
       </span>
       <hr>
     </div>
