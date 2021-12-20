@@ -122,4 +122,15 @@ export class CardDetailComponent implements OnInit {
       }
     })
   }
+
+  deleteCard() {
+    this.cardService.deleteCard(93).subscribe(res => {
+      if (res.status == 'success') {
+        this.toastr.success(res.message);
+      } else {
+        this.toastr.warning(res.message);
+      }
+    })
+  }
+
 }
