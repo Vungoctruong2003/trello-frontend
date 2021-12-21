@@ -16,6 +16,6 @@
             <div *ngIf="u.role ==2" style="margin-top: -4%"><strong>Bình thường</strong></div>
         </div>
         </td>
-        <td><a (click)="confirmDeleteUser(u.id,u.role,i)"><i class="fas fa-trash-alt"></i></a></td>
+        <td *ngIf="role == 1"><a (click)="confirmDeleteUser(u.id,u.role,i)"><i class="fas fa-trash-alt"></i></a></td>
       </tr>
 </table>
