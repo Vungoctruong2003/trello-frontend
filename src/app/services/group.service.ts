@@ -63,11 +63,4 @@ export class GroupService {
     return this.http.delete<any>(API_URL + '/group/delete/'+ id,header);
   }
 
-  setUserGroupId(id:number){
-    return this.userGroupId = id
-  }
-
-  getUserGroupId():any{
-    return this.userGroupId
-  }
 }

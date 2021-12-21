@@ -53,5 +53,4 @@ export class SidebarComponent implements OnInit {
       this.toastr.warning('Bạn không có quyền chỉnh sửa')
     }
   }
-
 }

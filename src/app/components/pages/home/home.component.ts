@@ -10,6 +10,7 @@ import {AddUserToGroupComponent} from "../../group/add-user-to-group/add-user-to
 import { GetUserComponent } from '../../group/get-user/get-user.component';
 import { GroupService } from 'src/app/services/group.service';
 import { DIR_DOCUMENT_FACTORY } from '@angular/cdk/bidi/dir-document-token';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-home',
@@ -25,6 +26,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private homeService: HomeService,
               private router: Router,
+              private toastr: ToastrService,
               private matDialog: MatDialog,
               private boardService: BoardService,
               private activatedRouter: ActivatedRoute,
@@ -112,5 +114,16 @@ export class HomeComponent implements OnInit {
       dialogConfig.autoFocus = true;
       dialogConfig.width = "30%";
       this.matDialog.open(GetUserComponent, dialogConfig);
+  }
+  deleteGroup(){
+    if (this.role == 1) {
+      let id = this.boardService.getGroupId()
+      this.groupService.delete(id).subscribe(res => {
+        this.toastr.success('Không gian làm việc đã xoá thành công')
+        this.router.navigate(['/trello/home'])
+      })
+    } else {
+      this.toastr.warning('Bạn không có quyền chỉnh sửa')
+    }
   }
 }
