@@ -27,7 +27,8 @@ export class CardDetailComponent implements OnInit {
   users: any;
   listComment?: any;
   role: any;
-  id:any
+  id: any;
+  tags: any
 
   constructor(
     private cardService: CardService,
@@ -80,6 +81,9 @@ export class CardDetailComponent implements OnInit {
         title: [res.card.title, [Validators.required]],
         contents: [res.card.content, [Validators.required]],
       })
+      this.tags = res.tags
+      console.log(this.tags)
+
       this.tagService.setId(res.card.id)
       if (this.formDetailCard.value.contents == '') {
         this.content2()
@@ -113,11 +117,9 @@ export class CardDetailComponent implements OnInit {
     this.cardService.comment(data).subscribe(res => {
       this.formComment?.reset();
       this.toastr.success('Thêm mới bình luận thành công');
-      let comment = {
-        content: contentCmt.contentsCmt,
-        user: this.user
-      }
       if (res.status == "success") {
+        let comment = res.data[0]
+        console.log(res.data[0])
         this.listComment.push(comment)
       }
     })
@@ -139,7 +141,7 @@ export class CardDetailComponent implements OnInit {
   //   })
   // }
 
-  confirmDeleteCmt(id:any,index:number){
+  confirmDeleteCmt(id: any, index: number) {
     Swal.fire({
       title: 'Bạn có chắc chắn muốn bình luận này xóa không ?',
       // text: 'Bạn sẽ không thể khôi phục tệp này!',
@@ -172,7 +174,7 @@ export class CardDetailComponent implements OnInit {
     })
   }
 
-  confirmDeleteCard(){
+  confirmDeleteCard() {
     Swal.fire({
       title: 'Bạn có chắc chắn muốn xóa thẻ này không ?',
       // text: 'Bạn sẽ không thể khôi phục tệp này!',

@@ -1,9 +1,11 @@
-<div class="cdk-virtual-scroll-data-source-example " style="background-image:url('https://upanh123.com/wp-content/uploads/2019/05/anh-vui-nhon-hoat-hinh_042020886-1.jpg') ">
-  <cdk-virtual-scroll-viewport orientation="horizontal" itemSize="50"  class="example-viewport" >
-    <div cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drip($event)" style="min-width: max-content">
-      <div class="container-fluid" >
+<div class="cdk-virtual-scroll-data-source-example "
+     style="background-image:url('https://upanh123.com/wp-content/uploads/2019/05/anh-vui-nhon-hoat-hinh_042020886-1.jpg') ">
+  <cdk-virtual-scroll-viewport orientation="horizontal" itemSize="50" class="example-viewport">
+    <div cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drip($event)"
+         style="min-width: max-content">
+      <div class="container-fluid">
         <div cdkDropListGroup style="overflow: auto" class="mt-3">
-          <div class="mat-card " *ngFor="let ar of listCards,let i =index "  cdkDrag
+          <div class="mat-card " *ngFor="let ar of listCards,let i =index " cdkDrag
                style="min-width: 300px; float: left; margin-left: 15px">
             <!-- Column Title -->
             <div class="d-flex justify-content-between align-items-center p-2 shadow-sm column-header pb-3 mt-2">
@@ -12,30 +14,28 @@
                 <mat-icon style="font-size: 20px;" (click)="confirmDeleteList(lists[i].id)">delete</mat-icon>
               </button>
             </div>
-
-
-            <div cdkDropList [cdkDropListData]="ar" class="example-list" (cdkDropListDropped)="drop($event)" style="min-height: max-content;">
+            <div cdkDropList [cdkDropListData]="ar" class="example-list" (cdkDropListDropped)="drop($event)"
+                 style="min-height: max-content;">
               <div cdkDrag class="example-box" *ngFor="let item of ar">
-                <mat-card class=" card" style="width: 100%;height: 100%" (click)="openDialogDetailCard(item.id)">{{item.title}}</mat-card>
+                <mat-card class=" card" style="width: 100%;height: 100%"
+                          (click)="openDialogDetailCard(item.id)">{{item.title}}</mat-card>
               </div>
-              <div class="example-box"  >
-                <button class="card btn btn-outline-primary" style="padding-top: 15px;width: 100%;height: 100%" (click)="openDialogCreateCard(lists[i].id)"><span
+              <div class="example-box">
+                <button class="card btn btn-outline-primary" style="padding-top: 15px;width: 100%;height: 100%"
+                        (click)="openDialogCreateCard(lists[i].id)"><span
                   class="glyphicon" style="margin-left: 47%">&#x2b;</span>
                 </button>
               </div>
             </div>
-
-
           </div>
           <div class="mb-3" style="float: left">
             <a (click)="openDialogCreateList()">
-            <div
-              class="mat-card d-flex justify-content-between align-items-center p-2 shadow-sm column-header pb-3 " style="margin-left: 15px;width: 268px;height: 47px">
-<!--              <div class="text-center mt-2 mb-2">-->
-                <span class="glyphicon">&#x2b; Thêm danh sách khác </span>
-<!--              </div>-->
-            </div>
-          </a>
+              <div
+                class="mat-card d-flex justify-content-between align-items-center p-2 shadow-sm column-header pb-3 "
+                style="margin-left: 15px;width: 268px;height: 47px">
+                <span class="glyphicon mt-1" style="margin: auto ">&#x2b; Thêm danh sách khác </span>
+              </div>
+            </a>
           </div>
         </div>
       </div>
