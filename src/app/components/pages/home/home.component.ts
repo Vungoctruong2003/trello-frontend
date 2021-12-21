@@ -65,7 +65,6 @@ export class HomeComponent implements OnInit {
   }
 
   merge(groups: any, boards: any) {
-    // console.log(this.boards)
     for (let i = 0; i < groups.length; i++) {
       this.arr[i] = []
       for (let j = 0; j < boards.length; j++) {
