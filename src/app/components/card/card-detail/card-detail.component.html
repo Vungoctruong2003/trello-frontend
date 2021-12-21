@@ -31,7 +31,7 @@
       <hr>
       <br>
       <div class="row">
-        <div class="fs-2 mb-3">
+        <div class="fs-2 mb-3 mt-5">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-justify-left"
                viewBox="0 0 16 16">
             <path fill-rule="evenodd"
@@ -49,7 +49,7 @@
 
     </form>
     <form *ngIf="formComment" [formGroup]="formComment" style=" margin-left: 50px">
-      <div class="fs-2 mb-3">
+      <div class="fs-2 mb-3 mt-5">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-vector-pen"
              viewBox="0 0 16 16">
           <path fill-rule="evenodd"
@@ -60,7 +60,7 @@
       </div>
 
       <div class="fs-2 mb-3 row">
-        <img class="img-profile rounded-circle col-1" style="width: 3%;height: 3%"
+        <img class="img-profile rounded-circle col-2" style="max-width: 12%;height: 3%"
              src="{{user.avatar}}">
         <span class="col-10">
         <input type="text" class="form-control display-6 ml-2"
@@ -71,20 +71,22 @@
       </div>
     </form>
 
-
-    <div *ngFor="let comment of listComment,let i=index" class="ml-5">
-      <div class="fs-2 row">
-        <img class="img-profile rounded-circle col-1 mt-2" style="width: 2%;height: 2%"
-             src="{{comment.user.avatar}}">{{comment.user.name}}
-        <p style="font-size: medium;margin-left: 7%">{{comment.content}}</p>
-        <span class="row">
-        <p class="col-1" style=" text-decoration: underline;
-  text-decoration-color: gray;margin-right:3px;font-size: small" (click)="deleteCmt(comment.id,i)">Xoá</p>
+    <div class="mt-5">
+      <div *ngFor="let comment of listComment,let i=index" class="ml-5 ">
+        <div class="fs-2 row">
+          <img class="img-profile rounded-circle col-2 mt-2" style="max-width: 12%;height: 5%"
+               src="{{comment.user.avatar}}">{{comment.user.name}}
+          <p style="font-size: 15px;margin-left: 12%;margin-top: -10px">{{comment.content}}</p>
+          <span style="margin-top: -7%;margin-left: -3%">
+        <a class="col-1" style=" text-decoration: underline;
+  text-decoration-color: gray;margin-left:13%;font-size: x-small;margin-top: -30px" (click)="deleteCmt(comment.id,i)">Xoá</a>
       </span>
 
-        <hr>
+          <hr>
+        </div>
       </div>
     </div>
+
   </div>
   <div class="col-4">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
@@ -94,30 +96,33 @@
       <path fill-rule="evenodd"
             d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
     </svg>
-<!--    <br>-->
-<!--    <br>-->
-<!--    <br>-->
+    <!--    <br>-->
+    <!--    <br>-->
+    <!--    <br>-->
     <div class="ml-3">
       <p class="text-start"><strong>Thêm vào thẻ</strong></p>
       <button type="button" mat-button class="btn btn-outline-primary ml-4"
               style="width: 200px;margin-top: -10px" (click)="openDialogAddUsersIntoCard()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus"
-                     viewBox="0 0 16 16">
-                  <path
-                    d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path>
-                  <path fill-rule="evenodd"
-                        d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"></path>
-                </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus"
+             viewBox="0 0 16 16">
+          <path
+            d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path>
+          <path fill-rule="evenodd"
+                d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"></path>
+        </svg>
         Tham gia
       </button>
     </div>
     <div class="ml-3">
       <p class="text-start"><strong>Xoá thẻ</strong></p>
       <button type="button" mat-button class="btn btn-outline-secondary ml-4"
-              style="width: 200px;margin-top: -10px" (click)="deleteCard()" >
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-x" viewBox="0 0 16 16">
-          <path d="M6.854 7.146a.5.5 0 1 0-.708.708L7.293 9l-1.147 1.146a.5.5 0 0 0 .708.708L8 9.707l1.146 1.147a.5.5 0 0 0 .708-.708L8.707 9l1.147-1.146a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146z"/>
-          <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+              style="width: 200px;margin-top: -10px" (click)="deleteCard()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-x"
+             viewBox="0 0 16 16">
+          <path
+            d="M6.854 7.146a.5.5 0 1 0-.708.708L7.293 9l-1.147 1.146a.5.5 0 0 0 .708.708L8 9.707l1.146 1.147a.5.5 0 0 0 .708-.708L8.707 9l1.147-1.146a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146z"/>
+          <path
+            d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
         </svg>
         Xoá thẻ
       </button>
