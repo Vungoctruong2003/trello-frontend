@@ -30,6 +30,17 @@
       </div>
       <hr>
       <br>
+
+      <div *ngIf="tags.length != 0">
+        <p>Thành viên</p>
+      </div>
+      <div style="display: inline-block;margin-top: -5%">
+        <div class="row">
+          <img *ngFor="let tag of tags" class="img-profile rounded-circle col-2 mt-2" style="max-width: 12%;height: 5%"
+               src="{{tag.user.avatar}}">
+        </div>
+      </div>
+
       <div class="row">
         <div class="fs-2 mb-3 mt-5">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-justify-left"
@@ -78,7 +89,7 @@
                src="{{comment.user.avatar}}">{{comment.user.name}}
           <p style="font-size: 15px;margin-left: 12%;margin-top: -10px">{{comment.content}}</p>
           <span style="margin-top: -7%;margin-left: -3%">
-        <a class="col-1" style=" text-decoration: underline;
+        <a *ngIf="comment.user.id == user.id" class="col-1" style=" text-decoration: underline;
   text-decoration-color: gray;margin-left:13%;font-size: x-small;margin-top: -30px" (click)="confirmDeleteCmt(comment.id,i)">Xoá</a>
       </span>
 
