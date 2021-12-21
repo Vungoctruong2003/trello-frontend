@@ -55,12 +55,12 @@ export class GroupService {
     return this.http.get<any>(API_URL + '/group/getRole/'+ id,header);
   }
 
-  delete(id:any):Observable<any>{
+  delete(data:any):Observable<any>{
     let token = localStorage.getItem('access_token')
     let header = {
       headers: new HttpHeaders().set("Authorization",`Bearer ${token}`)
     }
-    return this.http.get<any>(API_URL + '/group/delete/'+ id,header);
+    return this.http.post<any>(API_URL + '/group/delete' ,data,header);
   }
 
 }

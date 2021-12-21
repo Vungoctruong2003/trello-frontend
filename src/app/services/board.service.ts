@@ -90,6 +90,22 @@ export class BoardService {
     return this.http.get<any>(API_URL + '/board/getUsers/' + id, header);
   }
 
+  changeRole(data:any, id:any):Observable<any>{
+    let token = localStorage.getItem('access_token')
+    let header = {
+      headers: new HttpHeaders().set("Authorization",`Bearer ${token}`)
+    }
+    return this.http.put<any>(API_URL + '/board/changeRole/'+ id,data,header);
+  }
+
+  delete(id:any):Observable<any>{
+    let token = localStorage.getItem('access_token')
+    let header = {
+      headers: new HttpHeaders().set("Authorization",`Bearer ${token}`)
+    }
+    return this.http.delete<any>(API_URL + '/board/delete-user/'+ id,header);
+  }
+
   getGroupId(): any {
     return this.groupId
   }
