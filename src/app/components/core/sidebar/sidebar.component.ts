@@ -31,12 +31,26 @@ export class SidebarComponent implements OnInit {
     })
   }
 
-  changeAvatar() {
-    if (this.role == 1) {
+  AddUserToBoard() {
+    if (this.role == 1 || this.role == 2) {
       const dialogConfig = new MatDialogConfig();
       dialogConfig.autoFocus = true;
       dialogConfig.width = "30%";
       this.matDialog.open(AddUserComponent, dialogConfig);
+    } else {
+      this.toastr.warning('Bạn không có quyền chỉnh sửa')
+    }
+  }
+
+  deleteBoard() {
+    if (this.role == 1) {
+      let id = this.boardService.getBoardId()
+      this.boardService.deleteBoard(id).subscribe(res => {
+        this.toastr.success('Bảng đã xoá bảng thành công')
+        this.route.navigate(['/trello/home'])
+      })
+    } else {
+      this.toastr.warning('Bạn không có quyền chỉnh sửa')
     }
   }
 

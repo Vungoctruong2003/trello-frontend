@@ -80,7 +80,7 @@ export class HomeComponent implements OnInit {
   openDialogCreateGroup() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "20%";
+    dialogConfig.width = "30%";
     this.matDialog.open(GroupCreateComponent, dialogConfig);
   }
 
@@ -89,7 +89,7 @@ export class HomeComponent implements OnInit {
       this.boardService.setGroupId(id)
       const dialogConfig = new MatDialogConfig();
       dialogConfig.autoFocus = true;
-      dialogConfig.width = "20%";
+      dialogConfig.width = "30%";
       this.matDialog.open(BoardCreateComponent, dialogConfig);
     }
   }
@@ -100,7 +100,7 @@ export class HomeComponent implements OnInit {
       this.boardService.setGroupId(id)
       const dialogConfig = new MatDialogConfig();
       dialogConfig.autoFocus = true;
-      dialogConfig.width = "20%";
+      dialogConfig.width = "30%";
       this.matDialog.open(AddUserToGroupComponent, dialogConfig);
     }
   }
@@ -109,7 +109,7 @@ export class HomeComponent implements OnInit {
       this.boardService.setGroupId(id)
       const dialogConfig = new MatDialogConfig();
       dialogConfig.autoFocus = true;
-      dialogConfig.width = "50%";
+      dialogConfig.width = "30%";
       this.matDialog.open(GetUserComponent, dialogConfig);
   }
 }
