@@ -134,4 +134,13 @@ export class CardDetailComponent implements OnInit {
       this.listComment.splice(index,1);
     })
   }
+
+  openDialogDeleteCmt(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "20%";
+    dialogConfig.minHeight = "40%";
+    dialogConfig.height = "50%";
+    // this.matDialog.open(Delete,dialogConfig)
+  }
 }
