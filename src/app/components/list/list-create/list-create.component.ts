@@ -38,7 +38,6 @@ export class ListCreateComponent implements OnInit {
     console.log(data);
     this.listService.createList(data).subscribe(res => {
       if (res.status == 'success') {
-        this.toastr.success('Tạo mới danh sách thẻ thành công ');
         this.onClose();
       }else{}
     })
@@ -49,7 +48,6 @@ export class ListCreateComponent implements OnInit {
   }
 
   onClose(){
-
     this.formCreateList?.reset();
     this.dialogRef.close();
     this.router.navigate(['/load']);
