@@ -27,7 +27,8 @@ export class CardDetailComponent implements OnInit {
   users: any;
   listComment?: any;
   role: any;
-  id: any
+  id: any;
+  tags: any
 
   constructor(
     private cardService: CardService,
@@ -80,6 +81,9 @@ export class CardDetailComponent implements OnInit {
         title: [res.card.title, [Validators.required]],
         contents: [res.card.content, [Validators.required]],
       })
+      this.tags = res.tags
+      console.log(this.tags)
+
       this.tagService.setId(res.card.id)
       if (this.formDetailCard.value.contents == '') {
         this.content2()

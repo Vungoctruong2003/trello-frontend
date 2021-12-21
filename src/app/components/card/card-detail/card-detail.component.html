@@ -80,6 +80,9 @@
           <span style="margin-top: -7%;margin-left: -3%">
         <a *ngIf="comment.user.id == user.id" class="col-1" style=" text-decoration: underline;
   text-decoration-color: gray;margin-left:13%;font-size: x-small;margin-top: -30px" (click)="confirmDeleteCmt(comment.id,i)">Xoá</a>
+        <a class="col-1" style=" text-decoration: underline;
+  text-decoration-color: gray;margin-left:13%;font-size: x-small;margin-top: -30px"
+           (click)="confirmDeleteCmt(comment.id,i)">Xoá</a>
       </span>
 
           <hr>

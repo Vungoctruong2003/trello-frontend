@@ -76,6 +76,7 @@ export class ChangeAvatarComponent implements OnInit {
           this.downloadURL.subscribe(url => {
             if (url) {
               this.fb = url;
+              this.avatar = url
             }
           });
         })
