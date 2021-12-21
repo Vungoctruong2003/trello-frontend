@@ -7,9 +7,11 @@ import {HomeService} from 'src/app/services/home.service';
 import {BoardCreateComponent} from '../../board/board-create/board-create.component';
 import {GroupCreateComponent} from '../../group/group-create/group-create.component';
 import {AddUserToGroupComponent} from "../../group/add-user-to-group/add-user-to-group.component";
-import { GetUserComponent } from '../../group/get-user/get-user.component';
-import { GroupService } from 'src/app/services/group.service';
-import { DIR_DOCUMENT_FACTORY } from '@angular/cdk/bidi/dir-document-token';
+import {GetUserComponent} from '../../group/get-user/get-user.component';
+import {GroupService} from 'src/app/services/group.service';
+import {DIR_DOCUMENT_FACTORY} from '@angular/cdk/bidi/dir-document-token';
+import {ToastrService} from "ngx-toastr";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-home',
@@ -20,11 +22,12 @@ export class HomeComponent implements OnInit {
   groups: any;
   boards: any;
   arr: any = [];
-  id?: number
+  id?: any
   role: any = 3;
 
   constructor(private homeService: HomeService,
               private router: Router,
+              private toastr: ToastrService,
               private matDialog: MatDialog,
               private boardService: BoardService,
               private activatedRouter: ActivatedRoute,
@@ -66,7 +69,6 @@ export class HomeComponent implements OnInit {
   merge(groups: any, boards: any) {
     // console.log(this.boards)
     for (let i = 0; i < groups.length; i++) {
-      console.log(i)
       this.arr[i] = []
       for (let j = 0; j < boards.length; j++) {
         if (groups[i].group.id == boards[j].board.group_id) {
@@ -106,10 +108,56 @@ export class HomeComponent implements OnInit {
   }
 
   openDialogGetUser(id: any) {
-      this.boardService.setGroupId(id)
-      const dialogConfig = new MatDialogConfig();
-      dialogConfig.autoFocus = true;
-      dialogConfig.width = "30%";
-      this.matDialog.open(GetUserComponent, dialogConfig);
+    this.boardService.setGroupId(id)
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "30%";
+    this.matDialog.open(GetUserComponent, dialogConfig);
+  }
+
+  // deleteGroup(role: any,id:any) {
+  //   if (role == 1 || role == 2) {
+  //     this.groupService.delete(id).subscribe(res => {
+  //       console.log(res)
+  //       this.toastr.success('Không gian làm việc đã xoá thành công')
+  //       this.router.navigate(['/load-home'])
+  //     })
+  //   } else {
+  //     this.toastr.warning('Bạn không có quyền chỉnh sửa')
+  //   }
+  // }
+
+  confirmDeleteGroup(role: any, id: any) {
+    Swal.fire({
+      title: 'Bạn có chắc chắn muốn xóa không gian làm việc này không ?',
+      // text: 'Bạn sẽ không thể khôi phục tệp này!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Đồng ý xóa!',
+      cancelButtonText: 'Hủy'
+    }).then((result) => {
+      if (result.value) {
+        if (role == 1 || role == 2) {
+          this.groupService.delete(id).subscribe(res => {
+            console.log(res)
+            this.toastr.success('Không gian làm việc đã xoá thành công')
+            this.router.navigate(['/load-home'])
+          })
+        } else {
+          this.toastr.warning('Bạn không có quyền chỉnh xóa không gian này')
+        }
+        Swal.fire(
+          'Đã xóa !',
+          'Không gian làm việc đã bị xóa !.',
+          'success'
+        )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Đã hủy',
+          'Không gian làm việc không được xóa !',
+          'error'
+        )
+      }
+    })
   }
 }

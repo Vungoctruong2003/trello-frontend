@@ -8,6 +8,8 @@ import {ToastrService} from "ngx-toastr";
 import {AuthService} from "../../../services/auth.service";
 import {AddUserIntoCardComponent} from "../add-user-into-card/add-user-into-card.component";
 import {TagService} from "../../../services/tag.service";
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-card-detail',
@@ -130,21 +132,72 @@ export class CardDetailComponent implements OnInit {
     this.matDialog.open(AddUserIntoCardComponent, dialogConfig);
   }
 
-  deleteCmt(id: any,index:number) {
-    this.cardService.deleteCmt(id).subscribe(res => {
-      if (res.status == 'success') {
-        this.toastr.success(res.message);
-        this.listComment.splice(index, 1);
-      } else {
-        this.toastr.warning(res.message);
+  // deleteCard() {
+  //   this.id = this.cardService.getListId()
+  //   this.cardService.deleteCard(this.id).subscribe(res => {
+  //     this.onClose()
+  //   })
+  // }
+
+  confirmDeleteCmt(id:any,index:number){
+    Swal.fire({
+      title: 'Bạn có chắc chắn muốn bình luận này xóa không ?',
+      // text: 'Bạn sẽ không thể khôi phục tệp này!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Đồng ý xóa!',
+      cancelButtonText: 'Hủy'
+    }).then((result) => {
+      if (result.value) {
+        this.cardService.deleteCmt(id).subscribe(res => {
+          if (res.status == 'success') {
+            this.toastr.success(res.message);
+            this.listComment.splice(index, 1);
+          } else {
+            // this.toastr.warning(res.message);
+          }
+        })
+        Swal.fire(
+          'Đã xóa !',
+          'Bình luận đã bị xóa !.',
+          'success'
+        )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Đã hủy',
+          'Bình luận không được xóa !',
+          'error'
+        )
       }
     })
   }
 
-  deleteCard() {
-    this.id = this.cardService.getListId()
-    this.cardService.deleteCard(this.id).subscribe(res => {
-      this.onClose()
+  confirmDeleteCard(){
+    Swal.fire({
+      title: 'Bạn có chắc chắn muốn xóa thẻ này không ?',
+      // text: 'Bạn sẽ không thể khôi phục tệp này!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Đồng ý xóa!',
+      cancelButtonText: 'Hủy'
+    }).then((result) => {
+      if (result.value) {
+        this.id = this.cardService.getListId()
+        this.cardService.deleteCard(this.id).subscribe(res => {
+          this.router.navigate(['/load'])
+        })
+        Swal.fire(
+          'Đã xóa !',
+          'Thẻ đã bị xóa !.',
+          'success'
+        )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Đã hủy',
+          'Thẻ không được xóa !',
+          'error'
+        )
+      }
     })
   }
 

@@ -87,5 +87,8 @@ export class ChangeAvatarComponent implements OnInit {
       });
   }
 
+  onCancel(){
+    this.dialogRef.close();
+  }
 
 }

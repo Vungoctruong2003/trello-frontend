@@ -10,6 +10,7 @@ import {CardService} from "../../../services/card.service";
 import {ListEditTitleComponent} from "../../list/list-edit-title/list-edit-title.component";
 import {CardDetailComponent} from "../../card/card-detail/card-detail.component";
 import {ToastrService} from "ngx-toastr";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-index',
@@ -144,12 +145,43 @@ export class IndexComponent implements OnInit {
     this.matDialog.open(CardDetailComponent, dialogConfig);
   }
 
-  deleteList(id:any) {
-    if (this.role == 1 || this.role == 2) {
-      this.listService.deleteList(id).subscribe(res => {
-        this.router.navigate(['/load'])
-        this.toastr.success('Xoá danh sách các thẻ thành công');
-      })
-    }
+  // deleteList(id:any) {
+  //   if (this.role == 1 || this.role == 2) {
+  //     this.listService.deleteList(id).subscribe(res => {
+  //       this.router.navigate(['/load'])
+  //       this.toastr.success('Xoá danh sách các thẻ thành công');
+  //     })
+  //   }
+  // }
+
+  confirmDeleteList(id:any){
+    Swal.fire({
+      title: 'Bạn có chắc chắn muốn xóa danh sách này ?',
+      // text: 'Bạn sẽ không thể khôi phục tệp này!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Đồng ý xóa!',
+      cancelButtonText: 'Hủy'
+    }).then((result) => {
+      if (result.value) {
+        if (this.role == 1 || this.role == 2) {
+          this.listService.deleteList(id).subscribe(res => {
+            this.router.navigate(['/load'])
+            this.toastr.success('Xoá danh sách các thẻ thành công');
+          })
+        }
+        Swal.fire(
+          'Đã xóa !',
+          'Danh sách đã bị xóa !.',
+          'success'
+        )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Đã hủy',
+          'Không xóa danh sách này !',
+          'error'
+        )
+      }
+    })
   }
 }

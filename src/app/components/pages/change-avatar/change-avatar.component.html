@@ -1,15 +1,14 @@
-<h1>Update Avatar</h1>
-<div class="image-out input-group mb-3">
-  <form *ngIf="formUpdateImage" [formGroup]="formUpdateImage" (ngSubmit)="update()">
-    <img src="{{avatar}}" class="image" alt="">
-    <input type="file"
-           id="file"
-           class="form-control mid"
-           #userPhoto
-           (change)="onFileSelected($event)"
-           name="image"
-           autocomplete="off"
-    />
-    <button type="submit" class="btn btn-outline-primary mid" >Update</button>
-  </form>
-</div>
+<h3>Thay đổi ảnh đại diện</h3>
+<form *ngIf="formUpdateImage" [formGroup]="formUpdateImage" (ngSubmit)="update()">
+  <label class="hoverable" style="margin: auto" for="fileInput">
+    <img src="{{avatar}}">
+    <div class="hover-text" style="font-size: 18px">Choose file</div>
+    <div class="background"></div>
+  </label>
+  <br/>
+  <input id="fileInput" type='file' (change)="onFileSelected($event)">
+  <div style="margin: auto">
+    <button type="submit" mat-raised-button color="primary">Thay đổi</button>
+    <button mat-button (click)="onCancel()">Đóng</button>
+  </div>
+</form>

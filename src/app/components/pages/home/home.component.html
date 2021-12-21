@@ -29,6 +29,9 @@
             <li class="nav-item">
               <a class="nav-link pl-3" (click)="openDialogGetUser(groups[i].group.id)"><span class="ml-1 item-text">Thành viên</span></a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link pl-3" (click)="confirmDeleteGroup(groups[i].role,groups[i].group.id)" ><span class="ml-1 item-text">Xoá không gian làm việc</span></a>
+            </li>
           </ul>
         </li>
       </ul>

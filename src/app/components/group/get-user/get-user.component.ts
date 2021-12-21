@@ -6,6 +6,7 @@ import {ToastrService} from 'ngx-toastr';
 import {BoardService} from 'src/app/services/board.service';
 import {GroupService} from 'src/app/services/group.service';
 import {AuthService} from "../../../services/auth.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-get-user',
@@ -56,14 +57,42 @@ export class GetUserComponent implements OnInit {
     })
   }
 
-  delete(id: any, role: any, index: any) {
-    if (confirm('Ban chac chan muon xoa chu ?')) {
-      this.groupService.delete(id).subscribe(res => {
-        this.users.splice(index, 1)
-      })
+  // delete(id: any, role: any, index: any) {
+  //   if (confirm('Ban chac chan muon xoa chu ?')) {
+  //     this.groupService.delete(id).subscribe(res => {
+  //       this.users.splice(index, 1)
+  //     })
+  //
+  //   }
+  //
+  // }
 
-    }
-
+  confirmDeleteUser(id: any, role:any, index: any){
+    Swal.fire({
+      title: 'Bạn có chắc chắn muốn xóa người dùng này ?',
+      // text: 'Bạn sẽ không thể khôi phục tệp này!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Đồng ý xóa!',
+      cancelButtonText: 'Hủy'
+    }).then((result) => {
+      if (result.value) {
+        this.groupService.delete(id).subscribe(res => {
+          this.users.splice(index, 1)
+        })
+        Swal.fire(
+          'Đã xóa !',
+          'Thành viên đã bị xóa !.',
+          'success'
+        )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Đã hủy',
+          'Không xóa người dùng này !',
+          'error'
+        )
+      }
+    })
   }
 
   onClose() {

@@ -60,14 +60,7 @@ export class GroupService {
     let header = {
       headers: new HttpHeaders().set("Authorization",`Bearer ${token}`)
     }
-    return this.http.delete<any>(API_URL + '/group/delete/'+ id,header);
+    return this.http.get<any>(API_URL + '/group/delete/'+ id,header);
   }
 
-  setUserGroupId(id:number){
-    return this.userGroupId = id
-  }
-
-  getUserGroupId():any{
-    return this.userGroupId
-  }
 }

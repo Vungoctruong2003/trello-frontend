@@ -79,7 +79,7 @@
           <p style="font-size: 15px;margin-left: 12%;margin-top: -10px">{{comment.content}}</p>
           <span style="margin-top: -7%;margin-left: -3%">
         <a class="col-1" style=" text-decoration: underline;
-  text-decoration-color: gray;margin-left:13%;font-size: x-small;margin-top: -30px" (click)="deleteCmt(comment.id,i)">Xoá</a>
+  text-decoration-color: gray;margin-left:13%;font-size: x-small;margin-top: -30px" (click)="confirmDeleteCmt(comment.id,i)">Xoá</a>
       </span>
 
           <hr>
@@ -116,7 +116,7 @@
     <div class="ml-3">
       <p class="text-start"><strong>Xoá thẻ</strong></p>
       <button type="button" mat-button class="btn btn-outline-secondary ml-4"
-              style="width: 200px;margin-top: -10px" (click)="deleteCard()">
+              style="width: 200px;margin-top: -10px" (click)="confirmDeleteCard()">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-x"
              viewBox="0 0 16 16">
           <path
