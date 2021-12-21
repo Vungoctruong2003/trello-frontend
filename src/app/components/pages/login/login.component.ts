@@ -60,5 +60,4 @@ export class LoginComponent implements OnInit {
   pwd(){
     this.show = !this.show
   }
-
 }

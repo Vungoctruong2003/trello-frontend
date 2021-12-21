@@ -30,7 +30,8 @@
               <a class="nav-link pl-3" (click)="openDialogGetUser(groups[i].group.id)"><span class="ml-1 item-text">Thành viên</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link pl-3" (click)="confirmDeleteGroup(groups[i].role,groups[i].group.id)" ><span class="ml-1 item-text">Xoá không gian làm việc</span></a>
+              <a class="nav-link pl-3" (click)="confirmDeleteGroup(groups[i].role,groups[i].group.id)"><span
+                class="ml-1 item-text">Xoá không gian làm việc</span></a>
             </li>
           </ul>
         </li>
@@ -44,12 +45,15 @@
         <div *ngIf="arr.length != 0 ">
           <div *ngFor="let ar of arr;let i=index" class=" mt-5">
             <span class=""
-              style="font-weight: bold;font-size:xx-large;color: black;">{{ groups[i].group.title }}</span>
+                  style="font-weight: bold;font-size:xx-large;color: black;">{{ groups[i].group.title }}</span>
             <span style="float: right;">
               <a class="a" (click)="openDialogGetUser(groups[i].group.id)"><i class="fa fa-users"></i> Thành viên </a> |
               <a *ngIf="groups[i].role == 1" class="a"
-                (click)="openDialogAddUserToGroup(groups[i].group.id,groups[i].role)"><i class="fa fa-user-plus"></i>
-                Thêm người dùng</a>
+                 (click)="openDialogAddUserToGroup(groups[i].group.id,groups[i].role)"><i class="fa fa-user-plus"></i>
+                Thêm người dùng</a> |
+              <a class="a" (click)="confirmOutGroup(groups[i].group.id)"><i class="fas fa-sign-out-alt"></i>
+                Rời nhóm </a>
+
             </span>
             <div class="row mb-4 pl-4 pr-4">
               <div class="col-4 col-md-3 mt-2" *ngFor="let board of ar">
@@ -59,13 +63,13 @@
                     class="card-img-top" alt="...">
                   <div class="card-img-overlay">
                     <h3 class="card-title  text-white "
-                      style="position: absolute;top: 5px; left: 10px;font-weight: bold;">
+                        style="position: absolute;top: 5px; left: 10px;font-weight: bold;">
                       {{ board.board.title }}</h3>
                   </div>
                 </div>
               </div>
               <div class="card ml-2 mt-2 a" style="width: 12rem;height: 7.8rem;"
-                (click)="openDialogCreateBoard(groups[i].group.id,groups[i].role)">
+                   (click)="openDialogCreateBoard(groups[i].group.id,groups[i].role)">
                 <div class="card-body">
                   <h5 class="card-title " style="position: absolute;top: 47px;left: 25px;">Thêm bảng mới</h5>
                 </div>

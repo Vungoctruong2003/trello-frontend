@@ -5,7 +5,6 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {BoardService} from 'src/app/services/board.service';
 import {GroupService} from 'src/app/services/group.service';
-import {AuthService} from "../../../services/auth.service";
 import Swal from "sweetalert2";
 
 @Component({
@@ -56,16 +55,6 @@ export class GetUserComponent implements OnInit {
     this.groupService.changeRole(data, id).subscribe(res => {
     })
   }
-
-  // delete(id: any, role: any, index: any) {
-  //   if (confirm('Ban chac chan muon xoa chu ?')) {
-  //     this.groupService.delete(id).subscribe(res => {
-  //       this.users.splice(index, 1)
-  //     })
-  //
-  //   }
-  //
-  // }
 
   confirmDeleteUser(id: any, role:any, index: any){
     Swal.fire({

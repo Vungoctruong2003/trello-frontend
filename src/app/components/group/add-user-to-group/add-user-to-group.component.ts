@@ -81,6 +81,5 @@ export class AddUserToGroupComponent implements OnInit {
     this.formAddUserToGroup?.reset();
     this.dialogRef.close();
   }
-
 }
 

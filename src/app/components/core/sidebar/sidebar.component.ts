@@ -45,22 +45,9 @@ export class SidebarComponent implements OnInit {
     }
   }
 
-  // DeleteBoard() {
-  //   if (this.role == 1) {
-  //     let id = this.boardService.getBoardId()
-  //     this.boardService.deleteBoard(id).subscribe(res => {
-  //       this.toastr.success('Bảng đã xoá bảng thành công')
-  //       this.route.navigate(['/trello/home'])
-  //     })
-  //   } else {
-  //     this.toastr.warning('Bạn không có quyền chỉnh sửa')
-  //   }
-  // }
-
   confirmDeleteBoard() {
     Swal.fire({
       title: 'Bạn có chắc chắn muốn xóa bảng này không ?',
-      // text: 'Bạn sẽ không thể khôi phục tệp này!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Đồng ý xóa!',
@@ -70,7 +57,6 @@ export class SidebarComponent implements OnInit {
         if (this.role == 1) {
           let id = this.boardService.getBoardId()
           this.boardService.deleteBoard(id).subscribe(res => {
-            this.toastr.success('Bảng đã xoá bảng thành công')
             this.route.navigate(['/trello/home'])
           })
         } else {
