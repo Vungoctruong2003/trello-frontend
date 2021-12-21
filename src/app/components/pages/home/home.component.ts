@@ -115,7 +115,6 @@ export class HomeComponent implements OnInit {
   confirmDeleteGroup(role: any, id: any) {
     Swal.fire({
       title: 'Bạn có chắc chắn muốn xóa không gian làm việc này không ?',
-      // text: 'Bạn sẽ không thể khôi phục tệp này!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Đồng ý xóa!',
@@ -125,7 +124,6 @@ export class HomeComponent implements OnInit {
         if (role == 1 || role == 2) {
           this.groupService.delete(id).subscribe(res => {
             console.log(res)
-            this.toastr.success('Không gian làm việc đã xoá thành công')
             this.router.navigate(['/load-home'])
           })
         } else {
