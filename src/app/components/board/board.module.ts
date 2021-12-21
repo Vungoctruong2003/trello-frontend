@@ -25,7 +25,7 @@ const routes: Routes = [
   declarations: [
     BoardCreateComponent,
     IndexComponent,
-    AddUserComponent
+    AddUserComponent,
   ],
 
   imports: [

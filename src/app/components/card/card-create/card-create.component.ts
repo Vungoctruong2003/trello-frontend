@@ -4,7 +4,6 @@ import {BoardService} from "../../../services/board.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {CardService} from "../../../services/card.service";
 import {Router} from "@angular/router";
-import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-card-create',
@@ -20,7 +19,6 @@ export class CardCreateComponent implements OnInit {
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<CardCreateComponent>,
     private router: Router,
-    private toastr : ToastrService,
     @Inject(MAT_DIALOG_DATA) public data:any,
   ) { }
 
@@ -61,6 +59,4 @@ export class CardCreateComponent implements OnInit {
     this.formCreateCard?.reset();
     this.dialogRef.close()
   }
-
-
 }

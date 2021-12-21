@@ -21,7 +21,6 @@ export class ListCreateComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private dialogRef: MatDialogRef<ListCreateComponent>,
-    private toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) public data:any,
   ) { }
 
@@ -57,5 +56,4 @@ export class ListCreateComponent implements OnInit {
     this.formCreateList?.reset();
     this.dialogRef.close();
   }
-
 }
