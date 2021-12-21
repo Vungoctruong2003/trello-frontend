@@ -26,6 +26,7 @@ import { LoadHomeComponent } from './load-home/load-home.component';
 import { LoadComponent } from './load/load.component';
 import { TrelloComponent } from './components/trello/trello.component';
 import { ChangeAvatarComponent } from './components/pages/change-avatar/change-avatar.component';
+import {MatButtonModule} from "@angular/material/button";
 
 // @ts-ignore
 @NgModule({
@@ -47,19 +48,20 @@ import { ChangeAvatarComponent } from './components/pages/change-avatar/change-a
     ListCreateComponent,
     BoardCreateComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    FormsModule,
-    UsersModule,
-    BrowserAnimationsModule,
-    MatDialogModule,
-    AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
-    ToastrModule.forRoot(),
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        FormsModule,
+        UsersModule,
+        BrowserAnimationsModule,
+        MatDialogModule,
+        AngularFireStorageModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
+        ToastrModule.forRoot(),
+        MatButtonModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

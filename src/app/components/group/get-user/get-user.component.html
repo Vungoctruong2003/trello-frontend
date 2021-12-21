@@ -1,4 +1,4 @@
-<h1>Các thành viên trong nhóm ({{ users.length }})</h1>
+<h3>Các thành viên trong nhóm ({{ users.length }})</h3>
 <table class="table">
     <tr *ngFor="let u of users;index as i">
       <td><img src="{{ u.user.avatar }}" width="50px">   {{ u.user.name }}</td>
@@ -16,6 +16,6 @@
             <div *ngIf="u.role ==2" style="margin-top: -4%"><strong>Bình thường</strong></div>
         </div>
         </td>
-        <td><a (click)="delete(u.id,u.role,i)"><i class="fas fa-trash-alt"></i></a></td>
+        <td><a (click)="confirmDeleteUser(u.id,u.role,i)"><i class="fas fa-trash-alt"></i></a></td>
       </tr>
 </table>
