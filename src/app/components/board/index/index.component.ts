@@ -111,7 +111,7 @@ export class IndexComponent implements OnInit {
     if (this.role == 1 || this.role == 2) {
       const dialogConfig = new MatDialogConfig();
       dialogConfig.autoFocus = true;
-      dialogConfig.width = "20%";
+      dialogConfig.width = "30%";
       this.matDialog.open(ListCreateComponent, dialogConfig);
     }
   }
@@ -130,7 +130,7 @@ export class IndexComponent implements OnInit {
       this.cardService.setListId(id)
       const dialogConfig = new MatDialogConfig();
       dialogConfig.autoFocus = true;
-      dialogConfig.width = "20%";
+      dialogConfig.width = "30%";
       this.matDialog.open(CardCreateComponent, dialogConfig);
     }
   }
@@ -145,15 +145,6 @@ export class IndexComponent implements OnInit {
     this.matDialog.open(CardDetailComponent, dialogConfig);
   }
 
-  // deleteList(id:any) {
-  //   if (this.role == 1 || this.role == 2) {
-  //     this.listService.deleteList(id).subscribe(res => {
-  //       this.router.navigate(['/load'])
-  //       this.toastr.success('Xoá danh sách các thẻ thành công');
-  //     })
-  //   }
-  // }
-
   confirmDeleteList(id:any){
     Swal.fire({
       title: 'Bạn có chắc chắn muốn xóa danh sách này ?',
@@ -167,7 +158,6 @@ export class IndexComponent implements OnInit {
         if (this.role == 1 || this.role == 2) {
           this.listService.deleteList(id).subscribe(res => {
             this.router.navigate(['/load'])
-            this.toastr.success('Xoá danh sách các thẻ thành công');
           })
         }
         Swal.fire(

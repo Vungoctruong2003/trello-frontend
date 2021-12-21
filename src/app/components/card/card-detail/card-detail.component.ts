@@ -134,17 +134,9 @@ export class CardDetailComponent implements OnInit {
     this.matDialog.open(AddUserIntoCardComponent, dialogConfig);
   }
 
-  // deleteCard() {
-  //   this.id = this.cardService.getListId()
-  //   this.cardService.deleteCard(this.id).subscribe(res => {
-  //     this.onClose()
-  //   })
-  // }
-
   confirmDeleteCmt(id: any, index: number) {
     Swal.fire({
       title: 'Bạn có chắc chắn muốn bình luận này xóa không ?',
-      // text: 'Bạn sẽ không thể khôi phục tệp này!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Đồng ý xóa!',
@@ -153,10 +145,7 @@ export class CardDetailComponent implements OnInit {
       if (result.value) {
         this.cardService.deleteCmt(id).subscribe(res => {
           if (res.status == 'success') {
-            // this.toastr.success(res.message);
             this.listComment.splice(index, 1);
-          } else {
-            // this.toastr.warning(res.message);
           }
         })
         Swal.fire(
@@ -177,7 +166,6 @@ export class CardDetailComponent implements OnInit {
   confirmDeleteCard() {
     Swal.fire({
       title: 'Bạn có chắc chắn muốn xóa thẻ này không ?',
-      // text: 'Bạn sẽ không thể khôi phục tệp này!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Đồng ý xóa!',
@@ -202,5 +190,4 @@ export class CardDetailComponent implements OnInit {
       }
     })
   }
-
 }
