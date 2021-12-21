@@ -7,9 +7,9 @@ import {HomeService} from 'src/app/services/home.service';
 import {BoardCreateComponent} from '../../board/board-create/board-create.component';
 import {GroupCreateComponent} from '../../group/group-create/group-create.component';
 import {AddUserToGroupComponent} from "../../group/add-user-to-group/add-user-to-group.component";
-import { GetUserComponent } from '../../group/get-user/get-user.component';
-import { GroupService } from 'src/app/services/group.service';
-import { DIR_DOCUMENT_FACTORY } from '@angular/cdk/bidi/dir-document-token';
+import {GetUserComponent} from '../../group/get-user/get-user.component';
+import {GroupService} from 'src/app/services/group.service';
+import {DIR_DOCUMENT_FACTORY} from '@angular/cdk/bidi/dir-document-token';
 import {ToastrService} from "ngx-toastr";
 
 @Component({
@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   groups: any;
   boards: any;
   arr: any = [];
-  id?: number
+  id?: any
   role: any = 3;
 
   constructor(private homeService: HomeService,
@@ -44,7 +44,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll();
-    console.log(this.groups)
   }
 
   getAll() {
@@ -67,9 +66,8 @@ export class HomeComponent implements OnInit {
   }
 
   merge(groups: any, boards: any) {
-    console.log(this.boards)
+    // console.log(this.boards)
     for (let i = 0; i < groups.length; i++) {
-      console.log(i)
       this.arr[i] = []
       for (let j = 0; j < boards.length; j++) {
         if (groups[i].group.id == boards[j].board.group_id) {
@@ -109,18 +107,19 @@ export class HomeComponent implements OnInit {
   }
 
   openDialogGetUser(id: any) {
-      this.boardService.setGroupId(id)
-      const dialogConfig = new MatDialogConfig();
-      dialogConfig.autoFocus = true;
-      dialogConfig.width = "30%";
-      this.matDialog.open(GetUserComponent, dialogConfig);
+    this.boardService.setGroupId(id)
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "30%";
+    this.matDialog.open(GetUserComponent, dialogConfig);
   }
-  deleteGroup(){
-    if (this.role == 1) {
-      let id = this.boardService.getGroupId()
+
+  deleteGroup(role: any,id:any) {
+    if (role == 1 || role == 2) {
       this.groupService.delete(id).subscribe(res => {
+        console.log(res)
         this.toastr.success('Không gian làm việc đã xoá thành công')
-        this.router.navigate(['/trello/home'])
+        this.router.navigate(['/load-home'])
       })
     } else {
       this.toastr.warning('Bạn không có quyền chỉnh sửa')
