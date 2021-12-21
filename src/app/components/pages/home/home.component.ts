@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {interval, Subscription} from 'rxjs';
 import {BoardService} from 'src/app/services/board.service';
 import {HomeService} from 'src/app/services/home.service';
 import {BoardCreateComponent} from '../../board/board-create/board-create.component';
@@ -9,7 +8,6 @@ import {GroupCreateComponent} from '../../group/group-create/group-create.compon
 import {AddUserToGroupComponent} from "../../group/add-user-to-group/add-user-to-group.component";
 import {GetUserComponent} from '../../group/get-user/get-user.component';
 import {GroupService} from 'src/app/services/group.service';
-import {DIR_DOCUMENT_FACTORY} from '@angular/cdk/bidi/dir-document-token';
 import {ToastrService} from "ngx-toastr";
 import Swal from "sweetalert2";
 
@@ -114,18 +112,6 @@ export class HomeComponent implements OnInit {
     dialogConfig.width = "30%";
     this.matDialog.open(GetUserComponent, dialogConfig);
   }
-
-  // deleteGroup(role: any,id:any) {
-  //   if (role == 1 || role == 2) {
-  //     this.groupService.delete(id).subscribe(res => {
-  //       console.log(res)
-  //       this.toastr.success('Không gian làm việc đã xoá thành công')
-  //       this.router.navigate(['/load-home'])
-  //     })
-  //   } else {
-  //     this.toastr.warning('Bạn không có quyền chỉnh sửa')
-  //   }
-  // }
 
   confirmDeleteGroup(role: any, id: any) {
     Swal.fire({
