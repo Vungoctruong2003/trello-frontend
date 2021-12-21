@@ -104,6 +104,14 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  outGroup(id: number) {
+    this.groupService.outGroup(id).subscribe(res => {
+      if (res.status == 'success') {
+       this.router.navigate(['/load-home'])
+      }
+    })
+  }
+
   openDialogGetUser(id: any) {
     this.boardService.setGroupId(id)
     const dialogConfig = new MatDialogConfig();
@@ -138,6 +146,35 @@ export class HomeComponent implements OnInit {
         Swal.fire(
           'Đã hủy',
           'Không gian làm việc không được xóa !',
+          'error'
+        )
+      }
+    })
+  }
+
+  confirmOutGroup(id: number){
+    Swal.fire({
+      title: 'Bạn chắc chắn muốn thoát ?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Đồng ý !',
+      cancelButtonText: 'Hủy'
+    }).then((result) => {
+      if (result.value) {
+        this.groupService.outGroup(id).subscribe(res => {
+          if (res.status == 'success') {
+            this.router.navigate(['/load-home'])
+          }
+        })
+        Swal.fire(
+          'Đã thoát !',
+          'Bạn đã thoát khỏi không gian làm việc !.',
+          'success'
+        )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Đã hủy',
+          'Không rời không gian làm việc !',
           'error'
         )
       }

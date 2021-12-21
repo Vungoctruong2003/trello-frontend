@@ -63,4 +63,12 @@ export class GroupService {
     return this.http.get<any>(API_URL + '/group/delete/'+ id,header);
   }
 
+  outGroup(id:any):Observable<any>{
+    let token = localStorage.getItem('access_token')
+    let header = {
+      headers: new HttpHeaders().set("Authorization",`Bearer ${token}`)
+    }
+    return this.http.delete<any>(API_URL + '/group/outGroup/'+ id,header);
+  }
+
 }
