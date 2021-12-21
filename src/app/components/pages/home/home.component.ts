@@ -42,7 +42,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll();
-    console.log(this.groups)
   }
 
   getAll() {
@@ -65,7 +64,7 @@ export class HomeComponent implements OnInit {
   }
 
   merge(groups: any, boards: any) {
-    console.log(this.boards)
+    // console.log(this.boards)
     for (let i = 0; i < groups.length; i++) {
       console.log(i)
       this.arr[i] = []
