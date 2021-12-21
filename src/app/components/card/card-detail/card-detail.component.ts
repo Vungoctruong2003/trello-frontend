@@ -153,7 +153,7 @@ export class CardDetailComponent implements OnInit {
       if (result.value) {
         this.cardService.deleteCmt(id).subscribe(res => {
           if (res.status == 'success') {
-            this.toastr.success(res.message);
+            // this.toastr.success(res.message);
             this.listComment.splice(index, 1);
           } else {
             // this.toastr.warning(res.message);
