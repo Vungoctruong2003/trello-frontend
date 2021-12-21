@@ -107,6 +107,14 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  outGroup(id: number) {
+    this.groupService.outGroup(id).subscribe(res => {
+      if (res.status == 'success') {
+       this.router.navigate(['/load-home'])
+      }
+    })
+  }
+
   openDialogGetUser(id: any) {
     this.boardService.setGroupId(id)
     const dialogConfig = new MatDialogConfig();
