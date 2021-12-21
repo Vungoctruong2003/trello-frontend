@@ -9,6 +9,7 @@
   <input id="fileInput" type='file' (change)="onFileSelected($event)">
   <div style="margin: auto">
     <button type="submit" mat-raised-button color="primary">Thay đổi</button>
+    <button mat-button (click)="onCancel()">Đóng</button>
   </div>
 </form>
-<button mat-button (click)="onCancel()">Đóng</button>
+
