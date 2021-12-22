@@ -12,7 +12,6 @@ export class LoadComponent implements OnInit {
   constructor(private boardService: BoardService,
               private router: Router) {
     let id = this.boardService.getBoardId()
-    console.log(id)
     // @ts-ignore
     this.router.navigate(['trello/master/boards/index/', id])
   }

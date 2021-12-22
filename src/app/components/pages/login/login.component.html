@@ -1,68 +1,60 @@
 <body class="atlassian-brand bidi-highlight" data-analytics-screen="loginChoiceScreen"
-  data-analytics-attributes="{ &quot;isMarketingEvent&quot;: true }">
-  <div><img alt="Trello" class="trello-main-logo"
-      src="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/trello-header-logos/167dc7b9900a5b241b15ba21f8037cf8/trello-logo-blue.svg">
-    <section class="inner-section">
-      <div class="section-wrapper quick-switch">
-        <div class="layout-twothirds-center account-form">
-          <h1>Đăng nhập vào Trello</h1>
-          <div class="text-danger">
-            {{ errLogin }}
-          </div>
-          <div class="login-password-container">
-            <form id="login-form" *ngIf="formLogin" [formGroup]="formLogin" class="user" (ngSubmit)="login()">
-              <div class="login-password-container-email">
-                <div class="email-password">
-                  <div class="hide-when-two-factor"><input type="text" formControlName="email" id="user"
-                      class="form-field" autocorrect="off" spellcheck="false" autocapitalize="off" autofocus="autofocus"
-                      placeholder="Nhập email" value="" autocomplete="username" inputmode="email">
-                    <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" style="margin-top: -10px">
-                      <div *ngIf="email?.errors?.['required']" class="text-danger">
-                        * Email không được để trống
-                      </div>
-                      <div *ngIf="email?.errors?.['email']" class="text-danger ">
-                        * Email không đúng định dạng
-                      </div>
+      data-analytics-attributes="{ &quot;isMarketingEvent&quot;: true }">
+<div><img alt="Trello" class="trello-main-logo"
+          src="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/trello-header-logos/167dc7b9900a5b241b15ba21f8037cf8/trello-logo-blue.svg">
+  <section class="inner-section">
+    <div class="section-wrapper quick-switch">
+      <div class="layout-twothirds-center account-form">
+        <h1>Đăng nhập vào Trello</h1>
+        <div class="text-danger">
+          {{ errLogin }}
+        </div>
+        <div class="login-password-container">
+          <form id="login-form" *ngIf="formLogin" [formGroup]="formLogin" class="user" (ngSubmit)="login()">
+            <div class="login-password-container-email">
+              <div class="email-password">
+                <div class="hide-when-two-factor"><input type="text" formControlName="email" id="user"
+                                                         class="form-field" autocorrect="off" spellcheck="false"
+                                                         autocapitalize="off" autofocus="autofocus"
+                                                         placeholder="Nhập email" value="" autocomplete="username"
+                                                         inputmode="email">
+                  <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" style="margin-top: -10px">
+                    <div *ngIf="email?.errors?.['required']" class="text-danger">
+                      * Email không được để trống
                     </div>
-                    <div id="password-entry" class="show-when-password">
-                      <input [type]="show ? 'text' : 'password'"
-                        formControlName="password" id="password" class="form-field" placeholder="Nhập mật khẩu"
-                        autocomplete="current-password">
-                      <a style="position: absolute;top:37%;right:50px;color: #333" (click)="pwd()"><i
-                          class="fa fa-eye"></i></a>
+                    <div *ngIf="email?.errors?.['email']" class="text-danger ">
+                      * Email không đúng định dạng
+                    </div>
+                  </div>
+                  <div id="password-entry" class="show-when-password">
+                    <input [type]="show ? 'text' : 'password'"
+                           formControlName="password" id="password" class="form-field" placeholder="Nhập mật khẩu"
+                           autocomplete="current-password">
+                    <a style="position: absolute;top:44%;right:50px;color: #333" (click)="pwd()"><i
+                      class="fa fa-eye"></i></a>
 
-                      <div *ngIf="password?.invalid && (password?.dirty || password?.touched)"  style="margin-top: -10px">
-                        <div *ngIf="password?.errors?.['required']" class="text-danger">
-                          * Mật khẩu không được để trống
-                        </div>
+                    <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" style="margin-top: -10px">
+                      <div *ngIf="password?.errors?.['required']" class="text-danger">
+                        * Mật khẩu không được để trống
                       </div>
                     </div>
                   </div>
-                  <button type="submit" id="login" class="button account-button button-green btn btn-success"
-                    [disabled]="!formLogin.valid">Đăng nhập
-                  </button>
                 </div>
-              </div>
-            </form>
-            <div class="login-methods hide-when-two-factor">
-              <div class="login-method-separator">HOẶC</div>
-              <div class="login-oauth-container">
-                <div id="googleButton" class="google-button oauth-button" tabindex="0"><span id="google-icon"
-                    class="icon"></span> <span class="label" data-analytics-button="loginWithGmailButton"
-                    (click)="loginGG()">Tiếp tục với Google</span>
-                </div>
+                <button type="submit" id="login" class="button account-button button-green btn btn-success"
+                        [disabled]="!formLogin.valid">Đăng nhập
+                </button>
               </div>
             </div>
-          </div>
-          <hr class="bottom-form-separator">
-          <ul class="bottom-form-link">
-            <li><a class="forgotLink" href="https://trello.com/forgot" data-analytics-link="forgotPasswordLink">Không
-                thể đăng nhập?</a></li>
-            <li><a class="signupLink" routerLink="/register" data-analytics-link="signUpLoginLink">Đăng
-                ký tài khoản</a></li>
-          </ul>
+          </form>
         </div>
+        <hr class="bottom-form-separator">
+        <ul class="bottom-form-link">
+          <li><p>Bạn chưa có tài khoản?</p></li>
+          <li><a class="signupLink" routerLink="/register" data-analytics-link="signUpLoginLink">Đăng
+            ký tài khoản</a></li>
+        </ul>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
+</div>
 </body>
