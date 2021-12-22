@@ -26,7 +26,7 @@ export class GroupCreateComponent implements OnInit {
   ngOnInit(): void {
     this.formCreateGroup = this.fb.group({
       title : ['',[Validators.required]],
-      policy : ['',[Validators.required]],
+      policy : [1,[Validators.required]],
     })
   }
 
