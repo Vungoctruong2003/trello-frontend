@@ -129,8 +129,8 @@ export class HomeComponent implements OnInit {
       cancelButtonText: 'Hủy'
     }).then((result) => {
       if (result.value) {
-        if (role == 1 || role == 2) {
-          this.groupService.delete(id).subscribe(res => {
+        if (role == 1) {
+          this.groupService.deleteGroup(id).subscribe(res => {
             console.log(res)
             this.router.navigate(['/load-home'])
           })

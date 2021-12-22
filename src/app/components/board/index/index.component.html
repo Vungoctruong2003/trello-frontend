@@ -10,7 +10,7 @@
             <!-- Column Title -->
             <div class="d-flex justify-content-between align-items-center p-2 shadow-sm column-header pb-3 mt-2">
               <h2 class="m-0">{{lists[i].title}}</h2>
-              <button mat-icon-button class="icon-delete">
+              <button mat-icon-button class="icon-delete" *ngIf="role == 1 || role == 2">
                 <mat-icon style="font-size: 20px;" (click)="confirmDeleteList(lists[i].id)">delete</mat-icon>
               </button>
             </div>
