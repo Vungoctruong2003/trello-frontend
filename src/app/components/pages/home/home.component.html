@@ -47,10 +47,10 @@
             <span class=""
                   style="font-weight: bold;font-size:xx-large;color: black;">{{ groups[i].group.title }}</span>
             <span style="float: right;">
-              <a class="a" (click)="openDialogGetUser(groups[i].group.id)"><i class="fa fa-users"></i> Thành viên </a> |
+              <a class="a" (click)="openDialogGetUser(groups[i].group.id)"><i class="fa fa-users"></i> Thành viên </a>
               <a *ngIf="groups[i].role == 1" class="a"
                  (click)="openDialogAddUserToGroup(groups[i].group.id,groups[i].role)"><i class="fa fa-user-plus"></i>
-                Thêm người dùng</a> |
+                Thêm người dùng </a>
               <a class="a" (click)="confirmOutGroup(groups[i].group.id)"><i class="fas fa-sign-out-alt"></i>
                 Rời nhóm </a>
 
