@@ -131,7 +131,6 @@ export class HomeComponent implements OnInit {
       if (result.value) {
         if (role == 1) {
           this.groupService.deleteGroup(id).subscribe(res => {
-            console.log(res)
             this.router.navigate(['/load-home'])
           })
         } else {
