@@ -16,7 +16,7 @@
                   <div class="hide-when-two-factor"><input type="text" formControlName="email" id="user"
                       class="form-field" autocorrect="off" spellcheck="false" autocapitalize="off" autofocus="autofocus"
                       placeholder="Nhập email" value="" autocomplete="username" inputmode="email">
-                    <div *ngIf="email?.invalid && (email?.dirty || email?.touched)"  style="margin-top: -10px">
+                    <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" style="margin-top: -10px">
                       <div *ngIf="email?.errors?.['required']" class="text-danger">
                         * Email không được để trống
                       </div>
@@ -28,31 +28,37 @@
                     <input type="text" formControlName="name" id="name" class="form-field" autocorrect="off"
                       spellcheck="false" autocapitalize="off" autofocus="autofocus" placeholder="Nhập tên " value=""
                       autocomplete="username" inputmode="email">
-                    <div *ngIf="name?.invalid && (name?.dirty || name?.touched)"  style="margin-top: -10px">
+                    <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" style="margin-top: -10px">
                       <div *ngIf="name?.errors?.['required']" class="text-danger">
                         * Tên không được để trống
                       </div>
                     </div>
 
                     <div id="password-entry" class="show-when-password">
-                      <div style="position: relative">
-                        <input [type]="show ? 'text' : 'password'" formControlName="password" id="password" class="form-field"
-                          placeholder="Nhập mật khẩu" autocomplete="current-password">
+                      <div>
+                        <div style="position: relative">
+                          <input [type]="show ? 'text' : 'password'" formControlName="password" id="password"
+                            class="form-field" placeholder="Nhập mật khẩu" autocomplete="current-password">
                           <a style="position: absolute;top:27%;right:10px;color: #333" (click)="pwd()"><i
-                            class="fa fa-eye"></i></a>
-                        <div *ngIf="password?.invalid && (password?.dirty || password?.touched)"  style="margin-top: -10px">
+                              class="fa fa-eye"></i></a>
+                        </div>
+                        <div *ngIf="password?.invalid && (password?.dirty || password?.touched)"
+                          style="margin-top: -10px">
                           <div *ngIf="password?.errors?.['required']" class="text-danger">
                             * Mật khẩu không được để trống
                           </div>
                         </div>
                       </div>
-                      <div style="position: relative">
-                        <input [type]="show1 ? 'text' : 'password'" formControlName="confirmPassword" id="confirmPassword" class="form-field"
-                          placeholder="Nhập lại mật khẩu" autocomplete="current-password">
+                      <div>
+                        <div style="position: relative">
+                          <input [type]="show1 ? 'text' : 'password'" formControlName="confirmPassword"
+                            id="confirmPassword" class="form-field" placeholder="Nhập lại mật khẩu"
+                            autocomplete="current-password">
                           <a style="position: absolute;top:27%;right:10px;color: #333" (click)="pwd1()"><i
-                            class="fa fa-eye"></i></a>
+                              class="fa fa-eye"></i></a>
+                        </div>
                         <div *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)"
-                             style="margin-top: -10px">
+                          style="margin-top: -10px">
                           <div *ngIf="confirmPassword?.errors?.['required']" class="text-danger">
                             * Mật khẩu không được để trống
                           </div>
