@@ -1,11 +1,11 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
-import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {ToastrService} from 'ngx-toastr';
-import {BoardService} from 'src/app/services/board.service';
-import {GroupService} from 'src/app/services/group.service';
-import Swal from "sweetalert2";
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { BoardService } from 'src/app/services/board.service';
+import { GroupService } from 'src/app/services/group.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-get-user',
@@ -29,6 +29,11 @@ export class GetUserComponent implements OnInit {
     private dialogRef: MatDialogRef<GetUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
+      // @ts-ignore
+      this.id = this.boardService.getBoardId()
+      this.boardService.getRole(this.id).subscribe(res => {
+        this.role = res.data
+      })
 
   }
 
@@ -37,24 +42,35 @@ export class GetUserComponent implements OnInit {
     this.formChangeRole = this.fb.group({
       'role': ['']
     })
-    let id = this.boardService.getGroupId()
-    this.groupService.getRole(id).subscribe(res => {
+    let id = this.boardService.getBoardId()
+    this.boardService.getRole(id).subscribe(res => {
       this.role = res.data
     })
   }
 
   getUser() {
-    this.groupService.getUser(this.boardService.getGroupId()).subscribe(res => {
+    this.boardService.getUser(this.id).subscribe(res => {
       this.users = res.data
+      console.log(this.users)
     })
   }
 
   changeRole(id: any, role: any) {
     let data = this.formChangeRole?.value
     console.log(data)
-    this.groupService.changeRole(data, id).subscribe(res => {
+    this.boardService.changeRole(data, id).subscribe(res => {
     })
   }
+
+  // delete(id: any, role: any, index: any) {
+  //   if (confirm('Ban chac chan muon xoa chu ?')) {
+  //     this.groupService.delete(id).subscribe(res => {
+  //       this.users.splice(index, 1)
+  //     })
+  //
+  //   }
+  //
+  // }
 
   confirmDeleteUser(id: any, role:any, index: any){
     Swal.fire({
@@ -66,12 +82,7 @@ export class GetUserComponent implements OnInit {
       cancelButtonText: 'Hủy'
     }).then((result) => {
       if (result.value) {
-        let data = {
-          'id':id,
-          'group_id':this.boardService.getGroupId()
-        }
-        this.groupService.delete(data).subscribe(res => {
-          console.log(res)
+        this.boardService.delete(id).subscribe(res => {
           this.users.splice(index, 1)
         })
         Swal.fire(
@@ -93,3 +104,4 @@ export class GetUserComponent implements OnInit {
     this.dialogRef.close();
   }
 }
+

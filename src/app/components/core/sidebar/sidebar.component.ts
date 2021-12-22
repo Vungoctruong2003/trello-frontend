@@ -7,6 +7,7 @@ import {ToastrService} from "ngx-toastr";
 import {AddUserComponent} from "../../board/add-user/add-user.component";
 import {BoardService} from "../../../services/board.service";
 import Swal from "sweetalert2";
+import { GetUserComponent } from '../../board/get-user/get-user.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -15,7 +16,7 @@ import Swal from "sweetalert2";
 })
 export class SidebarComponent implements OnInit {
   role?: any
-
+  id?: any
   constructor(private authService: AuthService,
               private boardService: BoardService,
               private route: Router,
@@ -24,7 +25,8 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let id = this.boardService.getBoardId()
+    let id = this.boardService.getBoardId();
+    this.id = id
     this.boardService.getRole(id).subscribe(res => {
       if (res.status == 'success') {
         this.role = res.data
@@ -73,5 +75,13 @@ export class SidebarComponent implements OnInit {
         )
       }
     })
+  }
+
+  openDialogGetUser(id: any) {
+    this.boardService.setGroupId(id)
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "30%";
+    this.matDialog.open(GetUserComponent, dialogConfig);
   }
 }

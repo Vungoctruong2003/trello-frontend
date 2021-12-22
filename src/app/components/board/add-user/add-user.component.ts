@@ -27,7 +27,7 @@ export class AddUserComponent implements OnInit {
     let id = this.boardService.getBoardId()
     this.addUserOnBoard = this.fb.group({
       email: ['',[Validators.required,Validators.email]],
-      role: ['',[Validators.required]],
+      role: [3,[Validators.required]],
       board_id: [id,[Validators.required]],
     })
   }
@@ -40,7 +40,7 @@ export class AddUserComponent implements OnInit {
         this.onClose();
         this.router.navigate(['/load'])
       }else{
-        this.toastr.error(res.message);
+        this.toastr.warning(res.message);
         this.onClose();
         this.router.navigate(['/load'])
       }
@@ -59,7 +59,6 @@ export class AddUserComponent implements OnInit {
 
     this.addUserOnBoard?.reset();
     this.dialogRef.close();
-    // this.router.navigate(['/load-home']);
   }
 
 }

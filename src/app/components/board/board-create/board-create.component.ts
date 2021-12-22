@@ -26,7 +26,7 @@ export class BoardCreateComponent implements OnInit {
     let id = this.boardService.getGroupId()
     this.formCreateBoard = this.fb.group({
       title: ['',[Validators.required]],
-      policy: ['',[Validators.required]],
+      policy: [1,[Validators.required]],
       group_id: [id,[Validators.required]],
     })
   }

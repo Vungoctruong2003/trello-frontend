@@ -33,7 +33,6 @@ export class CardCreateComponent implements OnInit {
 
   createCard(){
     const data = this.formCreateCard?.value;
-    console.log(data);
     this.cardService.createCard(data).subscribe(res => {
       if (res.status == 'success') {
         this.onClose();

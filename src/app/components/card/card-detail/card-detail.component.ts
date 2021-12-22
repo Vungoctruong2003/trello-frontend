@@ -98,8 +98,6 @@ export class CardDetailComponent implements OnInit {
     this.boardService.getRole(idBoard).subscribe(res => {
       this.role = res.data
     })
-    console.log(this.role)
-
   }
 
   onClose() {
@@ -119,7 +117,6 @@ export class CardDetailComponent implements OnInit {
       this.toastr.success('Thêm mới bình luận thành công');
       if (res.status == "success") {
         let comment = res.data[0]
-        console.log(res.data[0])
         this.listComment.push(comment)
       }
     })

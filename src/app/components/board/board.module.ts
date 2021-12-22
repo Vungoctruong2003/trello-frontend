@@ -11,6 +11,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatCardModule} from "@angular/material/card";
 import {MatTableModule} from "@angular/material/table";
+import { GetUserComponent } from './get-user/get-user.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,7 @@ const routes: Routes = [
     BoardCreateComponent,
     IndexComponent,
     AddUserComponent,
+    GetUserComponent,
   ],
 
   imports: [

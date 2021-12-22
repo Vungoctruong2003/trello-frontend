@@ -25,13 +25,15 @@
                       </div>
                     </div>
                     <div id="password-entry" class="show-when-password">
-                      <input [type]="show ? 'text' : 'password'"
-                        formControlName="password" id="password" class="form-field" placeholder="Nhập mật khẩu"
-                        autocomplete="current-password">
-                      <a style="position: absolute;top:37%;right:50px;color: #333" (click)="pwd()"><i
-                          class="fa fa-eye"></i></a>
+                      <div style="position: relative">
+                        <input [type]="show ? 'text' : 'password'" formControlName="password" id="password"
+                          class="form-field" placeholder="Nhập mật khẩu" autocomplete="current-password">
+                        <a style="position: absolute;top:30%;right:10px;color: #333" (click)="pwd()"><i
+                            class="fa fa-eye"></i></a>
+                      </div>
 
-                      <div *ngIf="password?.invalid && (password?.dirty || password?.touched)"  style="margin-top: -10px">
+                      <div *ngIf="password?.invalid && (password?.dirty || password?.touched)"
+                        style="margin-top: -10px">
                         <div *ngIf="password?.errors?.['required']" class="text-danger">
                           * Mật khẩu không được để trống
                         </div>
@@ -44,20 +46,12 @@
                 </div>
               </div>
             </form>
-            <div class="login-methods hide-when-two-factor">
-              <div class="login-method-separator">HOẶC</div>
-              <div class="login-oauth-container">
-                <div id="googleButton" class="google-button oauth-button" tabindex="0"><span id="google-icon"
-                    class="icon"></span> <span class="label" data-analytics-button="loginWithGmailButton"
-                    (click)="loginGG()">Tiếp tục với Google</span>
-                </div>
-              </div>
-            </div>
           </div>
           <hr class="bottom-form-separator">
           <ul class="bottom-form-link">
-            <li><a class="forgotLink" href="https://trello.com/forgot" data-analytics-link="forgotPasswordLink">Không
-                thể đăng nhập?</a></li>
+            <li>
+              <p>Bạn chưa có tài khoản?</p>
+            </li>
             <li><a class="signupLink" routerLink="/register" data-analytics-link="signUpLoginLink">Đăng
                 ký tài khoản</a></li>
           </ul>

@@ -35,7 +35,7 @@ export class AddUserToGroupComponent implements OnInit {
 
   ngOnInit(): void {
     this.formAddUserToGroup = this.fb.group({
-      key: ['', [Validators.required]],
+      key: ['', [Validators.required,Validators.email]],
     })
     this.idGroup = this.boardService.getGroupId()
   }
@@ -47,7 +47,7 @@ export class AddUserToGroupComponent implements OnInit {
   searchByEmail() {
     const key = this.formAddUserToGroup?.value;
     this.userService.searchByEmail(key).subscribe(res => {
-      this.idUser = res.data[0].id
+      this.idUser = res.data[0]?.id
       this.addUserToGroup()
     })
   }
@@ -63,8 +63,8 @@ export class AddUserToGroupComponent implements OnInit {
       if (res.status == 'success') {
         this.toastr.success('Thêm mới người dùng thành công ');
         this.onClose();
-      } else if (res.status =='error'){
-        this.toastr.warning('Người dùng đã có trong nhóm');
+      } else if (res.status =='error1'){
+        this.toastr.warning(res.message);
       } else {
         this.toastr.error('Người dùng không tồn tại')
       }

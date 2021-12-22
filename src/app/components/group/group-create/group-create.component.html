@@ -1,4 +1,4 @@
-<h3>Thêm nhóm mới</h3>
+<h3>Thêm không gian làm việc</h3>
   <form *ngIf="formCreateGroup" [formGroup]="formCreateGroup" (ngSubmit)="createGroup()">
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Tiêu đề</label>
@@ -12,8 +12,8 @@
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Chế độ</label>
       <select formControlName="policy" class="form-select" id="exampleInputPassword1" aria-label="Default select example">
-        <option value="1">Công khai</option>
-        <option value="2" selected >Riêng tư</option>
+        <option value="1" selected>Công khai</option>
+        <option value="2">Riêng tư</option>
       </select>
     </div>
     <div *ngIf="policy?.invalid && (policy?.dirty || policy?.touched)"  style="margin-top: -10px">

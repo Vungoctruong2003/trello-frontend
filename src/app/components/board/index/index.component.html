@@ -1,5 +1,5 @@
 <div class="cdk-virtual-scroll-data-source-example "
-     style="background-image:url('https://upanh123.com/wp-content/uploads/2019/05/anh-vui-nhon-hoat-hinh_042020886-1.jpg') ">
+     style="background-image:url('https://png.pngtree.com/thumb_back/fw800/background/20190223/ourmid/pngtree-blue-postgraduate-theme-background-backgroundpostgraduatepostgraduate-backgroundpostgraduate-advertisementpubmed-image_78549.jpg') ">
   <cdk-virtual-scroll-viewport orientation="horizontal" itemSize="50" class="example-viewport">
     <div cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drip($event)"
          style="min-width: max-content">
@@ -10,7 +10,7 @@
             <!-- Column Title -->
             <div class="d-flex justify-content-between align-items-center p-2 shadow-sm column-header pb-3 mt-2">
               <h2 class="m-0">{{lists[i].title}}</h2>
-              <button mat-icon-button class="icon-delete">
+              <button mat-icon-button class="icon-delete" *ngIf="role == 1 || role == 2">
                 <mat-icon style="font-size: 20px;" (click)="confirmDeleteList(lists[i].id)">delete</mat-icon>
               </button>
             </div>
